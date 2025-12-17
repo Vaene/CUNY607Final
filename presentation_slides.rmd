@@ -259,21 +259,24 @@ speed = Scalable processing
 
 ## Dataset Scale & Scope {.build}
 
-<div style="font-size: 20px; line-height: 1.5;">
+<div style="font-size: 16px; line-height: 1.2;">
 
 ### Three Core Datasets
 
 **1. Historical Training Data**
+
 - 16,893 incidents (2020-2023)
 - Expert-vetted by ADL's Center on Extremism
 - Geographic: All 50 states + D.C.
 
 **2. ADL Hate Terms Glossary**
+
 - 1,142 expert-curated terms
 - 23 granular categories
 - Rich definitions with context and examples
 
 **3. New Incidents for Testing**
+
 - 9,603 incidents (2024)
 - Processed by human AND machine
 - Direct comparison dataset
@@ -284,11 +287,9 @@ speed = Scalable processing
 **Total: 27,638 incidents + 1,142 terms**
 </div>
 
----
-
 ## Glossary: 23 Categories vs. 1 {.build}
 
-<div style="font-size: 20px; line-height: 1.5;">
+<div style="font-size: 16px; line-height: 1.2;">
 
 **Human Labels:** Single "Antisemitism" category
 
@@ -312,27 +313,29 @@ speed = Scalable processing
 **Each term includes: definition, variations, related terms, severity, ideology**
 </div>
 
----
-
 ## Data Quality & Coverage {.build}
 
-<div style="font-size: 20px; line-height: 1.5;">
+<div style="font-size: 16px; line-height: 1.2;">
 
 **Temporal Coverage**
+
 - 5 years continuous (2020-2024)
 - 16,893 training + 9,603 test incidents
 
 **Geographic Coverage**
+
 - All 50 states + Washington D.C.
 - 1,000+ cities represented
 - Urban and rural incidents
 
 **Data Completeness**
+
 - 100% for core fields (ID, date, description, location)
 - Average description length: ~200 words
 - All training data verified by ADL experts
 
 **Expert Validation**
+
 - ADL Center on Extremism reviewed all historical incidents
 - Glossary curated by hate/extremism researchers
 - Human-processed 2024 data for ground truth comparison
@@ -382,7 +385,6 @@ QAnon, Proud Boys, Numeric Codes (14/88), Anti-Zionist Rhetoric, Online Harassme
 **Each category enables targeted threat response and resource allocation**
 </div>
 
-
 ## The Pipeline: 7 Phases
 
 ```{r pipeline-diagram}
@@ -416,23 +418,27 @@ digraph pipeline {
 <div style="text-align: center; font-size: 18px; margin-top: 20px;">
 **16,893 historical incidents** → **1,142 glossary terms** → **9,603 new incidents classified**
 </div>
+
 ## Phase Details: Data Foundation {.build}
 
-<div style="font-size: 18px;">
+<div style="font-size: 16px; line-height: 1.2;">
 
 **Phase 1: Data Ingestion** (16,893 historical incidents + 1,142 glossary terms)
+
 - Loads 4 years of ADL incident data and hate terms glossary
 - Cleans and standardizes formats (text cleaning, date parsing, location normalization)
 - Validates data quality and completeness
 - Extracts explicit term mentions from incident descriptions
 
 **Phase 2: Glossary Processing** (Term relationships + taxonomy)
+
 - Analyzes term structure and extracts relationships (synonyms, variations, categories)
 - Builds term network graph connecting related concepts
 - Enriches terms with incident frequency and contextual examples
 - Creates rich embedding text combining definitions, categories, and examples
 
 **Phase 3: Embedding Generation** (SentenceTransformer: all-MiniLM-L6-v2)
+
 - Generates 384-dimensional semantic embeddings for all incidents and terms
 - Uses normalized embeddings for consistent similarity scoring
 - Computes cosine similarity between incidents and glossary (top-5 matches)
@@ -444,27 +450,31 @@ digraph pipeline {
 
 ## Phase Details: Graph & Classification {.build}
 
-<div style="font-size: 18px;">
+<div style="font-size: 14px; line-height: 1.1;">
 
 **Phase 4: Knowledge Graph Construction** (21,594 nodes, 28,394 relationships)
+
 - Creates Neo4j nodes: Incidents, Terms, Categories, Locations, Groups
 - Establishes relationships: USES_TERM, SIMILAR_TO, BELONGS_TO, OCCURRED_IN
 - Links co-occurring terms and related concepts
 - Trains graph with historical patterns for contextual classification
 
 **Phase 5: Incident Processing** (9,603 new incidents classified)
+
 - Loads raw unprocessed incidents from past year
 - Generates embeddings and matches to glossary terms
 - Queries knowledge graph for co-occurrence patterns and frequency
 - Adjusts confidence based on training data (frequency boost + category agreement)
 
 **Phase 6: Evaluation** (Statistical validation + performance metrics)
+
 - Compares machine vs. human classifications on same incidents
 - Calculates accuracy, precision, recall, F1-scores (macro & weighted)
 - Performs statistical tests: McNemar's, chi-square, paired t-test
 - Analyzes accuracy by confidence level (high/medium/low thresholds)
 
 **Phase 7: Export for Analysis** (R-ready formats)
+
 - Exports structured datasets, embeddings, confusion matrices
 - Prepares temporal, geographic, and network visualizations
 - Creates metadata file linking all outputs
@@ -563,8 +573,6 @@ ggplot(
 
 ## Confidence Scoring
 
-## Confidence Scoring
-
 ```{r confidence-hist}
 # Calculate summary stats
 high_pct <- mean(incidents$confidence >= 0.85) * 100
@@ -631,5 +639,6 @@ Expert Intelligence × Machine Speed = Scalable Action
 
 <div style="margin-top: 100px; font-size: 24px;">
 Project Repository:<br>
-/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy
+https://github.com/Vaene/CUNY607Final<br/>
+https://rpubs.com/randyhowk/1382159<br/>
 </div>
