@@ -1,6 +1,6 @@
 {
   "mcnemar": {
-    "statistic": 9309.0001,
+    "statistic": 9309.00010739985,
     "p_value": 0.0,
     "significant": true,
     "machine_only_correct": 0,
@@ -16,7 +16,7 @@
     "note": "Test failed due to sparse data"
   },
   "t_test": {
-    "t_statistic": "-Infinity",
+    "t_statistic": -Infinity,
     "p_value": 0.0,
     "significant": true,
     "mean_accuracy": 0.0,

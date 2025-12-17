@@ -43,7 +43,11 @@ class RDataExporter:
         # Phase 3: Embeddings and matches
         self.incident_embeddings = load_numpy(INCIDENT_EMBEDDINGS_PATH)
         self.glossary_embeddings = load_numpy(GLOSSARY_EMBEDDINGS_PATH)
-        self.embedding_matches = load_csv(OUTPUT_DIR / "embedding_matches.csv")
+        try:
+            self.embedding_matches = load_csv(OUTPUT_DIR / "embedding_matches.csv")
+        except FileNotFoundError:
+            logger.warning("embedding_matches.csv not found, skipping")
+            self.embedding_matches = None
         
         # Phase 5: Machine processed
         self.machine_processed = load_csv(MACHINE_PROCESSED_OUTPUT)

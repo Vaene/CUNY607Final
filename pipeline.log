@@ -1415,3 +1415,636 @@ json.decoder.JSONDecodeError: Expecting value: line 10 column 23 (char 181)
 2025-12-16 20:02:30,755 - utils - INFO - ✓ Loaded 9,311 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/raw/human_processed_lastyear.csv
 2025-12-16 20:02:31,657 - utils - INFO - ✓ Saved JSON to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/results/data_quality_comparison.json
 2025-12-16 20:02:31,657 - utils - INFO - Completed Phase 6b: Data Quality & Granularity Comparison
+2025-12-17 13:31:33,259 - utils - INFO - Starting Phase 4: Knowledge Graph Construction
+2025-12-17 13:31:33,259 - phase4_knowledge_graph - INFO - Connecting to Neo4j at bolt://localhost:7687...
+2025-12-17 13:31:33,413 - phase4_knowledge_graph - INFO - ✓ Connected to Neo4j
+2025-12-17 13:31:33,484 - utils - INFO - ✓ Loaded 16,893 records from /Users/randyhowk/Documents/CUNY/607/CUNY607Final/data/processed/historical_processed.csv
+2025-12-17 13:31:33,499 - utils - INFO - ✓ Loaded 1,142 records from /Users/randyhowk/Documents/CUNY/607/CUNY607Final/data/processed/glossary_final.csv
+2025-12-17 13:31:33,545 - utils - INFO - ✓ Loaded 16,893 records from /Users/randyhowk/Documents/CUNY/607/CUNY607Final/output/embedding_matches.csv
+2025-12-17 13:31:33,797 - utils - INFO - ✓ Loaded numpy array (16893, 768) from /Users/randyhowk/Documents/CUNY/607/CUNY607Final/embeddings/incident_embeddings.npy
+2025-12-17 13:31:33,834 - utils - INFO - ✓ Loaded numpy array (1142, 768) from /Users/randyhowk/Documents/CUNY/607/CUNY607Final/embeddings/glossary_embeddings.npy
+2025-12-17 13:31:33,834 - phase4_knowledge_graph - INFO - ✓ Loaded data: 16893 incidents, 1142 terms
+2025-12-17 13:31:34,006 - phase4_knowledge_graph - INFO - ✓ Constraints and indexes created
+2025-12-17 13:31:34,145 - phase4_knowledge_graph - INFO - ✓ Created 42 Category nodes
+2025-12-17 13:31:34,428 - phase4_knowledge_graph - INFO - ✓ Created 1141 Term nodes
+2025-12-17 13:31:34,829 - phase4_knowledge_graph - INFO - ✓ Created 3373 Location nodes
+2025-12-17 13:31:34,850 - phase4_knowledge_graph - INFO - ✓ Created 145 Group nodes
+2025-12-17 13:31:36,789 - phase4_knowledge_graph - INFO - ✓ Created 16893 Incident nodes
+2025-12-17 13:31:36,813 - phase4_knowledge_graph - INFO - ✓ Created BELONGS_TO relationships
+2025-12-17 13:31:36,926 - phase4_knowledge_graph - INFO - ✓ Created OCCURRED_IN relationships
+2025-12-17 13:31:36,976 - phase4_knowledge_graph - INFO - ✓ Created ATTRIBUTED_TO relationships
+2025-12-17 13:31:37,677 - phase4_knowledge_graph - INFO - ✓ Created 28118 USES_TERM relationships
+2025-12-17 13:31:37,945 - phase4_knowledge_graph - INFO - ✓ Created 276 SIMILAR_TO relationships (threshold: 0.7)
+2025-12-17 13:31:37,948 - utils - INFO - ✓ Loaded JSON from /Users/randyhowk/Documents/CUNY/607/CUNY607Final/data/processed/term_relationships.json
+2025-12-17 13:31:37,958 - phase4_knowledge_graph - INFO - ✓ Created 210 RELATED_TO relationships
+2025-12-17 13:31:37,966 - phase4_knowledge_graph - INFO - ✓ Created CO_OCCURS_WITH relationships
+2025-12-17 13:31:38,004 - utils - INFO - ✓ Saved JSON to /Users/randyhowk/Documents/CUNY/607/CUNY607Final/results/knowledge_graph_stats.json
+2025-12-17 13:31:39,880 - utils - ERROR - ✗ Error saving JSON to /Users/randyhowk/Documents/CUNY/607/CUNY607Final/output/knowledge_graph_export.json: Object of type DateTime is not JSON serializable
+2025-12-17 13:31:39,881 - phase4_knowledge_graph - ERROR - ✗ Phase 4 failed: Object of type DateTime is not JSON serializable
+2025-12-17 13:31:39,881 - __main__ - ERROR - Phase 4 failed
+Traceback (most recent call last):
+  File "/Users/randyhowk/Documents/CUNY/607/CUNY607Final/main_pipeline.py", line 166, in run_all_phases
+    result = phase_func()
+             ^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/CUNY607Final/phase4_knowledge_graph.py", line 693, in run_phase4_pipeline
+    stats = pipeline.build_graph(clear_existing=clear_existing)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/CUNY607Final/phase4_knowledge_graph.py", line 670, in build_graph
+    self.export_graph()
+  File "/Users/randyhowk/Documents/CUNY/607/CUNY607Final/phase4_knowledge_graph.py", line 614, in export_graph
+    save_json(export_data, GRAPH_JSON_PATH)
+  File "/Users/randyhowk/Documents/CUNY/607/CUNY607Final/utils.py", line 95, in save_json
+    json.dump(converted_data, f, indent=indent, ensure_ascii=False)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py", line 179, in dump
+    for chunk in iterable:
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 326, in _iterencode_list
+    yield from chunks
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type DateTime is not JSON serializable
+2025-12-17 13:31:39,888 - phase4_knowledge_graph - INFO - Neo4j connection closed
+2025-12-17 13:35:43,295 - utils - INFO - Starting Phase 1: Data Ingestion & Preprocessing
+2025-12-17 13:35:43,295 - phase1_data_ingestion - INFO - Loading ADL hate terms glossary...
+2025-12-17 13:35:43,295 - utils - INFO - ✓ Found Glossary JSON: /Users/randyhowk/Documents/CUNY/607/CUNY607Final/data/raw/adl_hate_terms.json
+2025-12-17 13:35:43,305 - utils - INFO - ✓ Loaded JSON from /Users/randyhowk/Documents/CUNY/607/CUNY607Final/data/raw/adl_hate_terms.json
+2025-12-17 13:35:43,305 - phase1_data_ingestion - INFO - ✓ Loaded glossary with 1142 entries
+2025-12-17 13:35:43,305 - phase1_data_ingestion - INFO - Converting glossary to DataFrame...
+2025-12-17 13:35:43,312 - phase1_data_ingestion - INFO - ✓ Created glossary DataFrame: 1142 terms
+2025-12-17 13:35:43,312 - phase1_data_ingestion - INFO - Creating term dictionary...
+2025-12-17 13:35:43,340 - phase1_data_ingestion - INFO - ✓ Dictionary contains 1142 searchable terms
+2025-12-17 13:35:43,340 - phase1_data_ingestion - INFO - Validating glossary data...
+2025-12-17 13:35:43,340 - utils - INFO - ✓ Glossary validation passed
+2025-12-17 13:35:43,343 - phase1_data_ingestion - INFO - ✓ Glossary validation complete
+2025-12-17 13:35:43,359 - utils - INFO - ✓ Saved 1,142 records to /Users/randyhowk/Documents/CUNY/607/CUNY607Final/data/processed/glossary_processed.csv
+2025-12-17 13:35:43,379 - utils - INFO - ✓ Saved JSON to /Users/randyhowk/Documents/CUNY/607/CUNY607Final/data/processed/term_dictionary.json
+2025-12-17 13:35:43,380 - phase1_data_ingestion - INFO - Loading incident data from /Users/randyhowk/Documents/CUNY/607/CUNY607Final/data/raw/historical_incidents_4years.csv...
+2025-12-17 13:35:43,380 - utils - INFO - ✓ Found Incident CSV: /Users/randyhowk/Documents/CUNY/607/CUNY607Final/data/raw/historical_incidents_4years.csv
+2025-12-17 13:35:43,437 - utils - INFO - ✓ Loaded 16,893 records from /Users/randyhowk/Documents/CUNY/607/CUNY607Final/data/raw/historical_incidents_4years.csv
+2025-12-17 13:35:43,437 - phase1_data_ingestion - INFO - ✓ Loaded 16893 incident records
+2025-12-17 13:35:43,437 - phase1_data_ingestion - INFO -   Columns: ['incident_id', 'date', 'description', 'city', 'state', 'location', 'attack_type', 'ideology', 'subideology', 'group', 'location_type', 'israel_zionism_related', 'predicted_category', 'terms_detected', 'source', 'processed_date']
+2025-12-17 13:35:43,437 - phase1_data_ingestion - INFO - Cleaning incident data...
+2025-12-17 13:35:43,541 - phase1_data_ingestion - INFO - ✓ Cleaned incidents: 16893 records remain
+2025-12-17 13:35:43,542 - phase1_data_ingestion - INFO - Extracting explicit term mentions...
+2025-12-17 13:36:18,322 - utils - INFO - Term extraction: 1689/16893 (10.0%) - 48.6 items/sec
+2025-12-17 13:36:53,787 - utils - INFO - Term extraction: 3378/16893 (20.0%) - 48.1 items/sec
+2025-12-17 13:37:29,109 - utils - INFO - Term extraction: 5067/16893 (30.0%) - 48.0 items/sec
+2025-12-17 13:38:04,516 - utils - INFO - Term extraction: 6756/16893 (40.0%) - 47.9 items/sec
+2025-12-17 13:38:39,306 - utils - INFO - Term extraction: 8445/16893 (50.0%) - 48.0 items/sec
+2025-12-17 13:39:14,543 - utils - INFO - Term extraction: 10134/16893 (60.0%) - 48.0 items/sec
+2025-12-17 13:39:49,826 - utils - INFO - Term extraction: 11823/16893 (70.0%) - 48.0 items/sec
+2025-12-17 13:40:25,367 - utils - INFO - Term extraction: 13512/16893 (80.0%) - 47.9 items/sec
+2025-12-17 13:41:00,638 - utils - INFO - Term extraction: 15201/16893 (90.0%) - 47.9 items/sec
+2025-12-17 13:41:35,912 - utils - INFO - Term extraction: 16890/16893 (100.0%) - 47.9 items/sec
+2025-12-17 13:41:36,005 - utils - INFO - ✓ Term extraction complete: 16893 items in 352.5s
+2025-12-17 13:41:36,010 - phase1_data_ingestion - INFO - ✓ Found explicit terms in 16893 / 16893 incidents
+2025-12-17 13:41:36,010 - phase1_data_ingestion - INFO - Validating incident data...
+2025-12-17 13:41:36,010 - utils - INFO - ✓ Incidents validation passed
+2025-12-17 13:41:36,019 - phase1_data_ingestion - INFO - ✓ Incident validation complete
+2025-12-17 13:41:36,137 - utils - INFO - ✓ Saved 16,893 records to /Users/randyhowk/Documents/CUNY/607/CUNY607Final/data/processed/historical_processed.csv
+2025-12-17 13:41:36,247 - utils - INFO - ✓ Saved 16,893 records to /Users/randyhowk/Documents/CUNY/607/CUNY607Final/data/processed/training_data.csv
+2025-12-17 13:41:36,258 - utils - INFO - Completed Phase 1: Data Ingestion & Preprocessing
+2025-12-17 13:41:36,260 - utils - INFO - Starting Phase 2: Glossary Term Processing
+2025-12-17 13:41:36,271 - utils - INFO - ✓ Loaded 1,142 records from /Users/randyhowk/Documents/CUNY/607/CUNY607Final/data/processed/glossary_processed.csv
+2025-12-17 13:41:36,320 - utils - INFO - ✓ Loaded 16,893 records from /Users/randyhowk/Documents/CUNY/607/CUNY607Final/data/processed/historical_processed.csv
+2025-12-17 13:41:36,320 - phase2_glossary_processing - INFO - Loaded 1142 glossary terms
+2025-12-17 13:41:36,320 - phase2_glossary_processing - INFO - Loaded 16893 incidents
+2025-12-17 13:41:36,326 - phase2_glossary_processing - INFO - Analyzing glossary term structure...
+2025-12-17 13:41:36,327 - phase2_glossary_processing - INFO - ✓ Analyzed 1142 terms
+2025-12-17 13:41:36,327 - phase2_glossary_processing - INFO -   Categories: 42
+2025-12-17 13:41:36,327 - phase2_glossary_processing - INFO -   Avg definition length: 458 chars
+2025-12-17 13:41:36,328 - phase2_glossary_processing - INFO - Extracting term relationships...
+2025-12-17 13:41:36,349 - phase2_glossary_processing - INFO - ✓ Found 151 term variations
+2025-12-17 13:41:36,349 - phase2_glossary_processing - INFO - ✓ Found 210 related term pairs
+2025-12-17 13:41:36,349 - phase2_glossary_processing - INFO - Building term relationship graph...
+2025-12-17 13:41:36,370 - phase2_glossary_processing - INFO - ✓ Built graph: 1142 nodes, 2170 edges
+2025-12-17 13:41:36,370 - phase2_glossary_processing - INFO - Identifying term clusters...
+2025-12-17 13:41:36,388 - phase2_glossary_processing - WARNING - ⚠ Could not perform clustering: Consider using a tuple, with a priority value that can be compared.
+2025-12-17 13:41:36,388 - phase2_glossary_processing - INFO - Using category-based grouping instead
+2025-12-17 13:41:36,391 - phase2_glossary_processing - INFO - ✓ Created 42 category-based clusters
+2025-12-17 13:41:36,392 - utils - INFO - ✓ Saved JSON to /Users/randyhowk/Documents/CUNY/607/CUNY607Final/data/processed/glossary_analysis.json
+2025-12-17 13:41:36,394 - utils - INFO - ✓ Saved JSON to /Users/randyhowk/Documents/CUNY/607/CUNY607Final/data/processed/term_relationships.json
+2025-12-17 13:41:36,396 - utils - INFO - ✓ Saved JSON to /Users/randyhowk/Documents/CUNY/607/CUNY607Final/data/processed/term_clusters.json
+2025-12-17 13:41:36,396 - phase2_glossary_processing - INFO - Calculating term frequencies in incidents...
+2025-12-17 13:41:36,429 - utils - INFO - Frequency calculation: 1689/16893 (10.0%) - 51119.9 items/sec
+2025-12-17 13:41:36,457 - utils - INFO - Frequency calculation: 3378/16893 (20.0%) - 54942.0 items/sec
+2025-12-17 13:41:36,485 - utils - INFO - Frequency calculation: 5067/16893 (30.0%) - 56436.7 items/sec
+2025-12-17 13:41:36,514 - utils - INFO - Frequency calculation: 6756/16893 (40.0%) - 56940.1 items/sec
+2025-12-17 13:41:36,543 - utils - INFO - Frequency calculation: 8445/16893 (50.0%) - 57409.5 items/sec
+2025-12-17 13:41:36,572 - utils - INFO - Frequency calculation: 10134/16893 (60.0%) - 57637.5 items/sec
+2025-12-17 13:41:36,600 - utils - INFO - Frequency calculation: 11823/16893 (70.0%) - 57918.4 items/sec
+2025-12-17 13:41:36,628 - utils - INFO - Frequency calculation: 13512/16893 (80.0%) - 58177.7 items/sec
+2025-12-17 13:41:36,656 - utils - INFO - Frequency calculation: 15201/16893 (90.0%) - 58308.0 items/sec
+2025-12-17 13:41:36,684 - utils - INFO - Frequency calculation: 16890/16893 (100.0%) - 58505.1 items/sec
+2025-12-17 13:41:36,685 - utils - INFO - ✓ Frequency calculation complete: 16893 items in 0.3s
+2025-12-17 13:41:36,688 - phase2_glossary_processing - INFO - ✓ Calculated frequencies for 0 terms
+2025-12-17 13:41:36,689 - phase2_glossary_processing - INFO - Extracting contextual examples...
+2025-12-17 13:41:36,973 - phase2_glossary_processing - INFO - ✓ Found examples for 225 terms
+2025-12-17 13:41:36,985 - utils - INFO - ✓ Saved 1,142 records to /Users/randyhowk/Documents/CUNY/607/CUNY607Final/data/processed/glossary_enriched.csv
+2025-12-17 13:41:36,985 - phase2_glossary_processing - INFO - Creating embedding texts...
+2025-12-17 13:41:37,016 - phase2_glossary_processing - INFO - ✓ Created embedding texts (avg length: 549 chars)
+2025-12-17 13:41:37,016 - phase2_glossary_processing - INFO - Validating glossary for embedding...
+2025-12-17 13:41:37,016 - phase2_glossary_processing - INFO - ✓ Glossary validation passed
+2025-12-17 13:41:37,036 - utils - INFO - ✓ Saved 1,142 records to /Users/randyhowk/Documents/CUNY/607/CUNY607Final/data/processed/glossary_final.csv
+2025-12-17 13:41:37,036 - utils - INFO - Completed Phase 2: Glossary Term Processing
+2025-12-17 13:41:37,037 - utils - INFO - Starting Phase 3: Embedding Generation
+2025-12-17 13:41:37,038 - phase3_embeddings - INFO - Using device: cpu
+2025-12-17 13:41:37,038 - phase3_embeddings - INFO - Loading embedding model: all-mpnet-base-v2
+2025-12-17 13:41:39,366 - phase3_embeddings - INFO - ✓ Model loaded: all-mpnet-base-v2
+2025-12-17 13:41:39,444 - utils - INFO - ✓ Loaded 16,893 records from /Users/randyhowk/Documents/CUNY/607/CUNY607Final/data/processed/historical_processed.csv
+2025-12-17 13:41:39,463 - utils - INFO - ✓ Loaded 1,142 records from /Users/randyhowk/Documents/CUNY/607/CUNY607Final/data/processed/glossary_final.csv
+2025-12-17 13:41:39,464 - phase3_embeddings - INFO - ✓ Loaded 16,893 incidents
+2025-12-17 13:41:39,464 - phase3_embeddings - INFO - ✓ Loaded 1,142 glossary terms
+2025-12-17 13:45:24,343 - phase3_embeddings - INFO - ✓ Generated 16893 incident embeddings
+2025-12-17 13:45:24,345 - phase3_embeddings - INFO -   Shape: (16893, 768)
+2025-12-17 13:46:08,038 - phase3_embeddings - INFO - ✓ Generated 1142 glossary embeddings
+2025-12-17 13:46:08,040 - phase3_embeddings - INFO -   Shape: (1142, 768)
+2025-12-17 13:46:08,190 - utils - INFO - ✓ Saved numpy array (16893, 768) to /Users/randyhowk/Documents/CUNY/607/CUNY607Final/embeddings/incident_embeddings.npy
+2025-12-17 13:46:08,215 - utils - INFO - ✓ Saved numpy array (1142, 768) to /Users/randyhowk/Documents/CUNY/607/CUNY607Final/embeddings/glossary_embeddings.npy
+2025-12-17 13:46:08,235 - utils - INFO - ✓ Saved JSON to /Users/randyhowk/Documents/CUNY/607/CUNY607Final/embeddings/embedding_metadata.json
+2025-12-17 13:46:08,235 - phase3_embeddings - INFO - ✓ Embeddings saved to /Users/randyhowk/Documents/CUNY/607/CUNY607Final/embeddings
+2025-12-17 13:46:08,235 - utils - INFO - Completed Phase 3: Embedding Generation
+2025-12-17 13:46:08,236 - utils - INFO - Starting Phase 4: Knowledge Graph Construction
+2025-12-17 13:46:08,237 - phase4_knowledge_graph - INFO - Connecting to Neo4j at bolt://localhost:7687...
+2025-12-17 13:46:08,249 - phase4_knowledge_graph - ERROR - ✗ Failed to connect to Neo4j: Couldn't connect to localhost:7687 (resolved to ('[::1]:7687', '127.0.0.1:7687')):
+Failed to establish connection to ResolvedIPv6Address(('::1', 7687, 0, 0)) (reason [Errno 61] Connection refused)
+Failed to establish connection to ResolvedIPv4Address(('127.0.0.1', 7687)) (reason [Errno 61] Connection refused)
+2025-12-17 13:46:08,249 - phase4_knowledge_graph - ERROR - ✗ Phase 4 failed: Couldn't connect to localhost:7687 (resolved to ('[::1]:7687', '127.0.0.1:7687')):
+Failed to establish connection to ResolvedIPv6Address(('::1', 7687, 0, 0)) (reason [Errno 61] Connection refused)
+Failed to establish connection to ResolvedIPv4Address(('127.0.0.1', 7687)) (reason [Errno 61] Connection refused)
+2025-12-17 13:46:08,249 - __main__ - ERROR - Phase 4 failed
+Traceback (most recent call last):
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/neo4j/_async_compat/network/_bolt_socket.py", line 498, in _connect_secure
+    s.connect(resolved_address)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/neo4j/_sync/io/_bolt_socket.py", line 329, in connect
+    s = cls._connect_secure(
+        ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/neo4j/_async_compat/network/_bolt_socket.py", line 521, in _connect_secure
+    raise ServiceUnavailable(
+neo4j.exceptions.ServiceUnavailable: Failed to establish connection to ResolvedIPv6Address(('::1', 7687, 0, 0)) (reason [Errno 61] Connection refused)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/randyhowk/Documents/CUNY/607/CUNY607Final/main_pipeline.py", line 166, in run_all_phases
+    result = phase_func()
+             ^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/CUNY607Final/phase4_knowledge_graph.py", line 690, in run_phase4_pipeline
+    pipeline = Neo4jGraphPipeline(config)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/CUNY607Final/phase4_knowledge_graph.py", line 71, in __init__
+    session.run("RETURN 1")
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/neo4j/_sync/work/session.py", line 305, in run
+    self._connect(self._config.default_access_mode)
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/neo4j/_sync/work/session.py", line 126, in _connect
+    super()._connect(
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/neo4j/_sync/work/workspace.py", line 181, in _connect
+    self._connection = self._pool.acquire(**acquire_kwargs_)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/neo4j/_sync/io/_pool.py", line 678, in acquire
+    return self._acquire(
+           ^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/neo4j/_sync/io/_pool.py", line 418, in _acquire
+    return connection_creator()
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/neo4j/_sync/io/_pool.py", line 231, in connection_creator
+    connection = self.opener(
+                 ^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/neo4j/_sync/io/_pool.py", line 638, in opener
+    return Bolt.open(
+           ^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/neo4j/_sync/io/_bolt.py", line 367, in open
+    s, protocol_version = BoltSocket.connect(
+                          ^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/neo4j/_sync/io/_bolt_socket.py", line 376, in connect
+    raise ServiceUnavailable(
+neo4j.exceptions.ServiceUnavailable: Couldn't connect to localhost:7687 (resolved to ('[::1]:7687', '127.0.0.1:7687')):
+Failed to establish connection to ResolvedIPv6Address(('::1', 7687, 0, 0)) (reason [Errno 61] Connection refused)
+Failed to establish connection to ResolvedIPv4Address(('127.0.0.1', 7687)) (reason [Errno 61] Connection refused)
+2025-12-17 13:46:08,600 - phase4_knowledge_graph - INFO - Neo4j connection closed
+2025-12-17 13:56:16,605 - utils - INFO - Starting Phase 3: Embedding Generation
+2025-12-17 13:56:16,605 - phase3_embeddings - INFO - Using device: cpu
+2025-12-17 13:56:16,605 - phase3_embeddings - INFO - Loading embedding model: all-mpnet-base-v2
+2025-12-17 13:56:18,527 - phase3_embeddings - INFO - ✓ Model loaded: all-mpnet-base-v2
+2025-12-17 13:56:18,608 - utils - INFO - ✓ Loaded 16,893 records from /Users/randyhowk/Documents/CUNY/607/CUNY607Final/data/processed/historical_processed.csv
+2025-12-17 13:56:18,625 - utils - INFO - ✓ Loaded 1,142 records from /Users/randyhowk/Documents/CUNY/607/CUNY607Final/data/processed/glossary_final.csv
+2025-12-17 13:56:18,627 - phase3_embeddings - INFO - ✓ Loaded 16,893 incidents
+2025-12-17 13:56:18,627 - phase3_embeddings - INFO - ✓ Loaded 1,142 glossary terms
+2025-12-17 13:59:37,226 - phase3_embeddings - INFO - ✓ Generated 16893 incident embeddings
+2025-12-17 13:59:37,228 - phase3_embeddings - INFO -   Shape: (16893, 768)
+2025-12-17 14:00:18,466 - phase3_embeddings - INFO - ✓ Generated 1142 glossary embeddings
+2025-12-17 14:00:18,468 - phase3_embeddings - INFO -   Shape: (1142, 768)
+2025-12-17 14:00:18,591 - utils - INFO - ✓ Saved numpy array (16893, 768) to /Users/randyhowk/Documents/CUNY/607/CUNY607Final/embeddings/incident_embeddings.npy
+2025-12-17 14:00:18,593 - utils - INFO - ✓ Saved numpy array (1142, 768) to /Users/randyhowk/Documents/CUNY/607/CUNY607Final/embeddings/glossary_embeddings.npy
+2025-12-17 14:00:18,596 - utils - INFO - ✓ Saved JSON to /Users/randyhowk/Documents/CUNY/607/CUNY607Final/embeddings/embedding_metadata.json
+2025-12-17 14:00:18,596 - phase3_embeddings - INFO - ✓ Embeddings saved to /Users/randyhowk/Documents/CUNY/607/CUNY607Final/embeddings
+2025-12-17 14:00:18,596 - utils - INFO - Completed Phase 3: Embedding Generation
+2025-12-17 14:00:18,597 - utils - INFO - Starting Phase 4: Knowledge Graph Construction
+2025-12-17 14:00:18,597 - phase4_knowledge_graph - INFO - Connecting to Neo4j at bolt://localhost:7687...
+2025-12-17 14:00:18,605 - phase4_knowledge_graph - ERROR - ✗ Failed to connect to Neo4j: Couldn't connect to localhost:7687 (resolved to ('[::1]:7687', '127.0.0.1:7687')):
+Failed to establish connection to ResolvedIPv6Address(('::1', 7687, 0, 0)) (reason [Errno 61] Connection refused)
+Failed to establish connection to ResolvedIPv4Address(('127.0.0.1', 7687)) (reason [Errno 61] Connection refused)
+2025-12-17 14:00:18,605 - phase4_knowledge_graph - ERROR - ✗ Phase 4 failed: Couldn't connect to localhost:7687 (resolved to ('[::1]:7687', '127.0.0.1:7687')):
+Failed to establish connection to ResolvedIPv6Address(('::1', 7687, 0, 0)) (reason [Errno 61] Connection refused)
+Failed to establish connection to ResolvedIPv4Address(('127.0.0.1', 7687)) (reason [Errno 61] Connection refused)
+2025-12-17 14:00:18,605 - __main__ - ERROR - Phase 4 failed
+Traceback (most recent call last):
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/neo4j/_async_compat/network/_bolt_socket.py", line 498, in _connect_secure
+    s.connect(resolved_address)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/neo4j/_sync/io/_bolt_socket.py", line 329, in connect
+    s = cls._connect_secure(
+        ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/neo4j/_async_compat/network/_bolt_socket.py", line 521, in _connect_secure
+    raise ServiceUnavailable(
+neo4j.exceptions.ServiceUnavailable: Failed to establish connection to ResolvedIPv6Address(('::1', 7687, 0, 0)) (reason [Errno 61] Connection refused)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/randyhowk/Documents/CUNY/607/CUNY607Final/main_pipeline.py", line 166, in run_all_phases
+    result = phase_func()
+             ^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/CUNY607Final/phase4_knowledge_graph.py", line 690, in run_phase4_pipeline
+    pipeline = Neo4jGraphPipeline(config)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/CUNY607Final/phase4_knowledge_graph.py", line 71, in __init__
+    session.run("RETURN 1")
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/neo4j/_sync/work/session.py", line 305, in run
+    self._connect(self._config.default_access_mode)
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/neo4j/_sync/work/session.py", line 126, in _connect
+    super()._connect(
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/neo4j/_sync/work/workspace.py", line 181, in _connect
+    self._connection = self._pool.acquire(**acquire_kwargs_)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/neo4j/_sync/io/_pool.py", line 678, in acquire
+    return self._acquire(
+           ^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/neo4j/_sync/io/_pool.py", line 418, in _acquire
+    return connection_creator()
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/neo4j/_sync/io/_pool.py", line 231, in connection_creator
+    connection = self.opener(
+                 ^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/neo4j/_sync/io/_pool.py", line 638, in opener
+    return Bolt.open(
+           ^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/neo4j/_sync/io/_bolt.py", line 367, in open
+    s, protocol_version = BoltSocket.connect(
+                          ^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/neo4j/_sync/io/_bolt_socket.py", line 376, in connect
+    raise ServiceUnavailable(
+neo4j.exceptions.ServiceUnavailable: Couldn't connect to localhost:7687 (resolved to ('[::1]:7687', '127.0.0.1:7687')):
+Failed to establish connection to ResolvedIPv6Address(('::1', 7687, 0, 0)) (reason [Errno 61] Connection refused)
+Failed to establish connection to ResolvedIPv4Address(('127.0.0.1', 7687)) (reason [Errno 61] Connection refused)
+2025-12-17 14:00:18,865 - phase4_knowledge_graph - INFO - Neo4j connection closed
+2025-12-17 14:03:47,351 - utils - INFO - Starting Phase 4: Knowledge Graph Construction
+2025-12-17 14:03:47,351 - phase4_knowledge_graph - INFO - Connecting to Neo4j at bolt://localhost:7687...
+2025-12-17 14:03:47,357 - phase4_knowledge_graph - ERROR - ✗ Failed to connect to Neo4j: Couldn't connect to localhost:7687 (resolved to ('[::1]:7687', '127.0.0.1:7687')):
+Failed to establish connection to ResolvedIPv6Address(('::1', 7687, 0, 0)) (reason [Errno 61] Connection refused)
+Failed to establish connection to ResolvedIPv4Address(('127.0.0.1', 7687)) (reason [Errno 61] Connection refused)
+2025-12-17 14:03:47,357 - phase4_knowledge_graph - ERROR - ✗ Phase 4 failed: Couldn't connect to localhost:7687 (resolved to ('[::1]:7687', '127.0.0.1:7687')):
+Failed to establish connection to ResolvedIPv6Address(('::1', 7687, 0, 0)) (reason [Errno 61] Connection refused)
+Failed to establish connection to ResolvedIPv4Address(('127.0.0.1', 7687)) (reason [Errno 61] Connection refused)
+2025-12-17 14:03:47,357 - __main__ - ERROR - Phase 4 failed
+Traceback (most recent call last):
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/neo4j/_async_compat/network/_bolt_socket.py", line 498, in _connect_secure
+    s.connect(resolved_address)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/neo4j/_sync/io/_bolt_socket.py", line 329, in connect
+    s = cls._connect_secure(
+        ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/neo4j/_async_compat/network/_bolt_socket.py", line 521, in _connect_secure
+    raise ServiceUnavailable(
+neo4j.exceptions.ServiceUnavailable: Failed to establish connection to ResolvedIPv6Address(('::1', 7687, 0, 0)) (reason [Errno 61] Connection refused)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/randyhowk/Documents/CUNY/607/CUNY607Final/main_pipeline.py", line 166, in run_all_phases
+    result = phase_func()
+             ^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/CUNY607Final/phase4_knowledge_graph.py", line 690, in run_phase4_pipeline
+    pipeline = Neo4jGraphPipeline(config)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/CUNY607Final/phase4_knowledge_graph.py", line 71, in __init__
+    session.run("RETURN 1")
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/neo4j/_sync/work/session.py", line 305, in run
+    self._connect(self._config.default_access_mode)
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/neo4j/_sync/work/session.py", line 126, in _connect
+    super()._connect(
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/neo4j/_sync/work/workspace.py", line 181, in _connect
+    self._connection = self._pool.acquire(**acquire_kwargs_)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/neo4j/_sync/io/_pool.py", line 678, in acquire
+    return self._acquire(
+           ^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/neo4j/_sync/io/_pool.py", line 418, in _acquire
+    return connection_creator()
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/neo4j/_sync/io/_pool.py", line 231, in connection_creator
+    connection = self.opener(
+                 ^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/neo4j/_sync/io/_pool.py", line 638, in opener
+    return Bolt.open(
+           ^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/neo4j/_sync/io/_bolt.py", line 367, in open
+    s, protocol_version = BoltSocket.connect(
+                          ^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/neo4j/_sync/io/_bolt_socket.py", line 376, in connect
+    raise ServiceUnavailable(
+neo4j.exceptions.ServiceUnavailable: Couldn't connect to localhost:7687 (resolved to ('[::1]:7687', '127.0.0.1:7687')):
+Failed to establish connection to ResolvedIPv6Address(('::1', 7687, 0, 0)) (reason [Errno 61] Connection refused)
+Failed to establish connection to ResolvedIPv4Address(('127.0.0.1', 7687)) (reason [Errno 61] Connection refused)
+2025-12-17 14:03:47,523 - phase4_knowledge_graph - INFO - Neo4j connection closed
+2025-12-17 14:07:25,253 - utils - INFO - Starting Phase 4: Knowledge Graph Construction
+2025-12-17 14:07:25,253 - phase4_knowledge_graph - INFO - Connecting to Neo4j at bolt://localhost:7687...
+2025-12-17 14:07:26,232 - phase4_knowledge_graph - INFO - ✓ Connected to Neo4j
+2025-12-17 14:07:26,318 - utils - INFO - ✓ Loaded 16,893 records from /Users/randyhowk/Documents/CUNY/607/CUNY607Final/data/processed/historical_processed.csv
+2025-12-17 14:07:26,337 - utils - INFO - ✓ Loaded 1,142 records from /Users/randyhowk/Documents/CUNY/607/CUNY607Final/data/processed/glossary_final.csv
+2025-12-17 14:07:26,337 - utils - ERROR - ✗ File not found: /Users/randyhowk/Documents/CUNY/607/CUNY607Final/output/embedding_matches.csv
+2025-12-17 14:07:26,337 - phase4_knowledge_graph - ERROR - ✗ Phase 4 failed: [Errno 2] No such file or directory: '/Users/randyhowk/Documents/CUNY/607/CUNY607Final/output/embedding_matches.csv'
+2025-12-17 14:07:26,337 - __main__ - ERROR - Phase 4 failed
+Traceback (most recent call last):
+  File "/Users/randyhowk/Documents/CUNY/607/CUNY607Final/main_pipeline.py", line 166, in run_all_phases
+    result = phase_func()
+             ^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/CUNY607Final/phase4_knowledge_graph.py", line 690, in run_phase4_pipeline
+    pipeline = Neo4jGraphPipeline(config)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/CUNY607Final/phase4_knowledge_graph.py", line 80, in __init__
+    self.df_matches = load_csv(config.embedding_matches_csv)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/CUNY607Final/utils.py", line 105, in load_csv
+    df = pd.read_csv(filepath, **kwargs)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 620, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1620, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1880, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/pandas/io/common.py", line 873, in get_handle
+    handle = open(
+             ^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/randyhowk/Documents/CUNY/607/CUNY607Final/output/embedding_matches.csv'
+2025-12-17 14:07:26,342 - phase4_knowledge_graph - INFO - Neo4j connection closed
+2025-12-17 14:07:47,454 - utils - INFO - Starting Phase 3: Embedding Generation
+2025-12-17 14:07:47,455 - phase3_embeddings - INFO - Using device: cpu
+2025-12-17 14:07:47,455 - phase3_embeddings - INFO - Loading embedding model: all-mpnet-base-v2
+2025-12-17 14:07:49,430 - phase3_embeddings - INFO - ✓ Model loaded: all-mpnet-base-v2
+2025-12-17 14:07:49,507 - utils - INFO - ✓ Loaded 16,893 records from /Users/randyhowk/Documents/CUNY/607/CUNY607Final/data/processed/historical_processed.csv
+2025-12-17 14:07:49,525 - utils - INFO - ✓ Loaded 1,142 records from /Users/randyhowk/Documents/CUNY/607/CUNY607Final/data/processed/glossary_final.csv
+2025-12-17 14:07:49,526 - phase3_embeddings - INFO - ✓ Loaded 16,893 incidents
+2025-12-17 14:07:49,526 - phase3_embeddings - INFO - ✓ Loaded 1,142 glossary terms
+2025-12-17 14:11:27,464 - phase3_embeddings - INFO - ✓ Generated 16893 incident embeddings
+2025-12-17 14:11:27,466 - phase3_embeddings - INFO -   Shape: (16893, 768)
+2025-12-17 14:12:11,592 - phase3_embeddings - INFO - ✓ Generated 1142 glossary embeddings
+2025-12-17 14:12:11,594 - phase3_embeddings - INFO -   Shape: (1142, 768)
+2025-12-17 14:12:11,665 - utils - INFO - ✓ Saved numpy array (16893, 768) to /Users/randyhowk/Documents/CUNY/607/CUNY607Final/embeddings/incident_embeddings.npy
+2025-12-17 14:12:11,675 - utils - INFO - ✓ Saved numpy array (1142, 768) to /Users/randyhowk/Documents/CUNY/607/CUNY607Final/embeddings/glossary_embeddings.npy
+2025-12-17 14:12:11,679 - utils - INFO - ✓ Saved JSON to /Users/randyhowk/Documents/CUNY/607/CUNY607Final/embeddings/embedding_metadata.json
+2025-12-17 14:12:11,679 - phase3_embeddings - INFO - ✓ Embeddings saved to /Users/randyhowk/Documents/CUNY/607/CUNY607Final/embeddings
+2025-12-17 14:12:11,679 - utils - INFO - Completed Phase 3: Embedding Generation
+2025-12-17 14:12:11,680 - utils - INFO - Starting Phase 4: Knowledge Graph Construction
+2025-12-17 14:12:11,680 - phase4_knowledge_graph - INFO - Connecting to Neo4j at bolt://localhost:7687...
+2025-12-17 14:12:11,747 - phase4_knowledge_graph - INFO - ✓ Connected to Neo4j
+2025-12-17 14:12:11,822 - utils - INFO - ✓ Loaded 16,893 records from /Users/randyhowk/Documents/CUNY/607/CUNY607Final/data/processed/historical_processed.csv
+2025-12-17 14:12:11,839 - utils - INFO - ✓ Loaded 1,142 records from /Users/randyhowk/Documents/CUNY/607/CUNY607Final/data/processed/glossary_final.csv
+2025-12-17 14:12:11,840 - utils - ERROR - ✗ File not found: /Users/randyhowk/Documents/CUNY/607/CUNY607Final/output/embedding_matches.csv
+2025-12-17 14:12:11,840 - phase4_knowledge_graph - ERROR - ✗ Phase 4 failed: [Errno 2] No such file or directory: '/Users/randyhowk/Documents/CUNY/607/CUNY607Final/output/embedding_matches.csv'
+2025-12-17 14:12:11,840 - __main__ - ERROR - Phase 4 failed
+Traceback (most recent call last):
+  File "/Users/randyhowk/Documents/CUNY/607/CUNY607Final/main_pipeline.py", line 166, in run_all_phases
+    result = phase_func()
+             ^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/CUNY607Final/phase4_knowledge_graph.py", line 690, in run_phase4_pipeline
+    pipeline = Neo4jGraphPipeline(config)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/CUNY607Final/phase4_knowledge_graph.py", line 80, in __init__
+    self.df_matches = load_csv(config.embedding_matches_csv)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/CUNY607Final/utils.py", line 105, in load_csv
+    df = pd.read_csv(filepath, **kwargs)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 620, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1620, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1880, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/pandas/io/common.py", line 873, in get_handle
+    handle = open(
+             ^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/randyhowk/Documents/CUNY/607/CUNY607Final/output/embedding_matches.csv'
+2025-12-17 14:12:12,073 - phase4_knowledge_graph - INFO - Neo4j connection closed
+2025-12-17 14:14:31,271 - utils - INFO - Starting Phase 5: Raw Incident Processing
+2025-12-17 14:14:31,271 - phase5_raw_incident_processor - INFO - Connecting to Neo4j knowledge graph...
+2025-12-17 14:14:31,271 - phase5_raw_incident_processor - INFO - Loading embedding model: all-mpnet-base-v2
+2025-12-17 14:14:34,446 - utils - INFO - ✓ Loaded numpy array (1142, 768) from /Users/randyhowk/Documents/CUNY/607/CUNY607Final/embeddings/glossary_embeddings.npy
+2025-12-17 14:14:34,485 - utils - INFO - ✓ Loaded 1,142 records from /Users/randyhowk/Documents/CUNY/607/CUNY607Final/data/processed/glossary_final.csv
+2025-12-17 14:14:34,485 - phase5_raw_incident_processor - INFO - ✓ Processor initialized
+2025-12-17 14:14:34,485 - phase5_raw_incident_processor - INFO - Loading raw incidents from /Users/randyhowk/Documents/CUNY/607/CUNY607Final/data/raw/raw_incidents_lastyear.csv...
+2025-12-17 14:14:34,521 - utils - INFO - ✓ Loaded 9,603 records from /Users/randyhowk/Documents/CUNY/607/CUNY607Final/data/raw/raw_incidents_lastyear.csv
+2025-12-17 14:14:34,604 - phase5_raw_incident_processor - INFO - ✓ Loaded 9603 raw incidents
+2025-12-17 14:14:34,604 - phase5_raw_incident_processor - INFO - Processing raw incidents through knowledge graph pipeline...
+2025-12-17 14:14:34,604 - phase5_raw_incident_processor - INFO - Generating embeddings for raw incidents...
+2025-12-17 14:15:57,788 - phase5_raw_incident_processor - INFO - ✓ Generated embeddings for 9603 incidents
+2025-12-17 14:15:57,789 - phase5_raw_incident_processor - INFO - Matching incidents to glossary terms...
+2025-12-17 14:15:58,749 - phase5_raw_incident_processor - INFO - ✓ Generated matches for 9603 incidents
+2025-12-17 14:16:03,725 - utils - INFO - Graph-enhanced classification: 960/9603 (10.0%) - 193.0 items/sec
+2025-12-17 14:16:07,222 - utils - INFO - Graph-enhanced classification: 1920/9603 (20.0%) - 226.7 items/sec
+2025-12-17 14:16:09,200 - utils - INFO - Graph-enhanced classification: 2880/9603 (30.0%) - 275.6 items/sec
+2025-12-17 14:16:10,847 - utils - INFO - Graph-enhanced classification: 3840/9603 (40.0%) - 317.5 items/sec
+2025-12-17 14:16:12,378 - utils - INFO - Graph-enhanced classification: 4800/9603 (50.0%) - 352.2 items/sec
+2025-12-17 14:16:13,952 - utils - INFO - Graph-enhanced classification: 5760/9603 (60.0%) - 378.9 items/sec
+2025-12-17 14:16:15,745 - utils - INFO - Graph-enhanced classification: 6720/9603 (70.0%) - 395.4 items/sec
+2025-12-17 14:16:17,195 - utils - INFO - Graph-enhanced classification: 7680/9603 (80.0%) - 416.4 items/sec
+2025-12-17 14:16:18,602 - utils - INFO - Graph-enhanced classification: 8640/9603 (90.0%) - 435.2 items/sec
+2025-12-17 14:16:19,719 - utils - INFO - Graph-enhanced classification: 9600/9603 (100.0%) - 457.8 items/sec
+2025-12-17 14:16:19,728 - utils - INFO - ✓ Graph-enhanced classification complete: 9603 items in 21.0s
+2025-12-17 14:16:19,776 - phase5_raw_incident_processor - INFO - ✓ Processed 9603 incidents
+2025-12-17 14:16:19,785 - phase5_raw_incident_processor - INFO - Generating processing report...
+2025-12-17 14:16:19,935 - utils - INFO - ✓ Saved 9,603 records to /Users/randyhowk/Documents/CUNY/607/CUNY607Final/output/machine_processed_incidents.csv
+2025-12-17 14:16:19,935 - utils - INFO - ✓ Saved JSON to /Users/randyhowk/Documents/CUNY/607/CUNY607Final/results/processing_report.json
+2025-12-17 14:16:19,935 - utils - INFO - Completed Phase 5: Raw Incident Processing
+2025-12-17 14:16:43,500 - utils - INFO - Starting Phase 4: Knowledge Graph Construction
+2025-12-17 14:16:43,500 - phase4_knowledge_graph - INFO - Connecting to Neo4j at bolt://localhost:7687...
+2025-12-17 14:16:43,533 - phase4_knowledge_graph - INFO - ✓ Connected to Neo4j
+2025-12-17 14:16:43,607 - utils - INFO - ✓ Loaded 16,893 records from /Users/randyhowk/Documents/CUNY/607/CUNY607Final/data/processed/historical_processed.csv
+2025-12-17 14:16:43,626 - utils - INFO - ✓ Loaded 1,142 records from /Users/randyhowk/Documents/CUNY/607/CUNY607Final/data/processed/glossary_final.csv
+2025-12-17 14:16:43,626 - utils - ERROR - ✗ File not found: /Users/randyhowk/Documents/CUNY/607/CUNY607Final/output/embedding_matches.csv
+2025-12-17 14:16:43,626 - phase4_knowledge_graph - ERROR - ✗ Phase 4 failed: [Errno 2] No such file or directory: '/Users/randyhowk/Documents/CUNY/607/CUNY607Final/output/embedding_matches.csv'
+2025-12-17 14:16:43,626 - __main__ - ERROR - Phase 4 failed
+Traceback (most recent call last):
+  File "/Users/randyhowk/Documents/CUNY/607/CUNY607Final/main_pipeline.py", line 166, in run_all_phases
+    result = phase_func()
+             ^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/CUNY607Final/phase4_knowledge_graph.py", line 690, in run_phase4_pipeline
+    pipeline = Neo4jGraphPipeline(config)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/CUNY607Final/phase4_knowledge_graph.py", line 80, in __init__
+    self.df_matches = load_csv(config.embedding_matches_csv)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/CUNY607Final/utils.py", line 105, in load_csv
+    df = pd.read_csv(filepath, **kwargs)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 620, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1620, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1880, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/pandas/io/common.py", line 873, in get_handle
+    handle = open(
+             ^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/randyhowk/Documents/CUNY/607/CUNY607Final/output/embedding_matches.csv'
+2025-12-17 14:16:43,631 - phase4_knowledge_graph - INFO - Neo4j connection closed
+2025-12-17 14:19:10,560 - utils - INFO - Starting Phase 6: Comparison and Evaluation
+2025-12-17 14:19:10,630 - utils - INFO - ✓ Loaded 9,603 records from /Users/randyhowk/Documents/CUNY/607/CUNY607Final/output/machine_processed_incidents.csv
+2025-12-17 14:19:10,665 - utils - INFO - ✓ Loaded 9,311 records from /Users/randyhowk/Documents/CUNY/607/CUNY607Final/data/raw/human_processed_lastyear.csv
+2025-12-17 14:19:10,665 - phase6_comparison_evaluation - INFO - Merging machine and human classifications...
+2025-12-17 14:19:10,679 - phase6_comparison_evaluation - INFO - ✓ Merged 9311 incidents for comparison
+2025-12-17 14:19:10,679 - phase6_comparison_evaluation - INFO - Calculating accuracy metrics...
+2025-12-17 14:19:10,806 - phase6_comparison_evaluation - INFO - ✓ Overall Accuracy: 0.000
+2025-12-17 14:19:10,806 - phase6_comparison_evaluation - INFO - ✓ Macro F1: 0.000
+2025-12-17 14:19:10,806 - phase6_comparison_evaluation - INFO - ✓ Weighted F1: 0.000
+2025-12-17 14:19:10,806 - phase6_comparison_evaluation - INFO - Generating confusion matrix...
+2025-12-17 14:19:10,817 - phase6_comparison_evaluation - INFO - ✓ Confusion matrix shape: (24, 24)
+2025-12-17 14:19:10,817 - phase6_comparison_evaluation - INFO - Creating confusion matrix visualization...
+2025-12-17 14:19:11,606 - phase6_comparison_evaluation - INFO - ✓ Saved confusion matrix to /Users/randyhowk/Documents/CUNY/607/CUNY607Final/results/confusion_matrix.png
+2025-12-17 14:19:11,606 - phase6_comparison_evaluation - INFO - Analyzing accuracy by confidence level...
+2025-12-17 14:19:11,613 - phase6_comparison_evaluation - INFO - ✓ Confidence analysis complete
+2025-12-17 14:19:11,613 - phase6_comparison_evaluation - INFO - Performing McNemar's test...
+2025-12-17 14:19:11,616 - phase6_comparison_evaluation - INFO - Performing chi-square test...
+2025-12-17 14:19:11,617 - phase6_comparison_evaluation - WARNING - Chi-square test failed due to sparse data: The internally computed table of expected frequencies has a zero element at (np.int64(0), np.int64(0)).
+2025-12-17 14:19:11,617 - phase6_comparison_evaluation - INFO - Performing paired t-test...
+2025-12-17 14:19:11,619 - phase6_comparison_evaluation - INFO - ✓ Saved evaluation report to /Users/randyhowk/Documents/CUNY/607/CUNY607Final/results/evaluation_report.txt
+2025-12-17 14:19:11,726 - utils - INFO - ✓ Saved 9,311 records to /Users/randyhowk/Documents/CUNY/607/CUNY607Final/results/comparison_results.csv
+2025-12-17 14:19:11,726 - utils - INFO - ✓ Saved JSON to /Users/randyhowk/Documents/CUNY/607/CUNY607Final/results/evaluation_metrics.json
+2025-12-17 14:19:11,727 - utils - INFO - ✓ Saved JSON to /Users/randyhowk/Documents/CUNY/607/CUNY607Final/results/statistical_tests.json
+2025-12-17 14:19:11,727 - utils - INFO - Completed Phase 6: Comparison and Evaluation
+2025-12-17 14:19:11,728 - utils - INFO - Starting Phase 7: R Export and Preparation
+2025-12-17 14:19:11,729 - phase7_export_for_r - INFO - Starting R export pipeline...
+2025-12-17 14:19:11,729 - phase7_export_for_r - INFO - Loading all pipeline results...
+2025-12-17 14:19:11,748 - utils - INFO - ✓ Loaded 1,142 records from /Users/randyhowk/Documents/CUNY/607/CUNY607Final/data/processed/glossary_final.csv
+2025-12-17 14:19:11,813 - utils - INFO - ✓ Loaded 16,893 records from /Users/randyhowk/Documents/CUNY/607/CUNY607Final/data/processed/historical_processed.csv
+2025-12-17 14:19:11,844 - utils - INFO - ✓ Loaded numpy array (16893, 768) from /Users/randyhowk/Documents/CUNY/607/CUNY607Final/embeddings/incident_embeddings.npy
+2025-12-17 14:19:11,847 - utils - INFO - ✓ Loaded numpy array (1142, 768) from /Users/randyhowk/Documents/CUNY/607/CUNY607Final/embeddings/glossary_embeddings.npy
+2025-12-17 14:19:11,847 - utils - ERROR - ✗ File not found: /Users/randyhowk/Documents/CUNY/607/CUNY607Final/output/embedding_matches.csv
+2025-12-17 14:19:11,847 - phase7_export_for_r - ERROR - ✗ Phase 7 failed: [Errno 2] No such file or directory: '/Users/randyhowk/Documents/CUNY/607/CUNY607Final/output/embedding_matches.csv'
+2025-12-17 14:19:11,847 - __main__ - ERROR - Phase 7 failed
+Traceback (most recent call last):
+  File "/Users/randyhowk/Documents/CUNY/607/CUNY607Final/main_pipeline.py", line 166, in run_all_phases
+    result = phase_func()
+             ^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/CUNY607Final/phase7_export_for_r.py", line 464, in run_phase7_pipeline
+    metadata = exporter.export_all()
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/CUNY607Final/phase7_export_for_r.py", line 428, in export_all
+    self.load_all_results()
+  File "/Users/randyhowk/Documents/CUNY/607/CUNY607Final/phase7_export_for_r.py", line 46, in load_all_results
+    self.embedding_matches = load_csv(OUTPUT_DIR / "embedding_matches.csv")
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/CUNY607Final/utils.py", line 105, in load_csv
+    df = pd.read_csv(filepath, **kwargs)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 620, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1620, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1880, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/pandas/io/common.py", line 873, in get_handle
+    handle = open(
+             ^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/randyhowk/Documents/CUNY/607/CUNY607Final/output/embedding_matches.csv'
+2025-12-17 14:22:16,759 - utils - INFO - Starting Phase 7: R Export and Preparation
+2025-12-17 14:22:16,759 - phase7_export_for_r - INFO - Starting R export pipeline...
+2025-12-17 14:22:16,760 - phase7_export_for_r - INFO - Loading all pipeline results...
+2025-12-17 14:22:16,782 - utils - INFO - ✓ Loaded 1,142 records from /Users/randyhowk/Documents/CUNY/607/CUNY607Final/data/processed/glossary_final.csv
+2025-12-17 14:22:16,837 - utils - INFO - ✓ Loaded 16,893 records from /Users/randyhowk/Documents/CUNY/607/CUNY607Final/data/processed/historical_processed.csv
+2025-12-17 14:22:16,848 - utils - INFO - ✓ Loaded numpy array (16893, 768) from /Users/randyhowk/Documents/CUNY/607/CUNY607Final/embeddings/incident_embeddings.npy
+2025-12-17 14:22:16,849 - utils - INFO - ✓ Loaded numpy array (1142, 768) from /Users/randyhowk/Documents/CUNY/607/CUNY607Final/embeddings/glossary_embeddings.npy
+2025-12-17 14:22:16,849 - utils - ERROR - ✗ File not found: /Users/randyhowk/Documents/CUNY/607/CUNY607Final/output/embedding_matches.csv
+2025-12-17 14:22:16,849 - phase7_export_for_r - WARNING - embedding_matches.csv not found, skipping
+2025-12-17 14:22:16,913 - utils - INFO - ✓ Loaded 9,603 records from /Users/randyhowk/Documents/CUNY/607/CUNY607Final/output/machine_processed_incidents.csv
+2025-12-17 14:22:16,960 - utils - INFO - ✓ Loaded 9,311 records from /Users/randyhowk/Documents/CUNY/607/CUNY607Final/results/comparison_results.csv
+2025-12-17 14:22:16,961 - utils - INFO - ✓ Loaded JSON from /Users/randyhowk/Documents/CUNY/607/CUNY607Final/results/evaluation_metrics.json
+2025-12-17 14:22:16,961 - phase7_export_for_r - INFO - ✓ All results loaded
+2025-12-17 14:22:16,961 - phase7_export_for_r - INFO - Creating structured incidents dataset for R...
+2025-12-17 14:22:16,981 - phase7_export_for_r - INFO - ✓ Created structured dataset with 9311 incidents
+2025-12-17 14:22:17,141 - utils - INFO - ✓ Saved 9,311 records to /Users/randyhowk/Documents/CUNY/607/CUNY607Final/output/structured_incidents.csv
+2025-12-17 14:22:17,141 - phase7_export_for_r - INFO - Exporting embeddings for UMAP visualization...
+2025-12-17 14:22:25,085 - utils - INFO - ✓ Saved 16,893 records to /Users/randyhowk/Documents/CUNY/607/CUNY607Final/output/incident_embeddings_for_r.csv
+2025-12-17 14:22:25,594 - utils - INFO - ✓ Saved 1,142 records to /Users/randyhowk/Documents/CUNY/607/CUNY607Final/output/glossary_embeddings_for_r.csv
+2025-12-17 14:22:25,594 - phase7_export_for_r - INFO - ✓ Embeddings exported for R
+2025-12-17 14:22:25,594 - phase7_export_for_r - INFO - Exporting confusion matrix data...
+2025-12-17 14:22:25,615 - utils - INFO - ✓ Saved 1 records to /Users/randyhowk/Documents/CUNY/607/CUNY607Final/output/confusion_matrix_long.csv
+2025-12-17 14:22:25,615 - phase7_export_for_r - INFO - ✓ Confusion matrix exported
+2025-12-17 14:22:25,615 - phase7_export_for_r - INFO - Exporting category performance data...
+2025-12-17 14:22:25,616 - utils - INFO - ✓ Saved 24 records to /Users/randyhowk/Documents/CUNY/607/CUNY607Final/output/category_performance.csv
+2025-12-17 14:22:25,616 - phase7_export_for_r - INFO - ✓ Category performance exported
+2025-12-17 14:22:25,616 - phase7_export_for_r - INFO - Exporting confidence analysis...
+2025-12-17 14:22:25,632 - utils - INFO - ✓ Saved 9,311 records to /Users/randyhowk/Documents/CUNY/607/CUNY607Final/output/confidence_analysis.csv
+2025-12-17 14:22:25,632 - phase7_export_for_r - INFO - ✓ Confidence analysis exported
+2025-12-17 14:22:25,632 - phase7_export_for_r - INFO - Exporting temporal analysis...
+2025-12-17 14:22:25,667 - utils - INFO - ✓ Saved 9,311 records to /Users/randyhowk/Documents/CUNY/607/CUNY607Final/output/temporal_analysis.csv
+2025-12-17 14:22:25,667 - phase7_export_for_r - INFO - ✓ Temporal analysis exported
+2025-12-17 14:22:25,667 - phase7_export_for_r - INFO - Exporting geographic analysis...
+2025-12-17 14:22:25,671 - utils - INFO - ✓ Saved 431 records to /Users/randyhowk/Documents/CUNY/607/CUNY607Final/output/geographic_analysis.csv
+2025-12-17 14:22:25,671 - phase7_export_for_r - INFO - ✓ Geographic analysis exported
+2025-12-17 14:22:25,671 - phase7_export_for_r - INFO - Exporting graph network data...
+2025-12-17 14:22:25,671 - phase7_export_for_r - WARNING - No graph export found
+2025-12-17 14:22:25,671 - phase7_export_for_r - INFO - Creating R metadata file...
+2025-12-17 14:22:25,672 - utils - INFO - ✓ Saved JSON to /Users/randyhowk/Documents/CUNY/607/CUNY607Final/output/r_metadata.json
+2025-12-17 14:22:25,672 - phase7_export_for_r - INFO - ✓ R metadata created
+2025-12-17 14:22:25,672 - phase7_export_for_r - INFO - ✓ R export pipeline complete
+2025-12-17 14:22:25,673 - utils - INFO - Completed Phase 7: R Export and Preparation
