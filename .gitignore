@@ -48,3 +48,6 @@ po/*~
 # RStudio Connect folder
 rsconnect/
 output/*.csv
+
+# Mac
+.DS_Store

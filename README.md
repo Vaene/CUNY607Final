@@ -34,7 +34,8 @@ This system:
 
 ```bash
 # 1. Clone or download the project
-cd hate-incident-classification
+git@github.com:Vaene/CUNY607Final.git
+cd CUNY607Final
 
 # 2. Create virtual environment
 python -m venv venv
