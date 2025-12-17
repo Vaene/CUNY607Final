@@ -1,0 +1,8 @@
+{
+  "model_name": "all-mpnet-base-v2",
+  "incident_count": 16893,
+  "glossary_count": 1142,
+  "embedding_dim": 768,
+  "generated_at": "2025-12-16T13:56:31.756057",
+  "device": "cpu"
+}

@@ -1,0 +1,432 @@
+state,predicted_category_machine,count
+Alabama,Groups / Movements,41
+Alabama,Key Concepts / Definitions,2
+Alabama,Numbers / Symbols,4
+Alabama,People,3
+Alabama,Slogans / Code words,16
+Alabama,Tactics,1
+Alaska,Groups / Movements,1
+Alaska,Numbers / Symbols,1
+Alaska,People,1
+Alaska,Slogans / Code words,4
+Arizona,Groups / Movements,25
+Arizona,Incidents / Events,7
+Arizona,Key Concepts / Definitions,7
+Arizona,Numbers / Symbols,25
+Arizona,People,5
+Arizona,Publications,4
+Arizona,Slogans / Code words,46
+Arizona,"Slogans / Code words, Conspiracy Theories",1
+Arizona,Tactics,1
+Arkansas,Groups / Movements,10
+Arkansas,Numbers / Symbols,4
+Arkansas,People,1
+Arkansas,Slogans / Code words,7
+Arkansas,"Slogans / Code words, Key Concepts / Definitions",1
+California,Conspiracy Theories,10
+California,"Conspiracy Theories, Slogans / Code words",1
+California,Groups / Movements,164
+California,Incidents / Events,135
+California,Key Concepts / Definitions,177
+California,"Key Concepts / Definitions, Tactics",3
+California,Numbers / Symbols,246
+California,People,64
+California,"People, Incidents / Events",1
+California,Platforms / Sites,3
+California,Publications,33
+California,Slogans / Code words,453
+California,"Slogans / Code words, Conspiracy Theories",15
+California,"Slogans / Code words, Key Concepts / Definitions",26
+California,"Slogans / Code words, Numbers / Symbols",1
+California,Tactics,3
+Colorado,Conspiracy Theories,1
+Colorado,Groups / Movements,79
+Colorado,Incidents / Events,22
+Colorado,Key Concepts / Definitions,25
+Colorado,"Key Concepts / Definitions, Tactics",1
+Colorado,Numbers / Symbols,34
+Colorado,People,18
+Colorado,Platforms / Sites,1
+Colorado,Publications,4
+Colorado,Slogans / Code words,85
+Colorado,"Slogans / Code words, Conspiracy Theories",2
+Colorado,"Slogans / Code words, Key Concepts / Definitions",5
+Colorado,Tactics,1
+Connecticut,Conspiracy Theories,1
+Connecticut,Groups / Movements,32
+Connecticut,Incidents / Events,14
+Connecticut,Key Concepts / Definitions,22
+Connecticut,Numbers / Symbols,40
+Connecticut,People,6
+Connecticut,Publications,2
+Connecticut,Slogans / Code words,39
+Connecticut,Tactics,3
+Delaware,Groups / Movements,2
+Delaware,Numbers / Symbols,3
+Delaware,People,1
+Delaware,Slogans / Code words,5
+Florida,Conspiracy Theories,1
+Florida,Groups / Movements,52
+Florida,Incidents / Events,26
+Florida,Key Concepts / Definitions,88
+Florida,"Key Concepts / Definitions, Tactics",1
+Florida,Numbers / Symbols,51
+Florida,People,17
+Florida,Platforms / Sites,1
+Florida,Publications,3
+Florida,Slogans / Code words,99
+Florida,"Slogans / Code words, Conspiracy Theories",3
+Florida,"Slogans / Code words, Conspiracy Theories, Key Concepts / Definitions",1
+Florida,"Slogans / Code words, Key Concepts / Definitions",6
+Georgia,Groups / Movements,48
+Georgia,Incidents / Events,8
+Georgia,Key Concepts / Definitions,7
+Georgia,Numbers / Symbols,28
+Georgia,People,6
+Georgia,Platforms / Sites,1
+Georgia,Publications,5
+Georgia,Slogans / Code words,56
+Hawaii,Groups / Movements,1
+Hawaii,Incidents / Events,1
+Hawaii,Numbers / Symbols,3
+Hawaii,People,3
+Hawaii,Slogans / Code words,13
+Hawaii,"Slogans / Code words, Key Concepts / Definitions",1
+Idaho,Groups / Movements,7
+Idaho,Incidents / Events,2
+Idaho,Numbers / Symbols,2
+Idaho,Slogans / Code words,6
+Illinois,Conspiracy Theories,1
+Illinois,Groups / Movements,77
+Illinois,Incidents / Events,14
+Illinois,Key Concepts / Definitions,22
+Illinois,Numbers / Symbols,62
+Illinois,People,12
+Illinois,Publications,8
+Illinois,"Publications, Platforms / Sites",2
+Illinois,Slogans / Code words,123
+Illinois,"Slogans / Code words, Conspiracy Theories",6
+Illinois,"Slogans / Code words, Key Concepts / Definitions",7
+Indiana,Groups / Movements,25
+Indiana,Incidents / Events,13
+Indiana,Key Concepts / Definitions,21
+Indiana,Numbers / Symbols,16
+Indiana,People,8
+Indiana,Platforms / Sites,1
+Indiana,Publications,5
+Indiana,"Publications, Groups / Movements",1
+Indiana,Slogans / Code words,39
+Indiana,"Slogans / Code words, Key Concepts / Definitions",11
+Indiana,Tactics,1
+Iowa,Groups / Movements,5
+Iowa,Incidents / Events,1
+Iowa,Key Concepts / Definitions,3
+Iowa,Numbers / Symbols,4
+Iowa,Slogans / Code words,10
+Kansas,Groups / Movements,4
+Kansas,Key Concepts / Definitions,2
+Kansas,Numbers / Symbols,5
+Kansas,Slogans / Code words,8
+Kentucky,Groups / Movements,16
+Kentucky,Key Concepts / Definitions,3
+Kentucky,Numbers / Symbols,8
+Kentucky,Platforms / Sites,1
+Kentucky,Publications,2
+Kentucky,Slogans / Code words,15
+Kentucky,"Slogans / Code words, Key Concepts / Definitions",13
+Louisiana,Groups / Movements,24
+Louisiana,Incidents / Events,4
+Louisiana,Key Concepts / Definitions,2
+Louisiana,Numbers / Symbols,9
+Louisiana,Slogans / Code words,25
+Louisiana,"Slogans / Code words, Key Concepts / Definitions",2
+Maine,Groups / Movements,9
+Maine,Incidents / Events,3
+Maine,Key Concepts / Definitions,2
+Maine,Numbers / Symbols,19
+Maine,People,1
+Maine,Slogans / Code words,17
+Maine,"Slogans / Code words, Key Concepts / Definitions",1
+Maryland,"Conspiracy Theories, Groups / Movements",1
+Maryland,Groups / Movements,71
+Maryland,Incidents / Events,28
+Maryland,Key Concepts / Definitions,41
+Maryland,"Key Concepts / Definitions, Tactics",1
+Maryland,Numbers / Symbols,92
+Maryland,People,15
+Maryland,"People, Incidents / Events",1
+Maryland,Platforms / Sites,1
+Maryland,Publications,7
+Maryland,Slogans / Code words,93
+Maryland,"Slogans / Code words, Conspiracy Theories",1
+Maryland,"Slogans / Code words, Key Concepts / Definitions",2
+Massachusetts,"Conspiracy Theories, Publications",1
+Massachusetts,Groups / Movements,77
+Massachusetts,Incidents / Events,24
+Massachusetts,Key Concepts / Definitions,27
+Massachusetts,"Key Concepts / Definitions, Tactics",2
+Massachusetts,Numbers / Symbols,101
+Massachusetts,People,20
+Massachusetts,Platforms / Sites,1
+Massachusetts,Publications,12
+Massachusetts,Slogans / Code words,162
+Massachusetts,"Slogans / Code words, Conspiracy Theories",2
+Massachusetts,"Slogans / Code words, Key Concepts / Definitions",2
+Massachusetts,Tactics,3
+Michigan,Conspiracy Theories,1
+Michigan,"Conspiracy Theories, Publications",1
+Michigan,Groups / Movements,38
+Michigan,Incidents / Events,9
+Michigan,Key Concepts / Definitions,17
+Michigan,Numbers / Symbols,24
+Michigan,People,63
+Michigan,Platforms / Sites,2
+Michigan,Publications,6
+Michigan,Slogans / Code words,84
+Michigan,"Slogans / Code words, Conspiracy Theories",1
+Michigan,"Slogans / Code words, Key Concepts / Definitions",3
+Michigan,Tactics,1
+Minnesota,Groups / Movements,26
+Minnesota,Incidents / Events,4
+Minnesota,Key Concepts / Definitions,9
+Minnesota,Numbers / Symbols,16
+Minnesota,People,8
+Minnesota,"People, Incidents / Events",1
+Minnesota,Publications,2
+Minnesota,Slogans / Code words,61
+Minnesota,"Slogans / Code words, Conspiracy Theories",2
+Minnesota,"Slogans / Code words, Key Concepts / Definitions",3
+Minnesota,Tactics,1
+Mississippi,Groups / Movements,17
+Mississippi,Slogans / Code words,3
+Missouri,Groups / Movements,45
+Missouri,Incidents / Events,2
+Missouri,Key Concepts / Definitions,3
+Missouri,Numbers / Symbols,14
+Missouri,People,4
+Missouri,Platforms / Sites,2
+Missouri,Slogans / Code words,32
+Missouri,"Slogans / Code words, Key Concepts / Definitions",3
+Missouri,Tactics,1
+Montana,Groups / Movements,5
+Montana,Key Concepts / Definitions,1
+Montana,Numbers / Symbols,3
+Montana,Platforms / Sites,1
+Montana,Publications,2
+Montana,Slogans / Code words,7
+Montana,Tactics,1
+Nebraska,Groups / Movements,12
+Nebraska,Key Concepts / Definitions,1
+Nebraska,Numbers / Symbols,8
+Nebraska,Slogans / Code words,10
+Nebraska,"Slogans / Code words, Conspiracy Theories",1
+Nebraska,"Slogans / Code words, Key Concepts / Definitions",1
+Nevada,Groups / Movements,11
+Nevada,Incidents / Events,6
+Nevada,Key Concepts / Definitions,6
+Nevada,Numbers / Symbols,23
+Nevada,People,6
+Nevada,Platforms / Sites,1
+Nevada,Publications,2
+Nevada,Slogans / Code words,19
+New Hampshire,Groups / Movements,16
+New Hampshire,Incidents / Events,3
+New Hampshire,Key Concepts / Definitions,1
+New Hampshire,"Key Concepts / Definitions, Tactics",1
+New Hampshire,Numbers / Symbols,10
+New Hampshire,People,1
+New Hampshire,Publications,3
+New Hampshire,Slogans / Code words,18
+New Hampshire,"Slogans / Code words, Key Concepts / Definitions",1
+New Jersey,Conspiracy Theories,1
+New Jersey,Groups / Movements,60
+New Jersey,Incidents / Events,53
+New Jersey,Key Concepts / Definitions,59
+New Jersey,"Key Concepts / Definitions, Tactics",3
+New Jersey,Numbers / Symbols,196
+New Jersey,People,46
+New Jersey,"People, Incidents / Events",1
+New Jersey,Platforms / Sites,1
+New Jersey,Publications,23
+New Jersey,Slogans / Code words,241
+New Jersey,"Slogans / Code words, Conspiracy Theories",2
+New Jersey,"Slogans / Code words, Key Concepts / Definitions",10
+New Jersey,Tactics,2
+New Mexico,Conspiracy Theories,1
+New Mexico,Groups / Movements,12
+New Mexico,Key Concepts / Definitions,2
+New Mexico,Numbers / Symbols,12
+New Mexico,People,3
+New Mexico,Slogans / Code words,17
+New York,Conspiracy Theories,7
+New York,"Conspiracy Theories, Publications",1
+New York,Groups / Movements,157
+New York,Incidents / Events,175
+New York,Key Concepts / Definitions,73
+New York,"Key Concepts / Definitions, Tactics",4
+New York,Numbers / Symbols,343
+New York,People,88
+New York,"People, Incidents / Events",2
+New York,Platforms / Sites,3
+New York,Publications,22
+New York,Slogans / Code words,535
+New York,"Slogans / Code words, Conspiracy Theories",7
+New York,"Slogans / Code words, Key Concepts / Definitions",15
+New York,Tactics,5
+North Carolina,Groups / Movements,56
+North Carolina,Incidents / Events,14
+North Carolina,Key Concepts / Definitions,17
+North Carolina,Numbers / Symbols,28
+North Carolina,People,8
+North Carolina,Publications,3
+North Carolina,Slogans / Code words,51
+North Carolina,"Slogans / Code words, Conspiracy Theories",1
+North Carolina,"Slogans / Code words, Key Concepts / Definitions",1
+North Dakota,Groups / Movements,5
+North Dakota,Slogans / Code words,1
+North Dakota,"Slogans / Code words, Key Concepts / Definitions",1
+Ohio,"Conspiracy Theories, Key Concepts / Definitions",1
+Ohio,Groups / Movements,51
+Ohio,Incidents / Events,44
+Ohio,Key Concepts / Definitions,21
+Ohio,Numbers / Symbols,27
+Ohio,People,11
+Ohio,Platforms / Sites,3
+Ohio,Publications,3
+Ohio,Slogans / Code words,69
+Ohio,"Slogans / Code words, Conspiracy Theories",3
+Ohio,"Slogans / Code words, Key Concepts / Definitions",1
+Oklahoma,Groups / Movements,10
+Oklahoma,Incidents / Events,1
+Oklahoma,Key Concepts / Definitions,2
+Oklahoma,Numbers / Symbols,2
+Oklahoma,People,2
+Oklahoma,Publications,1
+Oklahoma,Slogans / Code words,10
+Oklahoma,"Slogans / Code words, Key Concepts / Definitions",1
+Oregon,Conspiracy Theories,2
+Oregon,Groups / Movements,23
+Oregon,Incidents / Events,7
+Oregon,Key Concepts / Definitions,8
+Oregon,Numbers / Symbols,23
+Oregon,People,8
+Oregon,Slogans / Code words,63
+Oregon,"Slogans / Code words, Key Concepts / Definitions",2
+Oregon,Tactics,2
+Pennsylvania,Conspiracy Theories,1
+Pennsylvania,"Conspiracy Theories, Slogans / Code words",1
+Pennsylvania,General Hate,1
+Pennsylvania,Groups / Movements,80
+Pennsylvania,Incidents / Events,35
+Pennsylvania,Key Concepts / Definitions,38
+Pennsylvania,"Key Concepts / Definitions, Tactics",1
+Pennsylvania,Numbers / Symbols,73
+Pennsylvania,People,29
+Pennsylvania,Platforms / Sites,6
+Pennsylvania,Publications,13
+Pennsylvania,Slogans / Code words,163
+Pennsylvania,"Slogans / Code words, Conspiracy Theories",9
+Pennsylvania,"Slogans / Code words, Key Concepts / Definitions",5
+Pennsylvania,Tactics,6
+Rhode Island,"Conspiracy Theories, Publications",1
+Rhode Island,Groups / Movements,9
+Rhode Island,Incidents / Events,3
+Rhode Island,Key Concepts / Definitions,1
+Rhode Island,Numbers / Symbols,15
+Rhode Island,People,4
+Rhode Island,Publications,2
+Rhode Island,Slogans / Code words,17
+Rhode Island,"Slogans / Code words, Conspiracy Theories",1
+South Carolina,Conspiracy Theories,1
+South Carolina,Groups / Movements,7
+South Carolina,Incidents / Events,1
+South Carolina,Key Concepts / Definitions,2
+South Carolina,Numbers / Symbols,2
+South Carolina,People,4
+South Carolina,Slogans / Code words,13
+South Carolina,"Slogans / Code words, Key Concepts / Definitions",4
+South Dakota,Groups / Movements,20
+South Dakota,Slogans / Code words,2
+Tennessee,Groups / Movements,38
+Tennessee,Incidents / Events,8
+Tennessee,Key Concepts / Definitions,3
+Tennessee,Numbers / Symbols,6
+Tennessee,People,4
+Tennessee,Publications,1
+Tennessee,Slogans / Code words,22
+Texas,Conspiracy Theories,1
+Texas,Groups / Movements,64
+Texas,Incidents / Events,20
+Texas,Key Concepts / Definitions,6
+Texas,"Key Concepts / Definitions, Tactics",1
+Texas,Numbers / Symbols,45
+Texas,People,8
+Texas,Platforms / Sites,2
+Texas,Publications,5
+Texas,Slogans / Code words,108
+Texas,"Slogans / Code words, Key Concepts / Definitions",2
+Texas,Tactics,1
+Utah,Conspiracy Theories,1
+Utah,Groups / Movements,10
+Utah,Incidents / Events,2
+Utah,Key Concepts / Definitions,8
+Utah,Numbers / Symbols,8
+Utah,Slogans / Code words,10
+Utah,"Slogans / Code words, Conspiracy Theories",1
+Vermont,Groups / Movements,13
+Vermont,Incidents / Events,1
+Vermont,Key Concepts / Definitions,2
+Vermont,Numbers / Symbols,8
+Vermont,Platforms / Sites,1
+Vermont,Slogans / Code words,18
+Vermont,"Slogans / Code words, Conspiracy Theories",1
+Virginia,Groups / Movements,77
+Virginia,Incidents / Events,11
+Virginia,Key Concepts / Definitions,10
+Virginia,Numbers / Symbols,56
+Virginia,People,11
+Virginia,Platforms / Sites,1
+Virginia,Publications,3
+Virginia,Slogans / Code words,93
+Virginia,"Slogans / Code words, Conspiracy Theories",1
+Washington,Groups / Movements,56
+Washington,Incidents / Events,14
+Washington,Key Concepts / Definitions,12
+Washington,Numbers / Symbols,54
+Washington,People,20
+Washington,Platforms / Sites,1
+Washington,Publications,3
+Washington,Slogans / Code words,72
+Washington,"Slogans / Code words, Conspiracy Theories",4
+Washington,"Slogans / Code words, Key Concepts / Definitions",3
+Washington,Tactics,1
+Washington D.C.,Conspiracy Theories,3
+Washington D.C.,Groups / Movements,21
+Washington D.C.,Incidents / Events,13
+Washington D.C.,Key Concepts / Definitions,14
+Washington D.C.,Numbers / Symbols,22
+Washington D.C.,People,9
+Washington D.C.,Publications,3
+Washington D.C.,Slogans / Code words,57
+Washington D.C.,"Slogans / Code words, Key Concepts / Definitions",4
+Washington D.C.,Tactics,2
+West Virginia,Groups / Movements,6
+West Virginia,Numbers / Symbols,1
+West Virginia,Publications,1
+West Virginia,Slogans / Code words,4
+Wisconsin,Groups / Movements,53
+Wisconsin,Key Concepts / Definitions,6
+Wisconsin,Numbers / Symbols,16
+Wisconsin,People,2
+Wisconsin,Publications,2
+Wisconsin,Slogans / Code words,48
+Wisconsin,"Slogans / Code words, Key Concepts / Definitions",1
+Wisconsin,"Slogans / Code words, Numbers / Symbols",1
+Wisconsin,Tactics,1
+Wyoming,"Conspiracy Theories, Publications",1
+Wyoming,Groups / Movements,22
+Wyoming,Incidents / Events,1
+Wyoming,Publications,2
+Wyoming,Slogans / Code words,3
+Wyoming,"Slogans / Code words, Conspiracy Theories",1
+Wyoming,Tactics,1

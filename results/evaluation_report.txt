@@ -1,0 +1,83 @@
+======================================================================
+KNOWLEDGE GRAPH HATE INCIDENT CLASSIFICATION
+Evaluation Report: Machine vs Human Processing
+======================================================================
+
+OVERALL PERFORMANCE METRICS
+----------------------------------------------------------------------
+Total Incidents Evaluated: 9,311
+Number of Categories: 1
+
+Overall Accuracy: 0.0000 (0.00%)
+
+Macro-Averaged Metrics (equal weight per class):
+  Precision: 0.0000
+  Recall:    0.0000
+  F1-Score:  0.0000
+
+Weighted-Averaged Metrics (weighted by class frequency):
+  Precision: 0.0000
+  Recall:    0.0000
+  F1-Score:  0.0000
+
+ACCURACY BY CONFIDENCE LEVEL
+----------------------------------------------------------------------
+High Confidence:
+  Accuracy: 0.0000 (0.00%)
+  Count: 17 incidents
+Medium Confidence:
+  Accuracy: 0.0000 (0.00%)
+  Count: 7,976 incidents
+Low Confidence:
+  Accuracy: 0.0000 (0.00%)
+  Count: 1,318 incidents
+
+STATISTICAL SIGNIFICANCE TESTS
+----------------------------------------------------------------------
+McNemar's Test (Machine vs Baseline):
+  χ² statistic: 9309.0001
+  p-value: 0.0000
+  Significant: Yes (α=0.05)
+  Machine correct only: 0
+  Baseline correct only: 9311
+
+Chi-Square Test (Independence):
+  χ² test: Test failed due to sparse data
+Paired t-Test:
+  t-statistic: -inf
+  p-value: 0.0000
+  Significant: Yes (α=0.05)
+  Mean accuracy: 0.0000
+  Random baseline: 1.0000
+
+TOP 10 BEST PERFORMING CATEGORIES
+----------------------------------------------------------------------
+Antisemitism:
+  Precision: 0.000, Recall: 0.000, F1: 0.000, Support: 9311.0
+Conspiracy Theories:
+  Precision: 0.000, Recall: 0.000, F1: 0.000, Support: 0.0
+Conspiracy Theories, Groups / Movements:
+  Precision: 0.000, Recall: 0.000, F1: 0.000, Support: 0.0
+Conspiracy Theories, Key Concepts / Definitions:
+  Precision: 0.000, Recall: 0.000, F1: 0.000, Support: 0.0
+Conspiracy Theories, Publications:
+  Precision: 0.000, Recall: 0.000, F1: 0.000, Support: 0.0
+Conspiracy Theories, Slogans / Code words:
+  Precision: 0.000, Recall: 0.000, F1: 0.000, Support: 0.0
+General Hate:
+  Precision: 0.000, Recall: 0.000, F1: 0.000, Support: 0.0
+Groups / Movements:
+  Precision: 0.000, Recall: 0.000, F1: 0.000, Support: 0.0
+Incidents / Events:
+  Precision: 0.000, Recall: 0.000, F1: 0.000, Support: 0.0
+Key Concepts / Definitions:
+  Precision: 0.000, Recall: 0.000, F1: 0.000, Support: 0.0
+
+INTERPRETATION
+----------------------------------------------------------------------
+Low agreement. Significant model improvements needed.
+
+Statistical tests indicate the machine classifier performs
+significantly different from baseline approaches.
+
+======================================================================

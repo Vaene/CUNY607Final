@@ -1,0 +1,25 @@
+category,precision,recall,f1_score,support
+Antisemitism,0.0,0.0,0.0,9311.0
+Conspiracy Theories,0.0,0.0,0.0,0.0
+"Conspiracy Theories, Groups / Movements",0.0,0.0,0.0,0.0
+"Conspiracy Theories, Key Concepts / Definitions",0.0,0.0,0.0,0.0
+"Conspiracy Theories, Publications",0.0,0.0,0.0,0.0
+"Conspiracy Theories, Slogans / Code words",0.0,0.0,0.0,0.0
+General Hate,0.0,0.0,0.0,0.0
+Groups / Movements,0.0,0.0,0.0,0.0
+Incidents / Events,0.0,0.0,0.0,0.0
+Key Concepts / Definitions,0.0,0.0,0.0,0.0
+"Key Concepts / Definitions, Tactics",0.0,0.0,0.0,0.0
+Numbers / Symbols,0.0,0.0,0.0,0.0
+People,0.0,0.0,0.0,0.0
+"People, Incidents / Events",0.0,0.0,0.0,0.0
+Platforms / Sites,0.0,0.0,0.0,0.0
+Publications,0.0,0.0,0.0,0.0
+"Publications, Groups / Movements",0.0,0.0,0.0,0.0
+"Publications, Platforms / Sites",0.0,0.0,0.0,0.0
+Slogans / Code words,0.0,0.0,0.0,0.0
+"Slogans / Code words, Conspiracy Theories",0.0,0.0,0.0,0.0
+"Slogans / Code words, Conspiracy Theories, Key Concepts / Definitions",0.0,0.0,0.0,0.0
+"Slogans / Code words, Key Concepts / Definitions",0.0,0.0,0.0,0.0
+"Slogans / Code words, Numbers / Symbols",0.0,0.0,0.0,0.0
+Tactics,0.0,0.0,0.0,0.0

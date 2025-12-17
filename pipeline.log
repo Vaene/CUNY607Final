@@ -1,0 +1,1417 @@
+2025-12-16 10:59:06,052 - __main__ - ERROR - Pipeline execution failed
+Traceback (most recent call last):
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/main_pipeline.py", line 210, in main
+    success = orchestrator.run_all_phases(args.start, args.end)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/main_pipeline.py", line 54, in run_all_phases
+    print(f"Timestamp: {datetime.now().isoformat()}")
+                        ^^^^^^^^
+NameError: name 'datetime' is not defined
+2025-12-16 11:16:05,728 - utils - INFO - Starting Phase 1: Data Ingestion & Preprocessing
+2025-12-16 11:16:05,728 - phase1_data_ingestion - INFO - Loading ADL hate terms glossary...
+2025-12-16 11:16:05,728 - utils - INFO - ✓ Found Glossary JSON: /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/raw/adl_hate_terms.json
+2025-12-16 11:16:05,739 - utils - INFO - ✓ Loaded JSON from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/raw/adl_hate_terms.json
+2025-12-16 11:16:05,739 - phase1_data_ingestion - INFO - ✓ Loaded glossary with 1142 entries
+2025-12-16 11:16:05,739 - phase1_data_ingestion - INFO - Converting glossary to DataFrame...
+2025-12-16 11:16:05,744 - phase1_data_ingestion - INFO - ✓ Created glossary DataFrame: 1142 terms
+2025-12-16 11:16:05,744 - phase1_data_ingestion - INFO - Creating term dictionary...
+2025-12-16 11:16:05,768 - phase1_data_ingestion - INFO - ✓ Dictionary contains 1142 searchable terms
+2025-12-16 11:16:05,768 - phase1_data_ingestion - INFO - Validating glossary data...
+2025-12-16 11:16:05,768 - utils - INFO - ✓ Glossary validation passed
+2025-12-16 11:16:05,770 - phase1_data_ingestion - INFO - ✓ Glossary validation complete
+2025-12-16 11:16:05,788 - utils - INFO - ✓ Saved 1,142 records to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/glossary_processed.csv
+2025-12-16 11:16:05,802 - utils - INFO - ✓ Saved JSON to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/term_dictionary.json
+2025-12-16 11:16:05,802 - phase1_data_ingestion - INFO - Loading incident data from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/raw/historical_incidents_4years.csv...
+2025-12-16 11:16:05,805 - utils - INFO - ✓ Found Incident CSV: /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/raw/historical_incidents_4years.csv
+2025-12-16 11:16:05,864 - utils - INFO - ✓ Loaded 16,893 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/raw/historical_incidents_4years.csv
+2025-12-16 11:16:05,864 - phase1_data_ingestion - INFO - ✓ Loaded 16893 incident records
+2025-12-16 11:16:05,864 - phase1_data_ingestion - INFO -   Columns: ['incident_id', 'date', 'description', 'city', 'state', 'location', 'attack_type', 'ideology', 'subideology', 'group', 'location_type', 'israel_zionism_related', 'predicted_category', 'terms_detected', 'source', 'processed_date']
+2025-12-16 11:16:05,864 - phase1_data_ingestion - INFO - Cleaning incident data...
+2025-12-16 11:16:05,963 - phase1_data_ingestion - INFO - ✓ Cleaned incidents: 16893 records remain
+2025-12-16 11:16:05,964 - phase1_data_ingestion - INFO - Extracting explicit term mentions...
+2025-12-16 11:16:39,978 - utils - INFO - Term extraction: 1689/16893 (10.0%) - 49.7 items/sec
+2025-12-16 11:17:14,113 - utils - INFO - Term extraction: 3378/16893 (20.0%) - 49.6 items/sec
+2025-12-16 11:17:49,378 - utils - INFO - Term extraction: 5067/16893 (30.0%) - 49.0 items/sec
+2025-12-16 11:18:23,711 - utils - INFO - Term extraction: 6756/16893 (40.0%) - 49.0 items/sec
+2025-12-16 11:18:58,093 - utils - INFO - Term extraction: 8445/16893 (50.0%) - 49.1 items/sec
+2025-12-16 11:19:32,535 - utils - INFO - Term extraction: 10134/16893 (60.0%) - 49.1 items/sec
+2025-12-16 11:20:07,118 - utils - INFO - Term extraction: 11823/16893 (70.0%) - 49.0 items/sec
+2025-12-16 11:20:41,687 - utils - INFO - Term extraction: 13512/16893 (80.0%) - 49.0 items/sec
+2025-12-16 11:21:16,515 - utils - INFO - Term extraction: 15201/16893 (90.0%) - 48.9 items/sec
+2025-12-16 11:21:51,101 - utils - INFO - Term extraction: 16890/16893 (100.0%) - 48.9 items/sec
+2025-12-16 11:21:51,191 - utils - INFO - ✓ Term extraction complete: 16893 items in 345.2s
+2025-12-16 11:21:51,197 - phase1_data_ingestion - INFO - ✓ Found explicit terms in 16893 / 16893 incidents
+2025-12-16 11:21:51,197 - phase1_data_ingestion - INFO - Validating incident data...
+2025-12-16 11:21:51,197 - utils - INFO - ✓ Incidents validation passed
+2025-12-16 11:21:51,207 - phase1_data_ingestion - INFO - ✓ Incident validation complete
+2025-12-16 11:21:51,332 - utils - INFO - ✓ Saved 16,893 records to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/historical_processed.csv
+2025-12-16 11:21:51,475 - utils - INFO - ✓ Saved 16,893 records to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/training_data.csv
+2025-12-16 11:21:51,486 - utils - INFO - Completed Phase 1: Data Ingestion & Preprocessing
+2025-12-16 11:21:51,488 - utils - INFO - Starting Phase 2: Glossary Term Processing
+2025-12-16 11:21:51,503 - utils - INFO - ✓ Loaded 1,142 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/glossary_processed.csv
+2025-12-16 11:21:51,552 - utils - INFO - ✓ Loaded 16,893 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/historical_processed.csv
+2025-12-16 11:21:51,552 - phase2_glossary_processing - INFO - Loaded 1142 glossary terms
+2025-12-16 11:21:51,552 - phase2_glossary_processing - INFO - Loaded 16893 incidents
+2025-12-16 11:21:51,558 - phase2_glossary_processing - INFO - Analyzing glossary term structure...
+2025-12-16 11:21:51,559 - phase2_glossary_processing - INFO - ✓ Analyzed 1142 terms
+2025-12-16 11:21:51,559 - phase2_glossary_processing - INFO -   Categories: 42
+2025-12-16 11:21:51,559 - phase2_glossary_processing - INFO -   Avg definition length: 458 chars
+2025-12-16 11:21:51,559 - phase2_glossary_processing - INFO - Extracting term relationships...
+2025-12-16 11:21:51,581 - phase2_glossary_processing - INFO - ✓ Found 151 term variations
+2025-12-16 11:21:51,582 - phase2_glossary_processing - INFO - ✓ Found 210 related term pairs
+2025-12-16 11:21:51,583 - phase2_glossary_processing - INFO - Building term relationship graph...
+2025-12-16 11:21:51,585 - phase2_glossary_processing - ERROR - ✗ Phase 2 failed: 'float' object is not subscriptable
+2025-12-16 11:21:51,585 - __main__ - ERROR - Phase 2 failed
+Traceback (most recent call last):
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/main_pipeline.py", line 78, in run_all_phases
+    result = phase_func()
+             ^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase2_glossary_processing.py", line 361, in run_phase2_pipeline
+    term_graph = analyzer.build_term_graph(relationships)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase2_glossary_processing.py", line 122, in build_term_graph
+    definition=row['definition'][:100]  # Truncated
+               ~~~~~~~~~~~~~~~~~^^^^^^
+TypeError: 'float' object is not subscriptable
+2025-12-16 11:29:25,779 - utils - INFO - Starting Phase 1: Data Ingestion & Preprocessing
+2025-12-16 11:29:25,779 - phase1_data_ingestion - INFO - Loading ADL hate terms glossary...
+2025-12-16 11:29:25,779 - utils - INFO - ✓ Found Glossary JSON: /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/raw/adl_hate_terms.json
+2025-12-16 11:29:25,790 - utils - INFO - ✓ Loaded JSON from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/raw/adl_hate_terms.json
+2025-12-16 11:29:25,790 - phase1_data_ingestion - INFO - ✓ Loaded glossary with 1142 entries
+2025-12-16 11:29:25,790 - phase1_data_ingestion - INFO - Converting glossary to DataFrame...
+2025-12-16 11:29:25,796 - phase1_data_ingestion - INFO - ✓ Created glossary DataFrame: 1142 terms
+2025-12-16 11:29:25,796 - phase1_data_ingestion - INFO - Creating term dictionary...
+2025-12-16 11:29:25,820 - phase1_data_ingestion - INFO - ✓ Dictionary contains 1142 searchable terms
+2025-12-16 11:29:25,820 - phase1_data_ingestion - INFO - Validating glossary data...
+2025-12-16 11:29:25,820 - utils - INFO - ✓ Glossary validation passed
+2025-12-16 11:29:25,822 - phase1_data_ingestion - INFO - ✓ Glossary validation complete
+2025-12-16 11:29:25,842 - utils - INFO - ✓ Saved 1,142 records to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/glossary_processed.csv
+2025-12-16 11:29:25,860 - utils - INFO - ✓ Saved JSON to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/term_dictionary.json
+2025-12-16 11:29:25,860 - phase1_data_ingestion - INFO - Loading incident data from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/raw/historical_incidents_4years.csv...
+2025-12-16 11:29:25,861 - utils - INFO - ✓ Found Incident CSV: /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/raw/historical_incidents_4years.csv
+2025-12-16 11:29:25,917 - utils - INFO - ✓ Loaded 16,893 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/raw/historical_incidents_4years.csv
+2025-12-16 11:29:25,917 - phase1_data_ingestion - INFO - ✓ Loaded 16893 incident records
+2025-12-16 11:29:25,917 - phase1_data_ingestion - INFO -   Columns: ['incident_id', 'date', 'description', 'city', 'state', 'location', 'attack_type', 'ideology', 'subideology', 'group', 'location_type', 'israel_zionism_related', 'predicted_category', 'terms_detected', 'source', 'processed_date']
+2025-12-16 11:29:25,917 - phase1_data_ingestion - INFO - Cleaning incident data...
+2025-12-16 11:29:26,018 - phase1_data_ingestion - INFO - ✓ Cleaned incidents: 16893 records remain
+2025-12-16 11:29:26,019 - phase1_data_ingestion - INFO - Extracting explicit term mentions...
+2025-12-16 11:29:59,980 - utils - INFO - Term extraction: 1689/16893 (10.0%) - 49.7 items/sec
+2025-12-16 11:30:34,249 - utils - INFO - Term extraction: 3378/16893 (20.0%) - 49.5 items/sec
+2025-12-16 11:31:09,087 - utils - INFO - Term extraction: 5067/16893 (30.0%) - 49.2 items/sec
+2025-12-16 11:31:43,601 - utils - INFO - Term extraction: 6756/16893 (40.0%) - 49.1 items/sec
+2025-12-16 11:32:17,909 - utils - INFO - Term extraction: 8445/16893 (50.0%) - 49.1 items/sec
+2025-12-16 11:32:52,132 - utils - INFO - Term extraction: 10134/16893 (60.0%) - 49.2 items/sec
+2025-12-16 11:33:26,654 - utils - INFO - Term extraction: 11823/16893 (70.0%) - 49.1 items/sec
+2025-12-16 11:34:01,224 - utils - INFO - Term extraction: 13512/16893 (80.0%) - 49.1 items/sec
+2025-12-16 11:34:35,867 - utils - INFO - Term extraction: 15201/16893 (90.0%) - 49.1 items/sec
+2025-12-16 11:35:10,356 - utils - INFO - Term extraction: 16890/16893 (100.0%) - 49.1 items/sec
+2025-12-16 11:35:10,447 - utils - INFO - ✓ Term extraction complete: 16893 items in 344.4s
+2025-12-16 11:35:10,450 - phase1_data_ingestion - INFO - ✓ Found explicit terms in 16893 / 16893 incidents
+2025-12-16 11:35:10,450 - phase1_data_ingestion - INFO - Validating incident data...
+2025-12-16 11:35:10,450 - utils - INFO - ✓ Incidents validation passed
+2025-12-16 11:35:10,456 - phase1_data_ingestion - INFO - ✓ Incident validation complete
+2025-12-16 11:35:10,601 - utils - INFO - ✓ Saved 16,893 records to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/historical_processed.csv
+2025-12-16 11:35:10,757 - utils - INFO - ✓ Saved 16,893 records to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/training_data.csv
+2025-12-16 11:35:10,766 - utils - INFO - Completed Phase 1: Data Ingestion & Preprocessing
+2025-12-16 11:35:10,767 - utils - INFO - Starting Phase 2: Glossary Term Processing
+2025-12-16 11:35:10,778 - utils - INFO - ✓ Loaded 1,142 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/glossary_processed.csv
+2025-12-16 11:35:10,826 - utils - INFO - ✓ Loaded 16,893 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/historical_processed.csv
+2025-12-16 11:35:10,826 - phase2_glossary_processing - INFO - Loaded 1142 glossary terms
+2025-12-16 11:35:10,826 - phase2_glossary_processing - INFO - Loaded 16893 incidents
+2025-12-16 11:35:10,827 - phase2_glossary_processing - INFO - Analyzing glossary term structure...
+2025-12-16 11:35:10,828 - phase2_glossary_processing - INFO - ✓ Analyzed 1142 terms
+2025-12-16 11:35:10,828 - phase2_glossary_processing - INFO -   Categories: 42
+2025-12-16 11:35:10,828 - phase2_glossary_processing - INFO -   Avg definition length: 458 chars
+2025-12-16 11:35:10,828 - phase2_glossary_processing - INFO - Extracting term relationships...
+2025-12-16 11:35:10,849 - phase2_glossary_processing - INFO - ✓ Found 151 term variations
+2025-12-16 11:35:10,849 - phase2_glossary_processing - INFO - ✓ Found 210 related term pairs
+2025-12-16 11:35:10,849 - phase2_glossary_processing - INFO - Building term relationship graph...
+2025-12-16 11:35:10,872 - phase2_glossary_processing - INFO - ✓ Built graph: 1142 nodes, 2170 edges
+2025-12-16 11:35:10,872 - phase2_glossary_processing - INFO - Identifying term clusters...
+2025-12-16 11:35:10,878 - phase2_glossary_processing - ERROR - ✗ Phase 2 failed: Consider using a tuple, with a priority value that can be compared.
+2025-12-16 11:35:10,878 - __main__ - ERROR - Phase 2 failed
+Traceback (most recent call last):
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/networkx/utils/mapped_queue.py", line 46, in __lt__
+    return self.element < other.element
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: '<' not supported between instances of 'float' and 'str'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/main_pipeline.py", line 78, in run_all_phases
+    result = phase_func()
+             ^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase2_glossary_processing.py", line 368, in run_phase2_pipeline
+    clusters = analyzer.identify_term_clusters()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase2_glossary_processing.py", line 164, in identify_term_clusters
+    communities = community.greedy_modularity_communities(self.term_graph)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/networkx/utils/decorators.py", line 784, in func
+    return argmap._lazy_compile(__wrapper)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<class 'networkx.utils.decorators.argmap'> compilation 8", line 3, in argmap_greedy_modularity_communities_5
+    import gzip
+            ^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/networkx/utils/backends.py", line 551, in _call_if_no_backends_installed
+    return self.orig_func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/networkx/algorithms/community/modularity_max.py", line 334, in greedy_modularity_communities
+    communities = next(community_gen)
+                  ^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/networkx/algorithms/community/modularity_max.py", line 108, in _greedy_modularity_communities_generator
+    H = MappedQueue([dq_heap[n].heap[0] for n in G if len(dq_heap[n]) > 0])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/networkx/utils/mapped_queue.py", line 162, in __init__
+    self._heapify()
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/networkx/utils/mapped_queue.py", line 166, in _heapify
+    heapq.heapify(self.heap)
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/networkx/utils/mapped_queue.py", line 48, in __lt__
+    raise TypeError(
+TypeError: Consider using a tuple, with a priority value that can be compared.
+2025-12-16 11:39:26,178 - utils - INFO - Starting Phase 1: Data Ingestion & Preprocessing
+2025-12-16 11:39:26,178 - phase1_data_ingestion - INFO - Loading ADL hate terms glossary...
+2025-12-16 11:39:26,179 - utils - INFO - ✓ Found Glossary JSON: /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/raw/adl_hate_terms.json
+2025-12-16 11:39:26,188 - utils - INFO - ✓ Loaded JSON from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/raw/adl_hate_terms.json
+2025-12-16 11:39:26,188 - phase1_data_ingestion - INFO - ✓ Loaded glossary with 1142 entries
+2025-12-16 11:39:26,188 - phase1_data_ingestion - INFO - Converting glossary to DataFrame...
+2025-12-16 11:39:26,194 - phase1_data_ingestion - INFO - ✓ Created glossary DataFrame: 1142 terms
+2025-12-16 11:39:26,194 - phase1_data_ingestion - INFO - Creating term dictionary...
+2025-12-16 11:39:26,221 - phase1_data_ingestion - INFO - ✓ Dictionary contains 1142 searchable terms
+2025-12-16 11:39:26,221 - phase1_data_ingestion - INFO - Validating glossary data...
+2025-12-16 11:39:26,221 - utils - INFO - ✓ Glossary validation passed
+2025-12-16 11:39:26,223 - phase1_data_ingestion - INFO - ✓ Glossary validation complete
+2025-12-16 11:39:26,242 - utils - INFO - ✓ Saved 1,142 records to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/glossary_processed.csv
+2025-12-16 11:39:26,267 - utils - INFO - ✓ Saved JSON to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/term_dictionary.json
+2025-12-16 11:39:26,267 - phase1_data_ingestion - INFO - Loading incident data from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/raw/historical_incidents_4years.csv...
+2025-12-16 11:39:26,267 - utils - INFO - ✓ Found Incident CSV: /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/raw/historical_incidents_4years.csv
+2025-12-16 11:39:26,327 - utils - INFO - ✓ Loaded 16,893 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/raw/historical_incidents_4years.csv
+2025-12-16 11:39:26,327 - phase1_data_ingestion - INFO - ✓ Loaded 16893 incident records
+2025-12-16 11:39:26,327 - phase1_data_ingestion - INFO -   Columns: ['incident_id', 'date', 'description', 'city', 'state', 'location', 'attack_type', 'ideology', 'subideology', 'group', 'location_type', 'israel_zionism_related', 'predicted_category', 'terms_detected', 'source', 'processed_date']
+2025-12-16 11:39:26,327 - phase1_data_ingestion - INFO - Cleaning incident data...
+2025-12-16 11:39:26,433 - phase1_data_ingestion - INFO - ✓ Cleaned incidents: 16893 records remain
+2025-12-16 11:39:26,434 - phase1_data_ingestion - INFO - Extracting explicit term mentions...
+2025-12-16 11:40:00,562 - utils - INFO - Term extraction: 1689/16893 (10.0%) - 49.5 items/sec
+2025-12-16 11:40:35,107 - utils - INFO - Term extraction: 3378/16893 (20.0%) - 49.2 items/sec
+2025-12-16 11:41:10,132 - utils - INFO - Term extraction: 5067/16893 (30.0%) - 48.9 items/sec
+2025-12-16 11:41:44,802 - utils - INFO - Term extraction: 6756/16893 (40.0%) - 48.8 items/sec
+2025-12-16 11:42:19,129 - utils - INFO - Term extraction: 8445/16893 (50.0%) - 48.9 items/sec
+2025-12-16 11:42:53,292 - utils - INFO - Term extraction: 10134/16893 (60.0%) - 49.0 items/sec
+2025-12-16 11:43:28,258 - utils - INFO - Term extraction: 11823/16893 (70.0%) - 48.9 items/sec
+2025-12-16 11:44:03,097 - utils - INFO - Term extraction: 13512/16893 (80.0%) - 48.8 items/sec
+2025-12-16 11:44:37,698 - utils - INFO - Term extraction: 15201/16893 (90.0%) - 48.8 items/sec
+2025-12-16 11:45:12,561 - utils - INFO - Term extraction: 16890/16893 (100.0%) - 48.8 items/sec
+2025-12-16 11:45:12,651 - utils - INFO - ✓ Term extraction complete: 16893 items in 346.2s
+2025-12-16 11:45:12,655 - phase1_data_ingestion - INFO - ✓ Found explicit terms in 16893 / 16893 incidents
+2025-12-16 11:45:12,655 - phase1_data_ingestion - INFO - Validating incident data...
+2025-12-16 11:45:12,655 - utils - INFO - ✓ Incidents validation passed
+2025-12-16 11:45:12,665 - phase1_data_ingestion - INFO - ✓ Incident validation complete
+2025-12-16 11:45:12,834 - utils - INFO - ✓ Saved 16,893 records to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/historical_processed.csv
+2025-12-16 11:45:12,974 - utils - INFO - ✓ Saved 16,893 records to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/training_data.csv
+2025-12-16 11:45:12,988 - utils - INFO - Completed Phase 1: Data Ingestion & Preprocessing
+2025-12-16 11:45:12,989 - utils - INFO - Starting Phase 2: Glossary Term Processing
+2025-12-16 11:45:13,007 - utils - INFO - ✓ Loaded 1,142 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/glossary_processed.csv
+2025-12-16 11:45:13,061 - utils - INFO - ✓ Loaded 16,893 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/historical_processed.csv
+2025-12-16 11:45:13,061 - phase2_glossary_processing - INFO - Loaded 1142 glossary terms
+2025-12-16 11:45:13,061 - phase2_glossary_processing - INFO - Loaded 16893 incidents
+2025-12-16 11:45:13,062 - phase2_glossary_processing - INFO - Analyzing glossary term structure...
+2025-12-16 11:45:13,065 - phase2_glossary_processing - INFO - ✓ Analyzed 1142 terms
+2025-12-16 11:45:13,065 - phase2_glossary_processing - INFO -   Categories: 42
+2025-12-16 11:45:13,065 - phase2_glossary_processing - INFO -   Avg definition length: 458 chars
+2025-12-16 11:45:13,065 - phase2_glossary_processing - INFO - Extracting term relationships...
+2025-12-16 11:45:13,088 - phase2_glossary_processing - INFO - ✓ Found 151 term variations
+2025-12-16 11:45:13,088 - phase2_glossary_processing - INFO - ✓ Found 210 related term pairs
+2025-12-16 11:45:13,088 - phase2_glossary_processing - INFO - Building term relationship graph...
+2025-12-16 11:45:13,109 - phase2_glossary_processing - INFO - ✓ Built graph: 1142 nodes, 2170 edges
+2025-12-16 11:45:13,110 - phase2_glossary_processing - ERROR - ✗ Phase 2 failed: 'GlossaryAnalyzer' object has no attribute 'identify_term_clusters'
+2025-12-16 11:45:13,110 - __main__ - ERROR - Phase 2 failed
+Traceback (most recent call last):
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/main_pipeline.py", line 78, in run_all_phases
+    result = phase_func()
+             ^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase2_glossary_processing.py", line 385, in run_phase2_pipeline
+    clusters = analyzer.identify_term_clusters()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'GlossaryAnalyzer' object has no attribute 'identify_term_clusters'
+2025-12-16 11:58:35,046 - utils - INFO - Starting Phase 1: Data Ingestion & Preprocessing
+2025-12-16 11:58:35,046 - phase1_data_ingestion - INFO - Loading ADL hate terms glossary...
+2025-12-16 11:58:35,046 - utils - INFO - ✓ Found Glossary JSON: /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/raw/adl_hate_terms.json
+2025-12-16 11:58:35,056 - utils - INFO - ✓ Loaded JSON from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/raw/adl_hate_terms.json
+2025-12-16 11:58:35,056 - phase1_data_ingestion - INFO - ✓ Loaded glossary with 1142 entries
+2025-12-16 11:58:35,056 - phase1_data_ingestion - INFO - Converting glossary to DataFrame...
+2025-12-16 11:58:35,062 - phase1_data_ingestion - INFO - ✓ Created glossary DataFrame: 1142 terms
+2025-12-16 11:58:35,062 - phase1_data_ingestion - INFO - Creating term dictionary...
+2025-12-16 11:58:35,087 - phase1_data_ingestion - INFO - ✓ Dictionary contains 1142 searchable terms
+2025-12-16 11:58:35,087 - phase1_data_ingestion - INFO - Validating glossary data...
+2025-12-16 11:58:35,087 - utils - INFO - ✓ Glossary validation passed
+2025-12-16 11:58:35,090 - phase1_data_ingestion - INFO - ✓ Glossary validation complete
+2025-12-16 11:58:35,110 - utils - INFO - ✓ Saved 1,142 records to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/glossary_processed.csv
+2025-12-16 11:58:35,126 - utils - INFO - ✓ Saved JSON to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/term_dictionary.json
+2025-12-16 11:58:35,126 - phase1_data_ingestion - INFO - Loading incident data from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/raw/historical_incidents_4years.csv...
+2025-12-16 11:58:35,126 - utils - INFO - ✓ Found Incident CSV: /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/raw/historical_incidents_4years.csv
+2025-12-16 11:58:35,179 - utils - INFO - ✓ Loaded 16,893 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/raw/historical_incidents_4years.csv
+2025-12-16 11:58:35,179 - phase1_data_ingestion - INFO - ✓ Loaded 16893 incident records
+2025-12-16 11:58:35,180 - phase1_data_ingestion - INFO -   Columns: ['incident_id', 'date', 'description', 'city', 'state', 'location', 'attack_type', 'ideology', 'subideology', 'group', 'location_type', 'israel_zionism_related', 'predicted_category', 'terms_detected', 'source', 'processed_date']
+2025-12-16 11:58:35,180 - phase1_data_ingestion - INFO - Cleaning incident data...
+2025-12-16 11:58:35,279 - phase1_data_ingestion - INFO - ✓ Cleaned incidents: 16893 records remain
+2025-12-16 11:58:35,280 - phase1_data_ingestion - INFO - Extracting explicit term mentions...
+2025-12-16 11:59:09,361 - utils - INFO - Term extraction: 1689/16893 (10.0%) - 49.6 items/sec
+2025-12-16 11:59:44,144 - utils - INFO - Term extraction: 3378/16893 (20.0%) - 49.1 items/sec
+2025-12-16 12:00:19,307 - utils - INFO - Term extraction: 5067/16893 (30.0%) - 48.7 items/sec
+2025-12-16 12:00:53,822 - utils - INFO - Term extraction: 6756/16893 (40.0%) - 48.8 items/sec
+2025-12-16 12:01:28,227 - utils - INFO - Term extraction: 8445/16893 (50.0%) - 48.8 items/sec
+2025-12-16 12:02:02,767 - utils - INFO - Term extraction: 10134/16893 (60.0%) - 48.8 items/sec
+2025-12-16 12:02:37,766 - utils - INFO - Term extraction: 11823/16893 (70.0%) - 48.8 items/sec
+2025-12-16 12:03:12,500 - utils - INFO - Term extraction: 13512/16893 (80.0%) - 48.7 items/sec
+2025-12-16 12:03:47,358 - utils - INFO - Term extraction: 15201/16893 (90.0%) - 48.7 items/sec
+2025-12-16 12:04:22,229 - utils - INFO - Term extraction: 16890/16893 (100.0%) - 48.7 items/sec
+2025-12-16 12:04:22,344 - utils - INFO - ✓ Term extraction complete: 16893 items in 347.1s
+2025-12-16 12:04:22,350 - phase1_data_ingestion - INFO - ✓ Found explicit terms in 16893 / 16893 incidents
+2025-12-16 12:04:22,350 - phase1_data_ingestion - INFO - Validating incident data...
+2025-12-16 12:04:22,350 - utils - INFO - ✓ Incidents validation passed
+2025-12-16 12:04:22,362 - phase1_data_ingestion - INFO - ✓ Incident validation complete
+2025-12-16 12:04:22,546 - utils - INFO - ✓ Saved 16,893 records to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/historical_processed.csv
+2025-12-16 12:04:22,691 - utils - INFO - ✓ Saved 16,893 records to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/training_data.csv
+2025-12-16 12:04:22,702 - utils - INFO - Completed Phase 1: Data Ingestion & Preprocessing
+2025-12-16 12:04:22,703 - utils - INFO - Starting Phase 2: Glossary Term Processing
+2025-12-16 12:04:22,717 - utils - INFO - ✓ Loaded 1,142 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/glossary_processed.csv
+2025-12-16 12:04:22,762 - utils - INFO - ✓ Loaded 16,893 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/historical_processed.csv
+2025-12-16 12:04:22,762 - phase2_glossary_processing - INFO - Loaded 1142 glossary terms
+2025-12-16 12:04:22,762 - phase2_glossary_processing - INFO - Loaded 16893 incidents
+2025-12-16 12:04:22,768 - phase2_glossary_processing - INFO - Analyzing glossary term structure...
+2025-12-16 12:04:22,770 - phase2_glossary_processing - INFO - ✓ Analyzed 1142 terms
+2025-12-16 12:04:22,770 - phase2_glossary_processing - INFO -   Categories: 42
+2025-12-16 12:04:22,770 - phase2_glossary_processing - INFO -   Avg definition length: 458 chars
+2025-12-16 12:04:22,770 - phase2_glossary_processing - INFO - Extracting term relationships...
+2025-12-16 12:04:22,792 - phase2_glossary_processing - INFO - ✓ Found 151 term variations
+2025-12-16 12:04:22,792 - phase2_glossary_processing - INFO - ✓ Found 210 related term pairs
+2025-12-16 12:04:22,792 - phase2_glossary_processing - INFO - Building term relationship graph...
+2025-12-16 12:04:22,813 - phase2_glossary_processing - INFO - ✓ Built graph: 1142 nodes, 2170 edges
+2025-12-16 12:04:22,813 - phase2_glossary_processing - INFO - Identifying term clusters...
+2025-12-16 12:04:22,832 - phase2_glossary_processing - WARNING - ⚠ Could not perform clustering: Consider using a tuple, with a priority value that can be compared.
+2025-12-16 12:04:22,832 - phase2_glossary_processing - INFO - Using category-based grouping instead
+2025-12-16 12:04:22,835 - phase2_glossary_processing - INFO - ✓ Created 42 category-based clusters
+2025-12-16 12:04:22,836 - utils - ERROR - ✗ Error saving JSON to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/glossary_analysis.json: Object of type int64 is not JSON serializable
+2025-12-16 12:04:22,836 - phase2_glossary_processing - ERROR - ✗ Phase 2 failed: Object of type int64 is not JSON serializable
+2025-12-16 12:04:22,836 - __main__ - ERROR - Phase 2 failed
+Traceback (most recent call last):
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/main_pipeline.py", line 78, in run_all_phases
+    result = phase_func()
+             ^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase2_glossary_processing.py", line 389, in run_phase2_pipeline
+    save_json(analysis, analysis_output)
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/utils.py", line 70, in save_json
+    json.dump(data, f, indent=indent, ensure_ascii=False)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py", line 179, in dump
+    for chunk in iterable:
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type int64 is not JSON serializable
+2025-12-16 12:28:09,876 - utils - INFO - Starting Phase 1: Data Ingestion & Preprocessing
+2025-12-16 12:28:09,876 - phase1_data_ingestion - INFO - Loading ADL hate terms glossary...
+2025-12-16 12:28:09,876 - utils - INFO - ✓ Found Glossary JSON: /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/raw/adl_hate_terms.json
+2025-12-16 12:28:09,886 - utils - INFO - ✓ Loaded JSON from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/raw/adl_hate_terms.json
+2025-12-16 12:28:09,887 - phase1_data_ingestion - INFO - ✓ Loaded glossary with 1142 entries
+2025-12-16 12:28:09,887 - phase1_data_ingestion - INFO - Converting glossary to DataFrame...
+2025-12-16 12:28:09,892 - phase1_data_ingestion - INFO - ✓ Created glossary DataFrame: 1142 terms
+2025-12-16 12:28:09,892 - phase1_data_ingestion - INFO - Creating term dictionary...
+2025-12-16 12:28:09,915 - phase1_data_ingestion - INFO - ✓ Dictionary contains 1142 searchable terms
+2025-12-16 12:28:09,915 - phase1_data_ingestion - INFO - Validating glossary data...
+2025-12-16 12:28:09,915 - utils - INFO - ✓ Glossary validation passed
+2025-12-16 12:28:09,918 - phase1_data_ingestion - INFO - ✓ Glossary validation complete
+2025-12-16 12:28:09,950 - utils - INFO - ✓ Saved 1,142 records to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/glossary_processed.csv
+2025-12-16 12:28:10,003 - utils - INFO - ✓ Saved JSON to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/term_dictionary.json
+2025-12-16 12:28:10,003 - phase1_data_ingestion - INFO - Loading incident data from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/raw/historical_incidents_4years.csv...
+2025-12-16 12:28:10,005 - utils - INFO - ✓ Found Incident CSV: /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/raw/historical_incidents_4years.csv
+2025-12-16 12:28:10,060 - utils - INFO - ✓ Loaded 16,893 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/raw/historical_incidents_4years.csv
+2025-12-16 12:28:10,060 - phase1_data_ingestion - INFO - ✓ Loaded 16893 incident records
+2025-12-16 12:28:10,060 - phase1_data_ingestion - INFO -   Columns: ['incident_id', 'date', 'description', 'city', 'state', 'location', 'attack_type', 'ideology', 'subideology', 'group', 'location_type', 'israel_zionism_related', 'predicted_category', 'terms_detected', 'source', 'processed_date']
+2025-12-16 12:28:10,060 - phase1_data_ingestion - INFO - Cleaning incident data...
+2025-12-16 12:28:10,160 - phase1_data_ingestion - INFO - ✓ Cleaned incidents: 16893 records remain
+2025-12-16 12:28:10,161 - phase1_data_ingestion - INFO - Extracting explicit term mentions...
+2025-12-16 12:28:43,990 - utils - INFO - Term extraction: 1689/16893 (10.0%) - 49.9 items/sec
+2025-12-16 12:29:18,582 - utils - INFO - Term extraction: 3378/16893 (20.0%) - 49.4 items/sec
+2025-12-16 12:29:53,715 - utils - INFO - Term extraction: 5067/16893 (30.0%) - 48.9 items/sec
+2025-12-16 12:30:28,397 - utils - INFO - Term extraction: 6756/16893 (40.0%) - 48.9 items/sec
+2025-12-16 12:31:02,544 - utils - INFO - Term extraction: 8445/16893 (50.0%) - 49.0 items/sec
+2025-12-16 12:31:37,002 - utils - INFO - Term extraction: 10134/16893 (60.0%) - 49.0 items/sec
+2025-12-16 12:32:11,866 - utils - INFO - Term extraction: 11823/16893 (70.0%) - 48.9 items/sec
+2025-12-16 12:32:46,696 - utils - INFO - Term extraction: 13512/16893 (80.0%) - 48.9 items/sec
+2025-12-16 12:33:21,274 - utils - INFO - Term extraction: 15201/16893 (90.0%) - 48.9 items/sec
+2025-12-16 12:33:56,173 - utils - INFO - Term extraction: 16890/16893 (100.0%) - 48.8 items/sec
+2025-12-16 12:33:56,258 - utils - INFO - ✓ Term extraction complete: 16893 items in 346.1s
+2025-12-16 12:33:56,261 - phase1_data_ingestion - INFO - ✓ Found explicit terms in 16893 / 16893 incidents
+2025-12-16 12:33:56,261 - phase1_data_ingestion - INFO - Validating incident data...
+2025-12-16 12:33:56,261 - utils - INFO - ✓ Incidents validation passed
+2025-12-16 12:33:56,267 - phase1_data_ingestion - INFO - ✓ Incident validation complete
+2025-12-16 12:33:56,428 - utils - INFO - ✓ Saved 16,893 records to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/historical_processed.csv
+2025-12-16 12:33:56,568 - utils - INFO - ✓ Saved 16,893 records to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/training_data.csv
+2025-12-16 12:33:56,577 - utils - INFO - Completed Phase 1: Data Ingestion & Preprocessing
+2025-12-16 12:33:56,579 - utils - INFO - Starting Phase 2: Glossary Term Processing
+2025-12-16 12:33:56,592 - utils - INFO - ✓ Loaded 1,142 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/glossary_processed.csv
+2025-12-16 12:33:56,639 - utils - INFO - ✓ Loaded 16,893 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/historical_processed.csv
+2025-12-16 12:33:56,639 - phase2_glossary_processing - INFO - Loaded 1142 glossary terms
+2025-12-16 12:33:56,639 - phase2_glossary_processing - INFO - Loaded 16893 incidents
+2025-12-16 12:33:56,640 - phase2_glossary_processing - INFO - Analyzing glossary term structure...
+2025-12-16 12:33:56,641 - phase2_glossary_processing - INFO - ✓ Analyzed 1142 terms
+2025-12-16 12:33:56,641 - phase2_glossary_processing - INFO -   Categories: 42
+2025-12-16 12:33:56,641 - phase2_glossary_processing - INFO -   Avg definition length: 458 chars
+2025-12-16 12:33:56,641 - phase2_glossary_processing - INFO - Extracting term relationships...
+2025-12-16 12:33:56,662 - phase2_glossary_processing - INFO - ✓ Found 151 term variations
+2025-12-16 12:33:56,662 - phase2_glossary_processing - INFO - ✓ Found 210 related term pairs
+2025-12-16 12:33:56,662 - phase2_glossary_processing - INFO - Building term relationship graph...
+2025-12-16 12:33:56,683 - phase2_glossary_processing - INFO - ✓ Built graph: 1142 nodes, 2170 edges
+2025-12-16 12:33:56,683 - phase2_glossary_processing - INFO - Identifying term clusters...
+2025-12-16 12:33:56,700 - phase2_glossary_processing - WARNING - ⚠ Could not perform clustering: Consider using a tuple, with a priority value that can be compared.
+2025-12-16 12:33:56,700 - phase2_glossary_processing - INFO - Using category-based grouping instead
+2025-12-16 12:33:56,703 - phase2_glossary_processing - INFO - ✓ Created 42 category-based clusters
+2025-12-16 12:33:56,704 - utils - INFO - ✓ Saved JSON to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/glossary_analysis.json
+2025-12-16 12:33:56,706 - utils - INFO - ✓ Saved JSON to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/term_relationships.json
+2025-12-16 12:33:56,707 - utils - INFO - ✓ Saved JSON to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/term_clusters.json
+2025-12-16 12:33:56,707 - phase2_glossary_processing - INFO - Calculating term frequencies in incidents...
+2025-12-16 12:33:56,711 - phase2_glossary_processing - ERROR - ✗ Phase 2 failed: Expecting value: line 1 column 2 (char 1)
+2025-12-16 12:33:56,711 - __main__ - ERROR - Phase 2 failed
+Traceback (most recent call last):
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/main_pipeline.py", line 78, in run_all_phases
+    result = phase_func()
+             ^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase2_glossary_processing.py", line 407, in run_phase2_pipeline
+    df_enriched = enricher.calculate_term_frequency()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase2_glossary_processing.py", line 216, in calculate_term_frequency
+    terms = json.loads(row['terms_detected'])
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 2 (char 1)
+2025-12-16 12:43:25,153 - utils - INFO - Starting Phase 1: Data Ingestion & Preprocessing
+2025-12-16 12:43:25,153 - phase1_data_ingestion - INFO - Loading ADL hate terms glossary...
+2025-12-16 12:43:25,153 - utils - INFO - ✓ Found Glossary JSON: /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/raw/adl_hate_terms.json
+2025-12-16 12:43:25,163 - utils - INFO - ✓ Loaded JSON from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/raw/adl_hate_terms.json
+2025-12-16 12:43:25,163 - phase1_data_ingestion - INFO - ✓ Loaded glossary with 1142 entries
+2025-12-16 12:43:25,163 - phase1_data_ingestion - INFO - Converting glossary to DataFrame...
+2025-12-16 12:43:25,168 - phase1_data_ingestion - INFO - ✓ Created glossary DataFrame: 1142 terms
+2025-12-16 12:43:25,168 - phase1_data_ingestion - INFO - Creating term dictionary...
+2025-12-16 12:43:25,196 - phase1_data_ingestion - INFO - ✓ Dictionary contains 1142 searchable terms
+2025-12-16 12:43:25,196 - phase1_data_ingestion - INFO - Validating glossary data...
+2025-12-16 12:43:25,196 - utils - INFO - ✓ Glossary validation passed
+2025-12-16 12:43:25,198 - phase1_data_ingestion - INFO - ✓ Glossary validation complete
+2025-12-16 12:43:25,220 - utils - INFO - ✓ Saved 1,142 records to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/glossary_processed.csv
+2025-12-16 12:43:25,241 - utils - INFO - ✓ Saved JSON to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/term_dictionary.json
+2025-12-16 12:43:25,241 - phase1_data_ingestion - INFO - Loading incident data from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/raw/historical_incidents_4years.csv...
+2025-12-16 12:43:25,241 - utils - INFO - ✓ Found Incident CSV: /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/raw/historical_incidents_4years.csv
+2025-12-16 12:43:25,303 - utils - INFO - ✓ Loaded 16,893 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/raw/historical_incidents_4years.csv
+2025-12-16 12:43:25,303 - phase1_data_ingestion - INFO - ✓ Loaded 16893 incident records
+2025-12-16 12:43:25,303 - phase1_data_ingestion - INFO -   Columns: ['incident_id', 'date', 'description', 'city', 'state', 'location', 'attack_type', 'ideology', 'subideology', 'group', 'location_type', 'israel_zionism_related', 'predicted_category', 'terms_detected', 'source', 'processed_date']
+2025-12-16 12:43:25,303 - phase1_data_ingestion - INFO - Cleaning incident data...
+2025-12-16 12:43:25,406 - phase1_data_ingestion - INFO - ✓ Cleaned incidents: 16893 records remain
+2025-12-16 12:43:25,407 - phase1_data_ingestion - INFO - Extracting explicit term mentions...
+2025-12-16 12:43:59,894 - utils - INFO - Term extraction: 1689/16893 (10.0%) - 49.0 items/sec
+2025-12-16 12:44:35,287 - utils - INFO - Term extraction: 3378/16893 (20.0%) - 48.3 items/sec
+2025-12-16 12:45:11,742 - utils - INFO - Term extraction: 5067/16893 (30.0%) - 47.7 items/sec
+2025-12-16 12:45:46,733 - utils - INFO - Term extraction: 6756/16893 (40.0%) - 47.8 items/sec
+2025-12-16 12:46:21,113 - utils - INFO - Term extraction: 8445/16893 (50.0%) - 48.1 items/sec
+2025-12-16 12:46:55,378 - utils - INFO - Term extraction: 10134/16893 (60.0%) - 48.3 items/sec
+2025-12-16 12:47:30,257 - utils - INFO - Term extraction: 11823/16893 (70.0%) - 48.3 items/sec
+2025-12-16 12:48:05,032 - utils - INFO - Term extraction: 13512/16893 (80.0%) - 48.3 items/sec
+2025-12-16 12:48:40,383 - utils - INFO - Term extraction: 15201/16893 (90.0%) - 48.3 items/sec
+2025-12-16 12:49:16,165 - utils - INFO - Term extraction: 16890/16893 (100.0%) - 48.2 items/sec
+2025-12-16 12:49:16,254 - utils - INFO - ✓ Term extraction complete: 16893 items in 350.8s
+2025-12-16 12:49:16,257 - phase1_data_ingestion - INFO - ✓ Found explicit terms in 16893 / 16893 incidents
+2025-12-16 12:49:16,257 - phase1_data_ingestion - INFO - Validating incident data...
+2025-12-16 12:49:16,257 - utils - INFO - ✓ Incidents validation passed
+2025-12-16 12:49:16,262 - phase1_data_ingestion - INFO - ✓ Incident validation complete
+2025-12-16 12:49:16,401 - utils - INFO - ✓ Saved 16,893 records to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/historical_processed.csv
+2025-12-16 12:49:16,560 - utils - INFO - ✓ Saved 16,893 records to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/training_data.csv
+2025-12-16 12:49:16,570 - utils - INFO - Completed Phase 1: Data Ingestion & Preprocessing
+2025-12-16 12:49:16,571 - utils - INFO - Starting Phase 2: Glossary Term Processing
+2025-12-16 12:49:16,584 - utils - INFO - ✓ Loaded 1,142 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/glossary_processed.csv
+2025-12-16 12:49:16,670 - utils - INFO - ✓ Loaded 16,893 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/historical_processed.csv
+2025-12-16 12:49:16,671 - phase2_glossary_processing - INFO - Loaded 1142 glossary terms
+2025-12-16 12:49:16,671 - phase2_glossary_processing - INFO - Loaded 16893 incidents
+2025-12-16 12:49:16,672 - phase2_glossary_processing - INFO - Analyzing glossary term structure...
+2025-12-16 12:49:16,674 - phase2_glossary_processing - INFO - ✓ Analyzed 1142 terms
+2025-12-16 12:49:16,674 - phase2_glossary_processing - INFO -   Categories: 42
+2025-12-16 12:49:16,674 - phase2_glossary_processing - INFO -   Avg definition length: 458 chars
+2025-12-16 12:49:16,674 - phase2_glossary_processing - INFO - Extracting term relationships...
+2025-12-16 12:49:16,696 - phase2_glossary_processing - INFO - ✓ Found 151 term variations
+2025-12-16 12:49:16,696 - phase2_glossary_processing - INFO - ✓ Found 210 related term pairs
+2025-12-16 12:49:16,696 - phase2_glossary_processing - INFO - Building term relationship graph...
+2025-12-16 12:49:16,717 - phase2_glossary_processing - INFO - ✓ Built graph: 1142 nodes, 2170 edges
+2025-12-16 12:49:16,717 - phase2_glossary_processing - INFO - Identifying term clusters...
+2025-12-16 12:49:16,735 - phase2_glossary_processing - WARNING - ⚠ Could not perform clustering: Consider using a tuple, with a priority value that can be compared.
+2025-12-16 12:49:16,735 - phase2_glossary_processing - INFO - Using category-based grouping instead
+2025-12-16 12:49:16,737 - phase2_glossary_processing - INFO - ✓ Created 42 category-based clusters
+2025-12-16 12:49:16,739 - utils - INFO - ✓ Saved JSON to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/glossary_analysis.json
+2025-12-16 12:49:16,741 - utils - INFO - ✓ Saved JSON to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/term_relationships.json
+2025-12-16 12:49:16,743 - utils - INFO - ✓ Saved JSON to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/term_clusters.json
+2025-12-16 12:49:16,743 - phase2_glossary_processing - INFO - Calculating term frequencies in incidents...
+2025-12-16 12:49:16,746 - phase2_glossary_processing - ERROR - ✗ Phase 2 failed: Expecting value: line 1 column 2 (char 1)
+2025-12-16 12:49:16,746 - __main__ - ERROR - Phase 2 failed
+Traceback (most recent call last):
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/main_pipeline.py", line 78, in run_all_phases
+    result = phase_func()
+             ^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase2_glossary_processing.py", line 407, in run_phase2_pipeline
+    df_enriched = enricher.calculate_term_frequency()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase2_glossary_processing.py", line 216, in calculate_term_frequency
+    terms = json.loads(row['terms_detected'])
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 2 (char 1)
+2025-12-16 12:53:17,742 - utils - INFO - Starting Phase 2: Glossary Term Processing
+2025-12-16 12:53:17,759 - utils - INFO - ✓ Loaded 1,142 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/glossary_processed.csv
+2025-12-16 12:53:17,835 - utils - INFO - ✓ Loaded 16,893 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/historical_processed.csv
+2025-12-16 12:53:17,835 - phase2_glossary_processing - INFO - Loaded 1142 glossary terms
+2025-12-16 12:53:17,835 - phase2_glossary_processing - INFO - Loaded 16893 incidents
+2025-12-16 12:53:17,835 - phase2_glossary_processing - INFO - Analyzing glossary term structure...
+2025-12-16 12:53:17,842 - phase2_glossary_processing - INFO - ✓ Analyzed 1142 terms
+2025-12-16 12:53:17,842 - phase2_glossary_processing - INFO -   Categories: 42
+2025-12-16 12:53:17,842 - phase2_glossary_processing - INFO -   Avg definition length: 458 chars
+2025-12-16 12:53:17,842 - phase2_glossary_processing - INFO - Extracting term relationships...
+2025-12-16 12:53:17,863 - phase2_glossary_processing - INFO - ✓ Found 151 term variations
+2025-12-16 12:53:17,863 - phase2_glossary_processing - INFO - ✓ Found 210 related term pairs
+2025-12-16 12:53:17,863 - phase2_glossary_processing - INFO - Building term relationship graph...
+2025-12-16 12:53:17,885 - phase2_glossary_processing - INFO - ✓ Built graph: 1142 nodes, 2170 edges
+2025-12-16 12:53:17,886 - phase2_glossary_processing - INFO - Identifying term clusters...
+2025-12-16 12:53:17,902 - phase2_glossary_processing - WARNING - ⚠ Could not perform clustering: Consider using a tuple, with a priority value that can be compared.
+2025-12-16 12:53:17,902 - phase2_glossary_processing - INFO - Using category-based grouping instead
+2025-12-16 12:53:17,906 - phase2_glossary_processing - INFO - ✓ Created 42 category-based clusters
+2025-12-16 12:53:17,907 - utils - INFO - ✓ Saved JSON to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/glossary_analysis.json
+2025-12-16 12:53:17,909 - utils - INFO - ✓ Saved JSON to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/term_relationships.json
+2025-12-16 12:53:17,910 - utils - INFO - ✓ Saved JSON to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/term_clusters.json
+2025-12-16 12:53:17,910 - phase2_glossary_processing - INFO - Calculating term frequencies in incidents...
+2025-12-16 12:53:17,914 - phase2_glossary_processing - ERROR - ✗ Phase 2 failed: Expecting value: line 1 column 2 (char 1)
+2025-12-16 12:53:17,914 - __main__ - ERROR - Phase 2 failed
+Traceback (most recent call last):
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/main_pipeline.py", line 166, in run_all_phases
+    result = phase_func()
+             ^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase2_glossary_processing.py", line 407, in run_phase2_pipeline
+    df_enriched = enricher.calculate_term_frequency()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase2_glossary_processing.py", line 216, in calculate_term_frequency
+    terms = json.loads(row['terms_detected'])
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 2 (char 1)
+2025-12-16 12:58:12,762 - utils - INFO - Starting Phase 2: Glossary Term Processing
+2025-12-16 12:58:12,777 - utils - INFO - ✓ Loaded 1,142 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/glossary_processed.csv
+2025-12-16 12:58:12,857 - utils - INFO - ✓ Loaded 16,893 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/historical_processed.csv
+2025-12-16 12:58:12,857 - phase2_glossary_processing - INFO - Loaded 1142 glossary terms
+2025-12-16 12:58:12,857 - phase2_glossary_processing - INFO - Loaded 16893 incidents
+2025-12-16 12:58:12,858 - phase2_glossary_processing - INFO - Analyzing glossary term structure...
+2025-12-16 12:58:12,862 - phase2_glossary_processing - INFO - ✓ Analyzed 1142 terms
+2025-12-16 12:58:12,863 - phase2_glossary_processing - INFO -   Categories: 42
+2025-12-16 12:58:12,863 - phase2_glossary_processing - INFO -   Avg definition length: 458 chars
+2025-12-16 12:58:12,863 - phase2_glossary_processing - INFO - Extracting term relationships...
+2025-12-16 12:58:12,885 - phase2_glossary_processing - INFO - ✓ Found 151 term variations
+2025-12-16 12:58:12,885 - phase2_glossary_processing - INFO - ✓ Found 210 related term pairs
+2025-12-16 12:58:12,885 - phase2_glossary_processing - INFO - Building term relationship graph...
+2025-12-16 12:58:12,907 - phase2_glossary_processing - INFO - ✓ Built graph: 1142 nodes, 2170 edges
+2025-12-16 12:58:12,907 - phase2_glossary_processing - INFO - Identifying term clusters...
+2025-12-16 12:58:12,923 - phase2_glossary_processing - WARNING - ⚠ Could not perform clustering: Consider using a tuple, with a priority value that can be compared.
+2025-12-16 12:58:12,923 - phase2_glossary_processing - INFO - Using category-based grouping instead
+2025-12-16 12:58:12,926 - phase2_glossary_processing - INFO - ✓ Created 42 category-based clusters
+2025-12-16 12:58:12,927 - utils - INFO - ✓ Saved JSON to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/glossary_analysis.json
+2025-12-16 12:58:12,930 - utils - INFO - ✓ Saved JSON to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/term_relationships.json
+2025-12-16 12:58:12,931 - utils - INFO - ✓ Saved JSON to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/term_clusters.json
+2025-12-16 12:58:12,931 - phase2_glossary_processing - INFO - Calculating term frequencies in incidents...
+2025-12-16 12:58:12,964 - utils - INFO - Frequency calculation: 1689/16893 (10.0%) - 51975.6 items/sec
+2025-12-16 12:58:12,992 - utils - INFO - Frequency calculation: 3378/16893 (20.0%) - 55593.0 items/sec
+2025-12-16 12:58:13,020 - utils - INFO - Frequency calculation: 5067/16893 (30.0%) - 57091.7 items/sec
+2025-12-16 12:58:13,048 - utils - INFO - Frequency calculation: 6756/16893 (40.0%) - 57634.2 items/sec
+2025-12-16 12:58:13,076 - utils - INFO - Frequency calculation: 8445/16893 (50.0%) - 58170.8 items/sec
+2025-12-16 12:58:13,105 - utils - INFO - Frequency calculation: 10134/16893 (60.0%) - 58461.8 items/sec
+2025-12-16 12:58:13,133 - utils - INFO - Frequency calculation: 11823/16893 (70.0%) - 58696.5 items/sec
+2025-12-16 12:58:13,187 - utils - INFO - Frequency calculation: 13512/16893 (80.0%) - 52902.6 items/sec
+2025-12-16 12:58:13,215 - utils - INFO - Frequency calculation: 15201/16893 (90.0%) - 53508.6 items/sec
+2025-12-16 12:58:13,243 - utils - INFO - Frequency calculation: 16890/16893 (100.0%) - 54100.1 items/sec
+2025-12-16 12:58:13,244 - phase2_glossary_processing - ERROR - ✗ Phase 2 failed: cannot access local variable 'terms' where it is not associated with a value
+2025-12-16 12:58:13,244 - __main__ - ERROR - Phase 2 failed
+Traceback (most recent call last):
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/main_pipeline.py", line 166, in run_all_phases
+    result = phase_func()
+             ^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase2_glossary_processing.py", line 414, in run_phase2_pipeline
+    df_enriched = enricher.calculate_term_frequency()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase2_glossary_processing.py", line 224, in calculate_term_frequency
+    term_counts.update(terms)
+                       ^^^^^
+UnboundLocalError: cannot access local variable 'terms' where it is not associated with a value
+2025-12-16 13:01:46,805 - utils - INFO - Starting Phase 2: Glossary Term Processing
+2025-12-16 13:01:46,823 - utils - INFO - ✓ Loaded 1,142 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/glossary_processed.csv
+2025-12-16 13:01:46,899 - utils - INFO - ✓ Loaded 16,893 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/historical_processed.csv
+2025-12-16 13:01:46,899 - phase2_glossary_processing - INFO - Loaded 1142 glossary terms
+2025-12-16 13:01:46,899 - phase2_glossary_processing - INFO - Loaded 16893 incidents
+2025-12-16 13:01:46,899 - phase2_glossary_processing - INFO - Analyzing glossary term structure...
+2025-12-16 13:01:46,905 - phase2_glossary_processing - INFO - ✓ Analyzed 1142 terms
+2025-12-16 13:01:46,905 - phase2_glossary_processing - INFO -   Categories: 42
+2025-12-16 13:01:46,905 - phase2_glossary_processing - INFO -   Avg definition length: 458 chars
+2025-12-16 13:01:46,905 - phase2_glossary_processing - INFO - Extracting term relationships...
+2025-12-16 13:01:46,927 - phase2_glossary_processing - INFO - ✓ Found 151 term variations
+2025-12-16 13:01:46,927 - phase2_glossary_processing - INFO - ✓ Found 210 related term pairs
+2025-12-16 13:01:46,927 - phase2_glossary_processing - INFO - Building term relationship graph...
+2025-12-16 13:01:46,947 - phase2_glossary_processing - INFO - ✓ Built graph: 1142 nodes, 2170 edges
+2025-12-16 13:01:46,947 - phase2_glossary_processing - INFO - Identifying term clusters...
+2025-12-16 13:01:46,964 - phase2_glossary_processing - WARNING - ⚠ Could not perform clustering: Consider using a tuple, with a priority value that can be compared.
+2025-12-16 13:01:46,965 - phase2_glossary_processing - INFO - Using category-based grouping instead
+2025-12-16 13:01:46,967 - phase2_glossary_processing - INFO - ✓ Created 42 category-based clusters
+2025-12-16 13:01:46,968 - utils - INFO - ✓ Saved JSON to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/glossary_analysis.json
+2025-12-16 13:01:46,971 - utils - INFO - ✓ Saved JSON to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/term_relationships.json
+2025-12-16 13:01:46,972 - utils - INFO - ✓ Saved JSON to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/term_clusters.json
+2025-12-16 13:01:46,972 - phase2_glossary_processing - INFO - Calculating term frequencies in incidents...
+2025-12-16 13:01:47,005 - utils - INFO - Frequency calculation: 1689/16893 (10.0%) - 51021.0 items/sec
+2025-12-16 13:01:47,033 - utils - INFO - Frequency calculation: 3378/16893 (20.0%) - 55222.2 items/sec
+2025-12-16 13:01:47,061 - utils - INFO - Frequency calculation: 5067/16893 (30.0%) - 56774.4 items/sec
+2025-12-16 13:01:47,090 - utils - INFO - Frequency calculation: 6756/16893 (40.0%) - 57481.7 items/sec
+2025-12-16 13:01:47,118 - utils - INFO - Frequency calculation: 8445/16893 (50.0%) - 57963.6 items/sec
+2025-12-16 13:01:47,146 - utils - INFO - Frequency calculation: 10134/16893 (60.0%) - 58249.7 items/sec
+2025-12-16 13:01:47,174 - utils - INFO - Frequency calculation: 11823/16893 (70.0%) - 58560.7 items/sec
+2025-12-16 13:01:47,202 - utils - INFO - Frequency calculation: 13512/16893 (80.0%) - 58823.0 items/sec
+2025-12-16 13:01:47,230 - utils - INFO - Frequency calculation: 15201/16893 (90.0%) - 58988.6 items/sec
+2025-12-16 13:01:47,258 - utils - INFO - Frequency calculation: 16890/16893 (100.0%) - 59042.5 items/sec
+2025-12-16 13:01:47,258 - utils - INFO - ✓ Frequency calculation complete: 16893 items in 0.3s
+2025-12-16 13:01:47,259 - phase2_glossary_processing - INFO - ✓ Calculated frequencies for 0 terms
+2025-12-16 13:01:47,260 - phase2_glossary_processing - INFO - Extracting contextual examples...
+2025-12-16 13:01:47,263 - phase2_glossary_processing - ERROR - ✗ Phase 2 failed: Expecting value: line 1 column 2 (char 1)
+2025-12-16 13:01:47,263 - __main__ - ERROR - Phase 2 failed
+Traceback (most recent call last):
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/main_pipeline.py", line 166, in run_all_phases
+    result = phase_func()
+             ^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase2_glossary_processing.py", line 418, in run_phase2_pipeline
+    df_enriched = enricher.extract_contextual_examples()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase2_glossary_processing.py", line 254, in extract_contextual_examples
+    terms = json.loads(terms)
+            ^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 2 (char 1)
+2025-12-16 13:03:41,983 - utils - INFO - Starting Phase 2: Glossary Term Processing
+2025-12-16 13:03:42,003 - utils - INFO - ✓ Loaded 1,142 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/glossary_processed.csv
+2025-12-16 13:03:42,089 - utils - INFO - ✓ Loaded 16,893 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/historical_processed.csv
+2025-12-16 13:03:42,089 - phase2_glossary_processing - INFO - Loaded 1142 glossary terms
+2025-12-16 13:03:42,089 - phase2_glossary_processing - INFO - Loaded 16893 incidents
+2025-12-16 13:03:42,089 - phase2_glossary_processing - INFO - Analyzing glossary term structure...
+2025-12-16 13:03:42,097 - phase2_glossary_processing - INFO - ✓ Analyzed 1142 terms
+2025-12-16 13:03:42,097 - phase2_glossary_processing - INFO -   Categories: 42
+2025-12-16 13:03:42,097 - phase2_glossary_processing - INFO -   Avg definition length: 458 chars
+2025-12-16 13:03:42,097 - phase2_glossary_processing - INFO - Extracting term relationships...
+2025-12-16 13:03:42,118 - phase2_glossary_processing - INFO - ✓ Found 151 term variations
+2025-12-16 13:03:42,118 - phase2_glossary_processing - INFO - ✓ Found 210 related term pairs
+2025-12-16 13:03:42,118 - phase2_glossary_processing - INFO - Building term relationship graph...
+2025-12-16 13:03:42,139 - phase2_glossary_processing - INFO - ✓ Built graph: 1142 nodes, 2170 edges
+2025-12-16 13:03:42,139 - phase2_glossary_processing - INFO - Identifying term clusters...
+2025-12-16 13:03:42,156 - phase2_glossary_processing - WARNING - ⚠ Could not perform clustering: Consider using a tuple, with a priority value that can be compared.
+2025-12-16 13:03:42,156 - phase2_glossary_processing - INFO - Using category-based grouping instead
+2025-12-16 13:03:42,158 - phase2_glossary_processing - INFO - ✓ Created 42 category-based clusters
+2025-12-16 13:03:42,159 - utils - INFO - ✓ Saved JSON to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/glossary_analysis.json
+2025-12-16 13:03:42,161 - utils - INFO - ✓ Saved JSON to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/term_relationships.json
+2025-12-16 13:03:42,162 - utils - INFO - ✓ Saved JSON to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/term_clusters.json
+2025-12-16 13:03:42,162 - phase2_glossary_processing - INFO - Calculating term frequencies in incidents...
+2025-12-16 13:03:42,199 - utils - INFO - Frequency calculation: 1689/16893 (10.0%) - 46692.3 items/sec
+2025-12-16 13:03:42,228 - utils - INFO - Frequency calculation: 3378/16893 (20.0%) - 51473.5 items/sec
+2025-12-16 13:03:42,257 - utils - INFO - Frequency calculation: 5067/16893 (30.0%) - 53610.0 items/sec
+2025-12-16 13:03:42,286 - utils - INFO - Frequency calculation: 6756/16893 (40.0%) - 54746.1 items/sec
+2025-12-16 13:03:42,314 - utils - INFO - Frequency calculation: 8445/16893 (50.0%) - 55770.2 items/sec
+2025-12-16 13:03:42,342 - utils - INFO - Frequency calculation: 10134/16893 (60.0%) - 56492.4 items/sec
+2025-12-16 13:03:42,370 - utils - INFO - Frequency calculation: 11823/16893 (70.0%) - 57056.4 items/sec
+2025-12-16 13:03:42,398 - utils - INFO - Frequency calculation: 13512/16893 (80.0%) - 57441.7 items/sec
+2025-12-16 13:03:42,425 - utils - INFO - Frequency calculation: 15201/16893 (90.0%) - 57790.6 items/sec
+2025-12-16 13:03:42,453 - utils - INFO - Frequency calculation: 16890/16893 (100.0%) - 58074.8 items/sec
+2025-12-16 13:03:42,453 - utils - INFO - ✓ Frequency calculation complete: 16893 items in 0.3s
+2025-12-16 13:03:42,454 - phase2_glossary_processing - INFO - ✓ Calculated frequencies for 0 terms
+2025-12-16 13:03:42,455 - phase2_glossary_processing - INFO - Extracting contextual examples...
+2025-12-16 13:03:42,731 - phase2_glossary_processing - INFO - ✓ Found examples for 225 terms
+2025-12-16 13:03:42,743 - utils - INFO - ✓ Saved 1,142 records to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/glossary_enriched.csv
+2025-12-16 13:03:42,743 - phase2_glossary_processing - INFO - Creating embedding texts...
+2025-12-16 13:03:42,772 - phase2_glossary_processing - INFO - ✓ Created embedding texts (avg length: 549 chars)
+2025-12-16 13:03:42,772 - phase2_glossary_processing - INFO - Validating glossary for embedding...
+2025-12-16 13:03:42,773 - phase2_glossary_processing - INFO - ✓ Glossary validation passed
+2025-12-16 13:03:42,791 - utils - INFO - ✓ Saved 1,142 records to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/glossary_final.csv
+2025-12-16 13:03:42,791 - phase2_glossary_processing - ERROR - ✗ Phase 2 failed: 'incident_frequency'
+2025-12-16 13:03:42,791 - __main__ - ERROR - Phase 2 failed
+Traceback (most recent call last):
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    return self._engine.get_loc(casted_key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pandas/_libs/index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7096, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'incident_frequency'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/main_pipeline.py", line 166, in run_all_phases
+    result = phase_func()
+             ^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase2_glossary_processing.py", line 459, in run_phase2_pipeline
+    terms_with_freq = (df_enriched['incident_frequency'] > 0).sum()
+                       ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/pandas/core/frame.py", line 4113, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/pandas/core/indexes/base.py", line 3819, in get_loc
+    raise KeyError(key) from err
+KeyError: 'incident_frequency'
+2025-12-16 13:06:24,767 - __main__ - ERROR - Phase 3 failed
+Traceback (most recent call last):
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/main_pipeline.py", line 166, in run_all_phases
+    result = phase_func()
+             ^^^^^^^^^^^^
+TypeError: run_full_embedding_pipeline() missing 1 required positional argument: 'config'
+2025-12-16 13:15:47,416 - __main__ - ERROR - Phase 3 failed
+Traceback (most recent call last):
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/main_pipeline.py", line 166, in run_all_phases
+    result = phase_func()
+             ^^^^^^^^^^^^
+TypeError: run_full_embedding_pipeline() missing 1 required positional argument: 'config'
+2025-12-16 13:16:48,903 - utils - INFO - Starting Phase 3: Embedding Generation
+2025-12-16 13:16:48,903 - phase3_embeddings - INFO - Using device: cpu
+2025-12-16 13:16:48,903 - phase3_embeddings - INFO - Loading embedding model: all-mpnet-base-v2
+2025-12-16 13:17:04,558 - phase3_embeddings - INFO - ✓ Model loaded: all-mpnet-base-v2
+2025-12-16 13:17:04,651 - utils - INFO - ✓ Loaded 16,893 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/historical_processed.csv
+2025-12-16 13:17:04,665 - utils - INFO - ✓ Loaded 1,142 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/glossary_final.csv
+2025-12-16 13:17:04,667 - phase3_embeddings - INFO - ✓ Loaded 16,893 incidents
+2025-12-16 13:17:04,667 - phase3_embeddings - INFO - ✓ Loaded 1,142 glossary terms
+2025-12-16 13:20:30,549 - phase3_embeddings - INFO - ✓ Generated 16893 incident embeddings
+2025-12-16 13:20:30,550 - phase3_embeddings - INFO -   Shape: (16893, 768)
+2025-12-16 13:21:09,508 - phase3_embeddings - INFO - ✓ Generated 1142 glossary embeddings
+2025-12-16 13:21:09,510 - phase3_embeddings - INFO -   Shape: (1142, 768)
+2025-12-16 13:21:09,933 - utils - INFO - ✓ Saved numpy array (16893, 768) to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/embeddings/incident_embeddings.npy
+2025-12-16 13:21:09,961 - utils - INFO - ✓ Saved numpy array (1142, 768) to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/embeddings/glossary_embeddings.npy
+2025-12-16 13:21:09,961 - phase3_embeddings - ERROR - Phase 3 failed: name 'datetime' is not defined
+2025-12-16 13:21:09,961 - __main__ - ERROR - Phase 3 failed
+Traceback (most recent call last):
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/main_pipeline.py", line 166, in run_all_phases
+    result = phase_func()
+             ^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase3_embeddings.py", line 457, in run_phase3_pipeline
+    pipeline = run_full_embedding_pipeline(config)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase3_embeddings.py", line 406, in run_full_embedding_pipeline
+    pipeline.save_embeddings()
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase3_embeddings.py", line 154, in save_embeddings
+    'generated_at': datetime.now().isoformat(),
+                    ^^^^^^^^
+NameError: name 'datetime' is not defined
+2025-12-16 13:23:47,656 - utils - INFO - Starting Phase 3: Embedding Generation
+2025-12-16 13:23:47,656 - phase3_embeddings - INFO - Using device: cpu
+2025-12-16 13:23:47,656 - phase3_embeddings - INFO - Loading embedding model: all-mpnet-base-v2
+2025-12-16 13:23:49,571 - phase3_embeddings - INFO - ✓ Model loaded: all-mpnet-base-v2
+2025-12-16 13:23:49,661 - utils - INFO - ✓ Loaded 16,893 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/historical_processed.csv
+2025-12-16 13:23:49,676 - utils - INFO - ✓ Loaded 1,142 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/glossary_final.csv
+2025-12-16 13:23:49,678 - phase3_embeddings - INFO - ✓ Loaded 16,893 incidents
+2025-12-16 13:23:49,678 - phase3_embeddings - INFO - ✓ Loaded 1,142 glossary terms
+2025-12-16 13:27:05,302 - phase3_embeddings - INFO - ✓ Generated 16893 incident embeddings
+2025-12-16 13:27:05,303 - phase3_embeddings - INFO -   Shape: (16893, 768)
+2025-12-16 13:27:45,241 - phase3_embeddings - INFO - ✓ Generated 1142 glossary embeddings
+2025-12-16 13:27:45,243 - phase3_embeddings - INFO -   Shape: (1142, 768)
+2025-12-16 13:27:46,018 - utils - INFO - ✓ Saved numpy array (16893, 768) to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/embeddings/incident_embeddings.npy
+2025-12-16 13:27:46,111 - utils - INFO - ✓ Saved numpy array (1142, 768) to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/embeddings/glossary_embeddings.npy
+2025-12-16 13:27:46,111 - phase3_embeddings - ERROR - Phase 3 failed: name 'datetime' is not defined
+2025-12-16 13:27:46,111 - __main__ - ERROR - Phase 3 failed
+Traceback (most recent call last):
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/main_pipeline.py", line 166, in run_all_phases
+    result = phase_func()
+             ^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase3_embeddings.py", line 457, in run_phase3_pipeline
+    pipeline = run_full_embedding_pipeline(config)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase3_embeddings.py", line 406, in run_full_embedding_pipeline
+    pipeline.save_embeddings()
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase3_embeddings.py", line 154, in save_embeddings
+    'generated_at': datetime.now().isoformat(),
+                    ^^^^^^^^
+NameError: name 'datetime' is not defined
+2025-12-16 13:31:18,880 - utils - INFO - Starting Phase 3: Embedding Generation
+2025-12-16 13:31:18,880 - phase3_embeddings - INFO - Using device: cpu
+2025-12-16 13:31:18,880 - phase3_embeddings - INFO - Loading embedding model: all-mpnet-base-v2
+2025-12-16 13:31:20,843 - phase3_embeddings - INFO - ✓ Model loaded: all-mpnet-base-v2
+2025-12-16 13:31:20,935 - utils - INFO - ✓ Loaded 16,893 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/historical_processed.csv
+2025-12-16 13:31:20,949 - utils - INFO - ✓ Loaded 1,142 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/glossary_final.csv
+2025-12-16 13:31:20,950 - phase3_embeddings - INFO - ✓ Loaded 16,893 incidents
+2025-12-16 13:31:20,950 - phase3_embeddings - INFO - ✓ Loaded 1,142 glossary terms
+2025-12-16 13:34:44,388 - phase3_embeddings - INFO - ✓ Generated 16893 incident embeddings
+2025-12-16 13:34:44,390 - phase3_embeddings - INFO -   Shape: (16893, 768)
+2025-12-16 13:35:24,033 - phase3_embeddings - INFO - ✓ Generated 1142 glossary embeddings
+2025-12-16 13:35:24,035 - phase3_embeddings - INFO -   Shape: (1142, 768)
+2025-12-16 13:35:24,515 - utils - INFO - ✓ Saved numpy array (16893, 768) to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/embeddings/incident_embeddings.npy
+2025-12-16 13:35:24,578 - utils - INFO - ✓ Saved numpy array (1142, 768) to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/embeddings/glossary_embeddings.npy
+2025-12-16 13:35:24,580 - utils - INFO - ✓ Saved JSON to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/embeddings/embedding_metadata.json
+2025-12-16 13:35:24,580 - phase3_embeddings - INFO - ✓ Embeddings saved to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/embeddings
+2025-12-16 13:35:24,580 - utils - INFO - Completed Phase 3: Embedding Generation
+2025-12-16 13:35:24,581 - utils - INFO - Starting Phase 4: Knowledge Graph Construction
+2025-12-16 13:35:24,581 - phase4_knowledge_graph - ERROR - ✗ Phase 4 failed: name 'KnowledgeGraphBuilder' is not defined
+2025-12-16 13:35:24,581 - __main__ - ERROR - Phase 4 failed
+Traceback (most recent call last):
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/main_pipeline.py", line 166, in run_all_phases
+    result = phase_func()
+             ^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase4_knowledge_graph.py", line 710, in run_phase4_pipeline
+    builder = KnowledgeGraphBuilder()
+              ^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'KnowledgeGraphBuilder' is not defined
+2025-12-16 13:37:11,698 - utils - INFO - Starting Phase 4: Knowledge Graph Construction
+2025-12-16 13:37:11,698 - phase4_knowledge_graph - ERROR - ✗ Phase 4 failed: name 'KnowledgeGraphBuilder' is not defined
+2025-12-16 13:37:11,698 - __main__ - ERROR - Phase 4 failed
+Traceback (most recent call last):
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/main_pipeline.py", line 166, in run_all_phases
+    result = phase_func()
+             ^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase4_knowledge_graph.py", line 710, in run_phase4_pipeline
+    builder = KnowledgeGraphBuilder()
+              ^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'KnowledgeGraphBuilder' is not defined
+2025-12-16 13:46:36,223 - utils - INFO - Starting Phase 3: Embedding Generation
+2025-12-16 13:46:36,224 - phase3_embeddings - INFO - Using device: cpu
+2025-12-16 13:46:36,224 - phase3_embeddings - INFO - Loading embedding model: all-mpnet-base-v2
+2025-12-16 13:46:38,707 - phase3_embeddings - INFO - ✓ Model loaded: all-mpnet-base-v2
+2025-12-16 13:46:38,796 - utils - INFO - ✓ Loaded 16,893 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/historical_processed.csv
+2025-12-16 13:46:38,811 - utils - INFO - ✓ Loaded 1,142 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/glossary_final.csv
+2025-12-16 13:46:38,812 - phase3_embeddings - INFO - ✓ Loaded 16,893 incidents
+2025-12-16 13:46:38,812 - phase3_embeddings - INFO - ✓ Loaded 1,142 glossary terms
+2025-12-16 13:50:07,247 - phase3_embeddings - INFO - ✓ Generated 16893 incident embeddings
+2025-12-16 13:50:07,248 - phase3_embeddings - INFO -   Shape: (16893, 768)
+2025-12-16 13:50:49,914 - phase3_embeddings - INFO - ✓ Generated 1142 glossary embeddings
+2025-12-16 13:50:49,916 - phase3_embeddings - INFO -   Shape: (1142, 768)
+2025-12-16 13:50:50,502 - utils - INFO - ✓ Saved numpy array (16893, 768) to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/embeddings/incident_embeddings.npy
+2025-12-16 13:50:50,536 - utils - INFO - ✓ Saved numpy array (1142, 768) to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/embeddings/glossary_embeddings.npy
+2025-12-16 13:50:50,538 - utils - INFO - ✓ Saved JSON to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/embeddings/embedding_metadata.json
+2025-12-16 13:50:50,538 - phase3_embeddings - INFO - ✓ Embeddings saved to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/embeddings
+2025-12-16 13:50:50,538 - utils - INFO - Completed Phase 3: Embedding Generation
+2025-12-16 13:50:50,538 - utils - INFO - Starting Phase 4: Knowledge Graph Construction
+2025-12-16 13:50:50,539 - phase4_knowledge_graph - INFO - Connecting to Neo4j at bolt://localhost:7687...
+2025-12-16 13:50:50,734 - phase4_knowledge_graph - INFO - ✓ Connected to Neo4j
+2025-12-16 13:50:50,819 - utils - INFO - ✓ Loaded 16,893 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/historical_processed.csv
+2025-12-16 13:50:50,833 - utils - INFO - ✓ Loaded 1,142 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/glossary_final.csv
+2025-12-16 13:50:50,834 - utils - ERROR - ✗ File not found: /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/output/embedding_matches.csv
+2025-12-16 13:50:50,834 - phase4_knowledge_graph - ERROR - ✗ Phase 4 failed: [Errno 2] No such file or directory: '/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/output/embedding_matches.csv'
+2025-12-16 13:50:50,834 - __main__ - ERROR - Phase 4 failed
+Traceback (most recent call last):
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/main_pipeline.py", line 166, in run_all_phases
+    result = phase_func()
+             ^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase4_knowledge_graph.py", line 685, in run_phase4_pipeline
+    pipeline = Neo4jGraphPipeline(config)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase4_knowledge_graph.py", line 79, in __init__
+    self.df_matches = load_csv(config.embedding_matches_csv)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/utils.py", line 101, in load_csv
+    df = pd.read_csv(filepath, **kwargs)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 620, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1620, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1880, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/pandas/io/common.py", line 873, in get_handle
+    handle = open(
+             ^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/output/embedding_matches.csv'
+2025-12-16 13:50:51,065 - phase4_knowledge_graph - INFO - Neo4j connection closed
+2025-12-16 13:52:16,502 - utils - INFO - Starting Phase 3: Embedding Generation
+2025-12-16 13:52:16,502 - phase3_embeddings - INFO - Using device: cpu
+2025-12-16 13:52:16,502 - phase3_embeddings - INFO - Loading embedding model: all-mpnet-base-v2
+2025-12-16 13:52:18,481 - phase3_embeddings - INFO - ✓ Model loaded: all-mpnet-base-v2
+2025-12-16 13:52:18,569 - utils - INFO - ✓ Loaded 16,893 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/historical_processed.csv
+2025-12-16 13:52:18,587 - utils - INFO - ✓ Loaded 1,142 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/glossary_final.csv
+2025-12-16 13:52:18,588 - phase3_embeddings - INFO - ✓ Loaded 16,893 incidents
+2025-12-16 13:52:18,588 - phase3_embeddings - INFO - ✓ Loaded 1,142 glossary terms
+2025-12-16 13:55:51,192 - phase3_embeddings - INFO - ✓ Generated 16893 incident embeddings
+2025-12-16 13:55:51,195 - phase3_embeddings - INFO -   Shape: (16893, 768)
+2025-12-16 13:56:30,506 - phase3_embeddings - INFO - ✓ Generated 1142 glossary embeddings
+2025-12-16 13:56:30,506 - phase3_embeddings - INFO -   Shape: (1142, 768)
+2025-12-16 13:56:31,637 - utils - INFO - ✓ Saved numpy array (16893, 768) to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/embeddings/incident_embeddings.npy
+2025-12-16 13:56:31,755 - utils - INFO - ✓ Saved numpy array (1142, 768) to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/embeddings/glossary_embeddings.npy
+2025-12-16 13:56:31,759 - utils - INFO - ✓ Saved JSON to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/embeddings/embedding_metadata.json
+2025-12-16 13:56:31,759 - phase3_embeddings - INFO - ✓ Embeddings saved to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/embeddings
+2025-12-16 13:56:31,759 - utils - INFO - Completed Phase 3: Embedding Generation
+2025-12-16 13:58:27,521 - utils - INFO - Starting Phase 4: Knowledge Graph Construction
+2025-12-16 13:58:27,521 - phase4_knowledge_graph - INFO - Connecting to Neo4j at bolt://localhost:7687...
+2025-12-16 13:58:27,582 - phase4_knowledge_graph - INFO - ✓ Connected to Neo4j
+2025-12-16 13:58:27,637 - utils - INFO - ✓ Loaded 16,893 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/historical_processed.csv
+2025-12-16 13:58:27,650 - utils - INFO - ✓ Loaded 1,142 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/glossary_final.csv
+2025-12-16 13:58:27,700 - utils - INFO - ✓ Loaded 16,893 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/output/embedding_matches.csv
+2025-12-16 13:58:27,714 - utils - INFO - ✓ Loaded numpy array (16893, 768) from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/embeddings/incident_embeddings.npy
+2025-12-16 13:58:27,718 - utils - INFO - ✓ Loaded numpy array (1142, 768) from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/embeddings/glossary_embeddings.npy
+2025-12-16 13:58:27,718 - phase4_knowledge_graph - INFO - ✓ Loaded data: 16893 incidents, 1142 terms
+2025-12-16 13:58:28,655 - phase4_knowledge_graph - INFO - ✓ Constraints and indexes created
+2025-12-16 13:58:28,817 - phase4_knowledge_graph - INFO - ✓ Created 42 Category nodes
+2025-12-16 13:58:28,825 - phase4_knowledge_graph - ERROR - ✗ Phase 4 failed: 'float' object is not subscriptable
+2025-12-16 13:58:28,825 - __main__ - ERROR - Phase 4 failed
+Traceback (most recent call last):
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/main_pipeline.py", line 166, in run_all_phases
+    result = phase_func()
+             ^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase4_knowledge_graph.py", line 688, in run_phase4_pipeline
+    stats = pipeline.build_graph(clear_existing=clear_existing)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase4_knowledge_graph.py", line 627, in build_graph
+    self.create_term_nodes()
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase4_knowledge_graph.py", line 171, in create_term_nodes
+    'definition': row.get('definition', '')[:500],  # Truncate long definitions
+                  ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+TypeError: 'float' object is not subscriptable
+2025-12-16 13:58:28,829 - phase4_knowledge_graph - INFO - Neo4j connection closed
+2025-12-16 14:03:03,887 - utils - INFO - Starting Phase 4: Knowledge Graph Construction
+2025-12-16 14:03:03,887 - phase4_knowledge_graph - INFO - Connecting to Neo4j at bolt://localhost:7687...
+2025-12-16 14:03:03,971 - phase4_knowledge_graph - INFO - ✓ Connected to Neo4j
+2025-12-16 14:03:04,044 - utils - INFO - ✓ Loaded 16,893 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/historical_processed.csv
+2025-12-16 14:03:04,058 - utils - INFO - ✓ Loaded 1,142 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/glossary_final.csv
+2025-12-16 14:03:04,108 - utils - INFO - ✓ Loaded 16,893 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/output/embedding_matches.csv
+2025-12-16 14:03:04,372 - utils - INFO - ✓ Loaded numpy array (16893, 768) from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/embeddings/incident_embeddings.npy
+2025-12-16 14:03:04,388 - utils - INFO - ✓ Loaded numpy array (1142, 768) from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/embeddings/glossary_embeddings.npy
+2025-12-16 14:03:04,389 - phase4_knowledge_graph - INFO - ✓ Loaded data: 16893 incidents, 1142 terms
+2025-12-16 14:03:04,484 - phase4_knowledge_graph - INFO - ✓ Constraints and indexes created
+2025-12-16 14:03:04,535 - phase4_knowledge_graph - INFO - ✓ Created 42 Category nodes
+2025-12-16 14:03:04,828 - phase4_knowledge_graph - ERROR - ✗ Phase 4 failed: {neo4j_code: Neo.ClientError.Statement.SemanticError} {message: Cannot merge the following node because of NaN property value for 'term': (:Term {term: NaN})} {gql_status: 22G03} {gql_status_description: error: data exception - invalid value type}
+2025-12-16 14:03:04,829 - __main__ - ERROR - Phase 4 failed
+neo4j.exceptions.GqlError: {gql_status: 22N31} {gql_status_description: error: data exception - invalid properties in merge pattern. 'MERGE' cannot be used with graph element property values that are null or NaN.} {message: 22N31: 'MERGE' cannot be used with graph element property values that are null or NaN.} {diagnostic_record: {'_classification': 'CLIENT_ERROR', 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}} {raw_classification: CLIENT_ERROR}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/main_pipeline.py", line 166, in run_all_phases
+    result = phase_func()
+             ^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase4_knowledge_graph.py", line 688, in run_phase4_pipeline
+    stats = pipeline.build_graph(clear_existing=clear_existing)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase4_knowledge_graph.py", line 627, in build_graph
+    self.create_term_nodes()
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase4_knowledge_graph.py", line 197, in create_term_nodes
+    session.run(query, rows=batch)
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/neo4j/_sync/work/session.py", line 320, in run
+    self._auto_result._run(
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/neo4j/_sync/work/result.py", line 237, in _run
+    self._attach()
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/neo4j/_sync/work/result.py", line 439, in _attach
+    self._connection.fetch_message()
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/neo4j/_sync/io/_common.py", line 192, in inner
+    func(*args, **kwargs)
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/neo4j/_sync/io/_bolt.py", line 866, in fetch_message
+    res = self._process_message(tag, fields)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/neo4j/_sync/io/_bolt6.py", line 548, in _process_message
+    response.on_failure(summary_metadata or {})
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/neo4j/_sync/io/_common.py", line 262, in on_failure
+    raise self._hydrate_error(metadata)
+neo4j.exceptions.ClientError: {neo4j_code: Neo.ClientError.Statement.SemanticError} {message: Cannot merge the following node because of NaN property value for 'term': (:Term {term: NaN})} {gql_status: 22G03} {gql_status_description: error: data exception - invalid value type}
+2025-12-16 14:03:04,995 - phase4_knowledge_graph - INFO - Neo4j connection closed
+2025-12-16 14:03:43,558 - utils - INFO - Starting Phase 4: Knowledge Graph Construction
+2025-12-16 14:03:43,558 - phase4_knowledge_graph - INFO - Connecting to Neo4j at bolt://localhost:7687...
+2025-12-16 14:03:43,633 - phase4_knowledge_graph - INFO - ✓ Connected to Neo4j
+2025-12-16 14:03:43,707 - utils - INFO - ✓ Loaded 16,893 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/historical_processed.csv
+2025-12-16 14:03:43,723 - utils - INFO - ✓ Loaded 1,142 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/glossary_final.csv
+2025-12-16 14:03:43,771 - utils - INFO - ✓ Loaded 16,893 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/output/embedding_matches.csv
+2025-12-16 14:03:44,026 - utils - INFO - ✓ Loaded numpy array (16893, 768) from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/embeddings/incident_embeddings.npy
+2025-12-16 14:03:44,041 - utils - INFO - ✓ Loaded numpy array (1142, 768) from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/embeddings/glossary_embeddings.npy
+2025-12-16 14:03:44,041 - phase4_knowledge_graph - INFO - ✓ Loaded data: 16893 incidents, 1142 terms
+2025-12-16 14:03:44,072 - phase4_knowledge_graph - INFO - ✓ Constraints and indexes created
+2025-12-16 14:03:44,117 - phase4_knowledge_graph - INFO - ✓ Created 42 Category nodes
+2025-12-16 14:03:44,441 - phase4_knowledge_graph - INFO - ✓ Created 1141 Term nodes
+2025-12-16 14:03:45,097 - phase4_knowledge_graph - INFO - ✓ Created 3373 Location nodes
+2025-12-16 14:03:45,137 - phase4_knowledge_graph - INFO - ✓ Created 145 Group nodes
+2025-12-16 14:03:48,084 - phase4_knowledge_graph - INFO - ✓ Created 16893 Incident nodes
+2025-12-16 14:03:48,243 - phase4_knowledge_graph - INFO - ✓ Created BELONGS_TO relationships
+2025-12-16 14:03:48,890 - phase4_knowledge_graph - INFO - ✓ Created OCCURRED_IN relationships
+2025-12-16 14:03:49,130 - phase4_knowledge_graph - INFO - ✓ Created ATTRIBUTED_TO relationships
+2025-12-16 14:03:50,037 - phase4_knowledge_graph - INFO - ✓ Created 28118 USES_TERM relationships
+2025-12-16 14:03:50,424 - phase4_knowledge_graph - INFO - ✓ Created 276 SIMILAR_TO relationships (threshold: 0.7)
+2025-12-16 14:03:50,426 - utils - INFO - ✓ Loaded JSON from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/term_relationships.json
+2025-12-16 14:03:50,475 - phase4_knowledge_graph - INFO - ✓ Created 210 RELATED_TO relationships
+2025-12-16 14:03:50,581 - phase4_knowledge_graph - INFO - ✓ Created CO_OCCURS_WITH relationships
+2025-12-16 14:03:50,727 - utils - INFO - ✓ Saved JSON to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/results/knowledge_graph_stats.json
+2025-12-16 14:03:52,569 - phase4_knowledge_graph - ERROR - ✗ Phase 4 failed: name 'datetime' is not defined
+2025-12-16 14:03:52,569 - __main__ - ERROR - Phase 4 failed
+Traceback (most recent call last):
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/main_pipeline.py", line 166, in run_all_phases
+    result = phase_func()
+             ^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase4_knowledge_graph.py", line 692, in run_phase4_pipeline
+    stats = pipeline.build_graph(clear_existing=clear_existing)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase4_knowledge_graph.py", line 669, in build_graph
+    self.export_graph()
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase4_knowledge_graph.py", line 610, in export_graph
+    'exported_at': datetime.now().isoformat()
+                   ^^^^^^^^
+NameError: name 'datetime' is not defined
+2025-12-16 14:03:52,580 - phase4_knowledge_graph - INFO - Neo4j connection closed
+2025-12-16 14:05:01,189 - utils - INFO - Starting Phase 4: Knowledge Graph Construction
+2025-12-16 14:05:01,189 - phase4_knowledge_graph - INFO - Connecting to Neo4j at bolt://localhost:7687...
+2025-12-16 14:05:01,271 - phase4_knowledge_graph - INFO - ✓ Connected to Neo4j
+2025-12-16 14:05:01,341 - utils - INFO - ✓ Loaded 16,893 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/historical_processed.csv
+2025-12-16 14:05:01,356 - utils - INFO - ✓ Loaded 1,142 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/glossary_final.csv
+2025-12-16 14:05:01,408 - utils - INFO - ✓ Loaded 16,893 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/output/embedding_matches.csv
+2025-12-16 14:05:01,670 - utils - INFO - ✓ Loaded numpy array (16893, 768) from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/embeddings/incident_embeddings.npy
+2025-12-16 14:05:01,690 - utils - INFO - ✓ Loaded numpy array (1142, 768) from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/embeddings/glossary_embeddings.npy
+2025-12-16 14:05:01,690 - phase4_knowledge_graph - INFO - ✓ Loaded data: 16893 incidents, 1142 terms
+2025-12-16 14:05:01,718 - phase4_knowledge_graph - INFO - ✓ Constraints and indexes created
+2025-12-16 14:05:01,755 - phase4_knowledge_graph - INFO - ✓ Created 42 Category nodes
+2025-12-16 14:05:01,953 - phase4_knowledge_graph - INFO - ✓ Created 1141 Term nodes
+2025-12-16 14:05:02,331 - phase4_knowledge_graph - INFO - ✓ Created 3373 Location nodes
+2025-12-16 14:05:02,359 - phase4_knowledge_graph - INFO - ✓ Created 145 Group nodes
+2025-12-16 14:05:04,731 - phase4_knowledge_graph - INFO - ✓ Created 16893 Incident nodes
+2025-12-16 14:05:04,742 - phase4_knowledge_graph - INFO - ✓ Created BELONGS_TO relationships
+2025-12-16 14:05:04,915 - phase4_knowledge_graph - INFO - ✓ Created OCCURRED_IN relationships
+2025-12-16 14:05:04,953 - phase4_knowledge_graph - INFO - ✓ Created ATTRIBUTED_TO relationships
+2025-12-16 14:05:05,757 - phase4_knowledge_graph - INFO - ✓ Created 28118 USES_TERM relationships
+2025-12-16 14:05:06,075 - phase4_knowledge_graph - INFO - ✓ Created 276 SIMILAR_TO relationships (threshold: 0.7)
+2025-12-16 14:05:06,077 - utils - INFO - ✓ Loaded JSON from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/term_relationships.json
+2025-12-16 14:05:06,085 - phase4_knowledge_graph - INFO - ✓ Created 210 RELATED_TO relationships
+2025-12-16 14:05:06,089 - phase4_knowledge_graph - INFO - ✓ Created CO_OCCURS_WITH relationships
+2025-12-16 14:05:06,108 - utils - INFO - ✓ Saved JSON to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/results/knowledge_graph_stats.json
+2025-12-16 14:05:08,549 - utils - ERROR - ✗ Error saving JSON to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/output/knowledge_graph_export.json: Object of type DateTime is not JSON serializable
+2025-12-16 14:05:08,549 - phase4_knowledge_graph - ERROR - ✗ Phase 4 failed: Object of type DateTime is not JSON serializable
+2025-12-16 14:05:08,549 - __main__ - ERROR - Phase 4 failed
+Traceback (most recent call last):
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/main_pipeline.py", line 166, in run_all_phases
+    result = phase_func()
+             ^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase4_knowledge_graph.py", line 693, in run_phase4_pipeline
+    stats = pipeline.build_graph(clear_existing=clear_existing)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase4_knowledge_graph.py", line 670, in build_graph
+    self.export_graph()
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase4_knowledge_graph.py", line 614, in export_graph
+    save_json(export_data, GRAPH_JSON_PATH)
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/utils.py", line 91, in save_json
+    json.dump(converted_data, f, indent=indent, ensure_ascii=False)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py", line 179, in dump
+    for chunk in iterable:
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 326, in _iterencode_list
+    yield from chunks
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type DateTime is not JSON serializable
+2025-12-16 14:05:08,564 - phase4_knowledge_graph - INFO - Neo4j connection closed
+2025-12-16 14:06:47,852 - utils - INFO - Starting Phase 5: Raw Incident Processing
+2025-12-16 14:06:47,852 - phase5_raw_incident_processor - INFO - Connecting to Neo4j knowledge graph...
+2025-12-16 14:06:47,852 - phase5_raw_incident_processor - INFO - Loading embedding model: all-mpnet-base-v2
+2025-12-16 14:06:51,097 - utils - INFO - ✓ Loaded numpy array (1142, 768) from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/embeddings/glossary_embeddings.npy
+2025-12-16 14:06:51,162 - utils - INFO - ✓ Loaded 1,142 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/glossary_final.csv
+2025-12-16 14:06:51,163 - phase5_raw_incident_processor - INFO - ✓ Processor initialized
+2025-12-16 14:06:51,163 - phase5_raw_incident_processor - INFO - Loading raw incidents from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/raw/raw_incidents_lastyear.csv...
+2025-12-16 14:06:51,210 - utils - INFO - ✓ Loaded 9,603 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/raw/raw_incidents_lastyear.csv
+2025-12-16 14:06:51,307 - phase5_raw_incident_processor - INFO - ✓ Loaded 9603 raw incidents
+2025-12-16 14:06:51,307 - phase5_raw_incident_processor - INFO - Processing raw incidents through knowledge graph pipeline...
+2025-12-16 14:06:51,307 - phase5_raw_incident_processor - INFO - Generating embeddings for raw incidents...
+2025-12-16 14:08:21,961 - phase5_raw_incident_processor - INFO - ✓ Generated embeddings for 9603 incidents
+2025-12-16 14:08:21,963 - phase5_raw_incident_processor - INFO - Matching incidents to glossary terms...
+2025-12-16 14:08:22,928 - phase5_raw_incident_processor - INFO - ✓ Generated matches for 9603 incidents
+2025-12-16 14:08:24,290 - utils - INFO - Graph-enhanced classification: 960/9603 (10.0%) - 707.2 items/sec
+2025-12-16 14:08:25,202 - utils - INFO - Graph-enhanced classification: 1920/9603 (20.0%) - 845.9 items/sec
+2025-12-16 14:08:26,649 - utils - INFO - Graph-enhanced classification: 2880/9603 (30.0%) - 774.8 items/sec
+2025-12-16 14:08:27,564 - utils - INFO - Graph-enhanced classification: 3840/9603 (40.0%) - 829.0 items/sec
+2025-12-16 14:08:28,473 - utils - INFO - Graph-enhanced classification: 4800/9603 (50.0%) - 866.3 items/sec
+2025-12-16 14:08:29,160 - utils - INFO - Graph-enhanced classification: 5760/9603 (60.0%) - 924.9 items/sec
+2025-12-16 14:08:30,427 - utils - INFO - Graph-enhanced classification: 6720/9603 (70.0%) - 896.6 items/sec
+2025-12-16 14:08:31,187 - utils - INFO - Graph-enhanced classification: 7680/9603 (80.0%) - 930.3 items/sec
+2025-12-16 14:08:31,710 - utils - INFO - Graph-enhanced classification: 8640/9603 (90.0%) - 984.3 items/sec
+2025-12-16 14:08:32,276 - utils - INFO - Graph-enhanced classification: 9600/9603 (100.0%) - 1027.4 items/sec
+2025-12-16 14:08:32,278 - utils - INFO - ✓ Graph-enhanced classification complete: 9603 items in 9.3s
+2025-12-16 14:08:32,322 - phase5_raw_incident_processor - INFO - ✓ Processed 9603 incidents
+2025-12-16 14:08:32,329 - phase5_raw_incident_processor - INFO - Generating processing report...
+2025-12-16 14:08:32,500 - utils - INFO - ✓ Saved 9,603 records to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/output/machine_processed_incidents.csv
+2025-12-16 14:08:32,501 - utils - INFO - ✓ Saved JSON to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/results/processing_report.json
+2025-12-16 14:08:32,501 - utils - INFO - Completed Phase 5: Raw Incident Processing
+2025-12-16 14:08:32,502 - utils - INFO - Starting Phase 6: Comparison and Evaluation
+2025-12-16 14:08:32,567 - utils - INFO - ✓ Loaded 9,603 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/output/machine_processed_incidents.csv
+2025-12-16 14:08:32,604 - utils - INFO - ✓ Loaded 9,311 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/raw/human_processed_lastyear.csv
+2025-12-16 14:08:32,604 - phase6_comparison_evaluation - INFO - Merging machine and human classifications...
+2025-12-16 14:08:32,605 - phase6_comparison_evaluation - ERROR - ✗ Phase 6 failed: You are trying to merge on object and int64 columns for key 'incident_id'. If you wish to proceed you should use pd.concat
+2025-12-16 14:08:32,605 - __main__ - ERROR - Phase 6 failed
+Traceback (most recent call last):
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/main_pipeline.py", line 166, in run_all_phases
+    result = phase_func()
+             ^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase6_comparison_evaluation.py", line 496, in run_phase6_pipeline
+    df_merged = comparator.merge_datasets()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase6_comparison_evaluation.py", line 58, in merge_datasets
+    self.df_merged = self.df_machine.merge(
+                     ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/pandas/core/frame.py", line 10859, in merge
+    return merge(
+           ^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/pandas/core/reshape/merge.py", line 170, in merge
+    op = _MergeOperation(
+         ^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/pandas/core/reshape/merge.py", line 807, in __init__
+    self._maybe_coerce_merge_keys()
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/pandas/core/reshape/merge.py", line 1509, in _maybe_coerce_merge_keys
+    raise ValueError(msg)
+ValueError: You are trying to merge on object and int64 columns for key 'incident_id'. If you wish to proceed you should use pd.concat
+2025-12-16 14:09:18,688 - utils - INFO - Starting Phase 6: Comparison and Evaluation
+2025-12-16 14:09:18,806 - utils - INFO - ✓ Loaded 9,603 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/output/machine_processed_incidents.csv
+2025-12-16 14:09:18,844 - utils - INFO - ✓ Loaded 9,311 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/raw/human_processed_lastyear.csv
+2025-12-16 14:09:18,844 - phase6_comparison_evaluation - INFO - Merging machine and human classifications...
+2025-12-16 14:09:18,847 - phase6_comparison_evaluation - ERROR - ✗ Phase 6 failed: You are trying to merge on object and int64 columns for key 'incident_id'. If you wish to proceed you should use pd.concat
+2025-12-16 14:09:18,848 - __main__ - ERROR - Phase 6 failed
+Traceback (most recent call last):
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/main_pipeline.py", line 166, in run_all_phases
+    result = phase_func()
+             ^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase6_comparison_evaluation.py", line 496, in run_phase6_pipeline
+    df_merged = comparator.merge_datasets()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase6_comparison_evaluation.py", line 58, in merge_datasets
+    self.df_merged = self.df_machine.merge(
+                     ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/pandas/core/frame.py", line 10859, in merge
+    return merge(
+           ^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/pandas/core/reshape/merge.py", line 170, in merge
+    op = _MergeOperation(
+         ^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/pandas/core/reshape/merge.py", line 807, in __init__
+    self._maybe_coerce_merge_keys()
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/pandas/core/reshape/merge.py", line 1509, in _maybe_coerce_merge_keys
+    raise ValueError(msg)
+ValueError: You are trying to merge on object and int64 columns for key 'incident_id'. If you wish to proceed you should use pd.concat
+2025-12-16 14:13:40,341 - utils - INFO - Starting Phase 6: Comparison and Evaluation
+2025-12-16 14:13:40,433 - utils - INFO - ✓ Loaded 9,603 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/output/machine_processed_incidents.csv
+2025-12-16 14:13:40,468 - utils - INFO - ✓ Loaded 9,311 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/raw/human_processed_lastyear.csv
+2025-12-16 14:13:40,468 - phase6_comparison_evaluation - INFO - Merging machine and human classifications...
+2025-12-16 14:13:40,472 - phase6_comparison_evaluation - ERROR - ✗ Phase 6 failed: You are trying to merge on object and int64 columns for key 'incident_id'. If you wish to proceed you should use pd.concat
+2025-12-16 14:13:40,472 - __main__ - ERROR - Phase 6 failed
+Traceback (most recent call last):
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/main_pipeline.py", line 166, in run_all_phases
+    result = phase_func()
+             ^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase6_comparison_evaluation.py", line 496, in run_phase6_pipeline
+    df_merged = comparator.merge_datasets()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase6_comparison_evaluation.py", line 58, in merge_datasets
+    self.df_merged = self.df_machine.merge(
+                     ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/pandas/core/frame.py", line 10859, in merge
+    return merge(
+           ^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/pandas/core/reshape/merge.py", line 170, in merge
+    op = _MergeOperation(
+         ^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/pandas/core/reshape/merge.py", line 807, in __init__
+    self._maybe_coerce_merge_keys()
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/pandas/core/reshape/merge.py", line 1509, in _maybe_coerce_merge_keys
+    raise ValueError(msg)
+ValueError: You are trying to merge on object and int64 columns for key 'incident_id'. If you wish to proceed you should use pd.concat
+2025-12-16 14:14:28,767 - utils - INFO - Starting Phase 6: Comparison and Evaluation
+2025-12-16 14:14:28,840 - utils - INFO - ✓ Loaded 9,603 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/output/machine_processed_incidents.csv
+2025-12-16 14:14:28,878 - utils - INFO - ✓ Loaded 9,311 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/raw/human_processed_lastyear.csv
+2025-12-16 14:14:28,878 - phase6_comparison_evaluation - INFO - Merging machine and human classifications...
+2025-12-16 14:14:28,891 - phase6_comparison_evaluation - INFO - ✓ Merged 9311 incidents for comparison
+2025-12-16 14:14:28,891 - phase6_comparison_evaluation - INFO - Calculating accuracy metrics...
+2025-12-16 14:14:29,010 - phase6_comparison_evaluation - INFO - ✓ Overall Accuracy: 0.000
+2025-12-16 14:14:29,011 - phase6_comparison_evaluation - INFO - ✓ Macro F1: 0.000
+2025-12-16 14:14:29,011 - phase6_comparison_evaluation - INFO - ✓ Weighted F1: 0.000
+2025-12-16 14:14:29,011 - phase6_comparison_evaluation - INFO - Generating confusion matrix...
+2025-12-16 14:14:29,020 - phase6_comparison_evaluation - INFO - ✓ Confusion matrix shape: (24, 24)
+2025-12-16 14:14:29,020 - phase6_comparison_evaluation - INFO - Creating confusion matrix visualization...
+2025-12-16 14:14:30,178 - phase6_comparison_evaluation - INFO - ✓ Saved confusion matrix to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/results/confusion_matrix.png
+2025-12-16 14:14:30,178 - phase6_comparison_evaluation - INFO - Analyzing accuracy by confidence level...
+2025-12-16 14:14:30,187 - phase6_comparison_evaluation - INFO - ✓ Confidence analysis complete
+2025-12-16 14:14:30,187 - phase6_comparison_evaluation - INFO - Performing McNemar's test...
+2025-12-16 14:14:30,192 - phase6_comparison_evaluation - INFO - Performing chi-square test...
+2025-12-16 14:14:30,192 - phase6_comparison_evaluation - ERROR - ✗ Phase 6 failed: The internally computed table of expected frequencies has a zero element at (np.int64(0), np.int64(0)).
+2025-12-16 14:14:30,192 - __main__ - ERROR - Phase 6 failed
+Traceback (most recent call last):
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/main_pipeline.py", line 166, in run_all_phases
+    result = phase_func()
+             ^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase6_comparison_evaluation.py", line 528, in run_phase6_pipeline
+    statistical_tests['chi_square'] = tester.chi_square_test(cm)
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase6_comparison_evaluation.py", line 286, in chi_square_test
+    chi2, p_value, dof, expected = chi2_contingency(cm)
+                                   ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/scipy/stats/contingency.py", line 324, in chi2_contingency
+    raise ValueError("The internally computed table of expected "
+ValueError: The internally computed table of expected frequencies has a zero element at (np.int64(0), np.int64(0)).
+2025-12-16 14:15:23,336 - utils - INFO - Starting Phase 6: Comparison and Evaluation
+2025-12-16 14:15:23,430 - utils - INFO - ✓ Loaded 9,603 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/output/machine_processed_incidents.csv
+2025-12-16 14:15:23,479 - utils - INFO - ✓ Loaded 9,311 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/raw/human_processed_lastyear.csv
+2025-12-16 14:15:23,480 - phase6_comparison_evaluation - INFO - Merging machine and human classifications...
+2025-12-16 14:15:23,553 - phase6_comparison_evaluation - INFO - ✓ Merged 9311 incidents for comparison
+2025-12-16 14:15:23,553 - phase6_comparison_evaluation - INFO - Calculating accuracy metrics...
+2025-12-16 14:15:23,776 - phase6_comparison_evaluation - INFO - ✓ Overall Accuracy: 0.000
+2025-12-16 14:15:23,776 - phase6_comparison_evaluation - INFO - ✓ Macro F1: 0.000
+2025-12-16 14:15:23,776 - phase6_comparison_evaluation - INFO - ✓ Weighted F1: 0.000
+2025-12-16 14:15:23,776 - phase6_comparison_evaluation - INFO - Generating confusion matrix...
+2025-12-16 14:15:23,789 - phase6_comparison_evaluation - INFO - ✓ Confusion matrix shape: (24, 24)
+2025-12-16 14:15:23,789 - phase6_comparison_evaluation - INFO - Creating confusion matrix visualization...
+2025-12-16 14:15:24,402 - phase6_comparison_evaluation - INFO - ✓ Saved confusion matrix to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/results/confusion_matrix.png
+2025-12-16 14:15:24,402 - phase6_comparison_evaluation - INFO - Analyzing accuracy by confidence level...
+2025-12-16 14:15:24,411 - phase6_comparison_evaluation - INFO - ✓ Confidence analysis complete
+2025-12-16 14:15:24,411 - phase6_comparison_evaluation - INFO - Performing McNemar's test...
+2025-12-16 14:15:24,416 - phase6_comparison_evaluation - INFO - Performing chi-square test...
+2025-12-16 14:15:24,417 - phase6_comparison_evaluation - ERROR - ✗ Phase 6 failed: The internally computed table of expected frequencies has a zero element at (np.int64(0), np.int64(0)).
+2025-12-16 14:15:24,417 - __main__ - ERROR - Phase 6 failed
+Traceback (most recent call last):
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/main_pipeline.py", line 166, in run_all_phases
+    result = phase_func()
+             ^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase6_comparison_evaluation.py", line 528, in run_phase6_pipeline
+    statistical_tests['chi_square'] = tester.chi_square_test(cm)
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase6_comparison_evaluation.py", line 286, in chi_square_test
+    chi2, p_value, dof, expected = chi2_contingency(cm)
+                                   ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/.venv/lib/python3.11/site-packages/scipy/stats/contingency.py", line 324, in chi2_contingency
+    raise ValueError("The internally computed table of expected "
+ValueError: The internally computed table of expected frequencies has a zero element at (np.int64(0), np.int64(0)).
+2025-12-16 14:17:37,846 - utils - INFO - Starting Phase 6: Comparison and Evaluation
+2025-12-16 14:17:37,937 - utils - INFO - ✓ Loaded 9,603 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/output/machine_processed_incidents.csv
+2025-12-16 14:17:37,973 - utils - INFO - ✓ Loaded 9,311 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/raw/human_processed_lastyear.csv
+2025-12-16 14:17:37,974 - phase6_comparison_evaluation - INFO - Merging machine and human classifications...
+2025-12-16 14:17:37,988 - phase6_comparison_evaluation - INFO - ✓ Merged 9311 incidents for comparison
+2025-12-16 14:17:37,988 - phase6_comparison_evaluation - INFO - Calculating accuracy metrics...
+2025-12-16 14:17:38,107 - phase6_comparison_evaluation - INFO - ✓ Overall Accuracy: 0.000
+2025-12-16 14:17:38,107 - phase6_comparison_evaluation - INFO - ✓ Macro F1: 0.000
+2025-12-16 14:17:38,107 - phase6_comparison_evaluation - INFO - ✓ Weighted F1: 0.000
+2025-12-16 14:17:38,107 - phase6_comparison_evaluation - INFO - Generating confusion matrix...
+2025-12-16 14:17:38,117 - phase6_comparison_evaluation - INFO - ✓ Confusion matrix shape: (24, 24)
+2025-12-16 14:17:38,118 - phase6_comparison_evaluation - INFO - Creating confusion matrix visualization...
+2025-12-16 14:17:38,651 - phase6_comparison_evaluation - INFO - ✓ Saved confusion matrix to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/results/confusion_matrix.png
+2025-12-16 14:17:38,651 - phase6_comparison_evaluation - INFO - Analyzing accuracy by confidence level...
+2025-12-16 14:17:38,657 - phase6_comparison_evaluation - INFO - ✓ Confidence analysis complete
+2025-12-16 14:17:38,657 - phase6_comparison_evaluation - INFO - Performing McNemar's test...
+2025-12-16 14:17:38,661 - phase6_comparison_evaluation - INFO - Performing chi-square test...
+2025-12-16 14:17:38,661 - phase6_comparison_evaluation - WARNING - Chi-square test failed due to sparse data: The internally computed table of expected frequencies has a zero element at (np.int64(0), np.int64(0)).
+2025-12-16 14:17:38,661 - phase6_comparison_evaluation - INFO - Performing paired t-test...
+2025-12-16 14:17:38,663 - phase6_comparison_evaluation - ERROR - ✗ Phase 6 failed: 'chi2'
+2025-12-16 14:17:38,663 - __main__ - ERROR - Phase 6 failed
+Traceback (most recent call last):
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/main_pipeline.py", line 166, in run_all_phases
+    result = phase_func()
+             ^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase6_comparison_evaluation.py", line 551, in run_phase6_pipeline
+    report_gen.save_report(EVALUATION_REPORT_PATH)
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase6_comparison_evaluation.py", line 484, in save_report
+    report_text = self.generate_text_report()
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase6_comparison_evaluation.py", line 419, in generate_text_report
+    report.append(f"  χ² statistic: {chi['chi2']:.4f}")
+                                     ~~~^^^^^^^^
+KeyError: 'chi2'
+2025-12-16 14:22:50,707 - utils - INFO - Starting Phase 6: Comparison and Evaluation
+2025-12-16 14:22:50,793 - utils - INFO - ✓ Loaded 9,603 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/output/machine_processed_incidents.csv
+2025-12-16 14:22:50,826 - utils - INFO - ✓ Loaded 9,311 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/raw/human_processed_lastyear.csv
+2025-12-16 14:22:50,826 - phase6_comparison_evaluation - INFO - Merging machine and human classifications...
+2025-12-16 14:22:50,841 - phase6_comparison_evaluation - INFO - ✓ Merged 9311 incidents for comparison
+2025-12-16 14:22:50,841 - phase6_comparison_evaluation - INFO - Calculating accuracy metrics...
+2025-12-16 14:22:50,959 - phase6_comparison_evaluation - INFO - ✓ Overall Accuracy: 0.000
+2025-12-16 14:22:50,959 - phase6_comparison_evaluation - INFO - ✓ Macro F1: 0.000
+2025-12-16 14:22:50,960 - phase6_comparison_evaluation - INFO - ✓ Weighted F1: 0.000
+2025-12-16 14:22:50,960 - phase6_comparison_evaluation - INFO - Generating confusion matrix...
+2025-12-16 14:22:50,969 - phase6_comparison_evaluation - INFO - ✓ Confusion matrix shape: (24, 24)
+2025-12-16 14:22:50,970 - phase6_comparison_evaluation - INFO - Creating confusion matrix visualization...
+2025-12-16 14:22:51,532 - phase6_comparison_evaluation - INFO - ✓ Saved confusion matrix to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/results/confusion_matrix.png
+2025-12-16 14:22:51,532 - phase6_comparison_evaluation - INFO - Analyzing accuracy by confidence level...
+2025-12-16 14:22:51,539 - phase6_comparison_evaluation - INFO - ✓ Confidence analysis complete
+2025-12-16 14:22:51,539 - phase6_comparison_evaluation - INFO - Performing McNemar's test...
+2025-12-16 14:22:51,543 - phase6_comparison_evaluation - INFO - Performing chi-square test...
+2025-12-16 14:22:51,543 - phase6_comparison_evaluation - WARNING - Chi-square test failed due to sparse data: The internally computed table of expected frequencies has a zero element at (np.int64(0), np.int64(0)).
+2025-12-16 14:22:51,543 - phase6_comparison_evaluation - INFO - Performing paired t-test...
+2025-12-16 14:22:51,545 - phase6_comparison_evaluation - INFO - ✓ Saved evaluation report to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/results/evaluation_report.txt
+2025-12-16 14:22:51,663 - utils - INFO - ✓ Saved 9,311 records to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/results/comparison_results.csv
+2025-12-16 14:22:51,664 - utils - INFO - ✓ Saved JSON to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/results/evaluation_metrics.json
+2025-12-16 14:22:51,664 - utils - ERROR - ✗ Error saving JSON to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/results/statistical_tests.json: Object of type bool is not JSON serializable
+2025-12-16 14:22:51,664 - phase6_comparison_evaluation - ERROR - ✗ Phase 6 failed: Object of type bool is not JSON serializable
+2025-12-16 14:22:51,664 - __main__ - ERROR - Phase 6 failed
+Traceback (most recent call last):
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/main_pipeline.py", line 166, in run_all_phases
+    result = phase_func()
+             ^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase6_comparison_evaluation.py", line 564, in run_phase6_pipeline
+    save_json(statistical_tests, statistical_tests_path)
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/utils.py", line 91, in save_json
+    json.dump(converted_data, f, indent=indent, ensure_ascii=False)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py", line 179, in dump
+    for chunk in iterable:
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 432, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 406, in _iterencode_dict
+    yield from chunks
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 439, in _iterencode
+    o = _default(o)
+        ^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type bool is not JSON serializable
+2025-12-16 17:43:19,152 - utils - INFO - Starting Phase 7: R Export and Preparation
+2025-12-16 17:43:19,152 - phase7_export_for_r - INFO - Starting R export pipeline...
+2025-12-16 17:43:19,152 - phase7_export_for_r - INFO - Loading all pipeline results...
+2025-12-16 17:43:19,175 - utils - INFO - ✓ Loaded 1,142 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/glossary_final.csv
+2025-12-16 17:43:19,270 - utils - INFO - ✓ Loaded 16,893 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/historical_processed.csv
+2025-12-16 17:43:19,517 - utils - INFO - ✓ Loaded numpy array (16893, 768) from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/embeddings/incident_embeddings.npy
+2025-12-16 17:43:19,532 - utils - INFO - ✓ Loaded numpy array (1142, 768) from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/embeddings/glossary_embeddings.npy
+2025-12-16 17:43:19,579 - utils - INFO - ✓ Loaded 16,893 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/output/embedding_matches.csv
+2025-12-16 17:43:19,645 - utils - INFO - ✓ Loaded 9,603 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/output/machine_processed_incidents.csv
+2025-12-16 17:43:19,705 - utils - INFO - ✓ Loaded 9,311 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/results/comparison_results.csv
+2025-12-16 17:43:19,706 - utils - INFO - ✓ Loaded JSON from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/results/evaluation_metrics.json
+2025-12-16 17:43:19,706 - utils - INFO - ✓ Loaded JSON from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/results/knowledge_graph_stats.json
+2025-12-16 17:43:19,706 - phase7_export_for_r - INFO - ✓ All results loaded
+2025-12-16 17:43:19,706 - phase7_export_for_r - INFO - Creating structured incidents dataset for R...
+2025-12-16 17:43:19,726 - phase7_export_for_r - INFO - ✓ Created structured dataset with 9311 incidents
+2025-12-16 17:43:19,878 - utils - INFO - ✓ Saved 9,311 records to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/output/structured_incidents.csv
+2025-12-16 17:43:19,878 - phase7_export_for_r - INFO - Exporting embeddings for UMAP visualization...
+2025-12-16 17:43:28,120 - utils - INFO - ✓ Saved 16,893 records to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/output/incident_embeddings_for_r.csv
+2025-12-16 17:43:28,709 - utils - INFO - ✓ Saved 1,142 records to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/output/glossary_embeddings_for_r.csv
+2025-12-16 17:43:28,709 - phase7_export_for_r - INFO - ✓ Embeddings exported for R
+2025-12-16 17:43:28,710 - phase7_export_for_r - INFO - Exporting confusion matrix data...
+2025-12-16 17:43:28,737 - utils - INFO - ✓ Saved 1 records to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/output/confusion_matrix_long.csv
+2025-12-16 17:43:28,738 - phase7_export_for_r - INFO - ✓ Confusion matrix exported
+2025-12-16 17:43:28,738 - phase7_export_for_r - INFO - Exporting category performance data...
+2025-12-16 17:43:28,740 - utils - INFO - ✓ Saved 24 records to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/output/category_performance.csv
+2025-12-16 17:43:28,740 - phase7_export_for_r - INFO - ✓ Category performance exported
+2025-12-16 17:43:28,740 - phase7_export_for_r - INFO - Exporting confidence analysis...
+2025-12-16 17:43:28,769 - utils - INFO - ✓ Saved 9,311 records to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/output/confidence_analysis.csv
+2025-12-16 17:43:28,769 - phase7_export_for_r - INFO - ✓ Confidence analysis exported
+2025-12-16 17:43:28,770 - phase7_export_for_r - INFO - Exporting temporal analysis...
+2025-12-16 17:43:28,830 - utils - INFO - ✓ Saved 9,311 records to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/output/temporal_analysis.csv
+2025-12-16 17:43:28,830 - phase7_export_for_r - INFO - ✓ Temporal analysis exported
+2025-12-16 17:43:28,830 - phase7_export_for_r - INFO - Exporting geographic analysis...
+2025-12-16 17:43:28,836 - utils - INFO - ✓ Saved 431 records to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/output/geographic_analysis.csv
+2025-12-16 17:43:28,836 - phase7_export_for_r - INFO - ✓ Geographic analysis exported
+2025-12-16 17:43:28,836 - phase7_export_for_r - INFO - Exporting graph network data...
+2025-12-16 17:43:28,837 - utils - ERROR - ✗ Invalid JSON in /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/output/knowledge_graph_export.json: Expecting value: line 10 column 23 (char 181)
+2025-12-16 17:43:28,837 - phase7_export_for_r - ERROR - ✗ Phase 7 failed: Expecting value: line 10 column 23 (char 181)
+2025-12-16 17:43:28,837 - __main__ - ERROR - Phase 7 failed
+Traceback (most recent call last):
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/main_pipeline.py", line 166, in run_all_phases
+    result = phase_func()
+             ^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase7_export_for_r.py", line 464, in run_phase7_pipeline
+    metadata = exporter.export_all()
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase7_export_for_r.py", line 441, in export_all
+    self.export_graph_network_data()
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/phase7_export_for_r.py", line 324, in export_graph_network_data
+    graph_data = load_json(GRAPH_JSON_PATH)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/utils.py", line 52, in load_json
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.11/3.11.14_1/Frameworks/Python.framework/Versions/3.11/lib/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 10 column 23 (char 181)
+2025-12-16 18:07:02,648 - utils - INFO - Starting Phase 7: R Export and Preparation
+2025-12-16 18:07:02,649 - phase7_export_for_r - INFO - Starting R export pipeline...
+2025-12-16 18:07:02,649 - phase7_export_for_r - INFO - Loading all pipeline results...
+2025-12-16 18:07:02,672 - utils - INFO - ✓ Loaded 1,142 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/glossary_final.csv
+2025-12-16 18:07:02,750 - utils - INFO - ✓ Loaded 16,893 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/processed/historical_processed.csv
+2025-12-16 18:07:03,021 - utils - INFO - ✓ Loaded numpy array (16893, 768) from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/embeddings/incident_embeddings.npy
+2025-12-16 18:07:03,039 - utils - INFO - ✓ Loaded numpy array (1142, 768) from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/embeddings/glossary_embeddings.npy
+2025-12-16 18:07:03,098 - utils - INFO - ✓ Loaded 16,893 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/output/embedding_matches.csv
+2025-12-16 18:07:03,185 - utils - INFO - ✓ Loaded 9,603 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/output/machine_processed_incidents.csv
+2025-12-16 18:07:03,279 - utils - INFO - ✓ Loaded 9,311 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/results/comparison_results.csv
+2025-12-16 18:07:03,280 - utils - INFO - ✓ Loaded JSON from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/results/evaluation_metrics.json
+2025-12-16 18:07:03,281 - utils - INFO - ✓ Loaded JSON from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/results/knowledge_graph_stats.json
+2025-12-16 18:07:03,281 - phase7_export_for_r - INFO - ✓ All results loaded
+2025-12-16 18:07:03,281 - phase7_export_for_r - INFO - Creating structured incidents dataset for R...
+2025-12-16 18:07:03,310 - phase7_export_for_r - INFO - ✓ Created structured dataset with 9311 incidents
+2025-12-16 18:07:03,493 - utils - INFO - ✓ Saved 9,311 records to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/output/structured_incidents.csv
+2025-12-16 18:07:03,493 - phase7_export_for_r - INFO - Exporting embeddings for UMAP visualization...
+2025-12-16 18:07:12,157 - utils - INFO - ✓ Saved 16,893 records to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/output/incident_embeddings_for_r.csv
+2025-12-16 18:07:12,770 - utils - INFO - ✓ Saved 1,142 records to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/output/glossary_embeddings_for_r.csv
+2025-12-16 18:07:12,770 - phase7_export_for_r - INFO - ✓ Embeddings exported for R
+2025-12-16 18:07:12,770 - phase7_export_for_r - INFO - Exporting confusion matrix data...
+2025-12-16 18:07:12,793 - utils - INFO - ✓ Saved 1 records to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/output/confusion_matrix_long.csv
+2025-12-16 18:07:12,793 - phase7_export_for_r - INFO - ✓ Confusion matrix exported
+2025-12-16 18:07:12,793 - phase7_export_for_r - INFO - Exporting category performance data...
+2025-12-16 18:07:12,794 - utils - INFO - ✓ Saved 24 records to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/output/category_performance.csv
+2025-12-16 18:07:12,794 - phase7_export_for_r - INFO - ✓ Category performance exported
+2025-12-16 18:07:12,794 - phase7_export_for_r - INFO - Exporting confidence analysis...
+2025-12-16 18:07:12,809 - utils - INFO - ✓ Saved 9,311 records to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/output/confidence_analysis.csv
+2025-12-16 18:07:12,809 - phase7_export_for_r - INFO - ✓ Confidence analysis exported
+2025-12-16 18:07:12,809 - phase7_export_for_r - INFO - Exporting temporal analysis...
+2025-12-16 18:07:12,854 - utils - INFO - ✓ Saved 9,311 records to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/output/temporal_analysis.csv
+2025-12-16 18:07:12,854 - phase7_export_for_r - INFO - ✓ Temporal analysis exported
+2025-12-16 18:07:12,854 - phase7_export_for_r - INFO - Exporting geographic analysis...
+2025-12-16 18:07:12,859 - utils - INFO - ✓ Saved 431 records to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/output/geographic_analysis.csv
+2025-12-16 18:07:12,859 - phase7_export_for_r - INFO - ✓ Geographic analysis exported
+2025-12-16 18:07:12,859 - phase7_export_for_r - INFO - Exporting graph network data...
+2025-12-16 18:07:12,859 - phase7_export_for_r - WARNING - No graph export found
+2025-12-16 18:07:12,859 - phase7_export_for_r - INFO - Creating R metadata file...
+2025-12-16 18:07:12,860 - utils - INFO - ✓ Saved JSON to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/output/r_metadata.json
+2025-12-16 18:07:12,860 - phase7_export_for_r - INFO - ✓ R metadata created
+2025-12-16 18:07:12,860 - phase7_export_for_r - INFO - ✓ R export pipeline complete
+2025-12-16 18:07:12,863 - utils - INFO - Completed Phase 7: R Export and Preparation
+2025-12-16 20:02:30,590 - utils - INFO - Starting Phase 6b: Data Quality & Granularity Comparison
+2025-12-16 20:02:30,670 - utils - INFO - ✓ Loaded 9,603 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/output/machine_processed_incidents.csv
+2025-12-16 20:02:30,755 - utils - INFO - ✓ Loaded 9,311 records from /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/data/raw/human_processed_lastyear.csv
+2025-12-16 20:02:31,657 - utils - INFO - ✓ Saved JSON to /Users/randyhowk/Documents/CUNY/607/FinalProject/Cassidy/results/data_quality_comparison.json
+2025-12-16 20:02:31,657 - utils - INFO - Completed Phase 6b: Data Quality & Granularity Comparison

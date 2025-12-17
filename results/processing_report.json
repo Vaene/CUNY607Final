@@ -1,0 +1,37 @@
+{
+  "total_incidents": 9603,
+  "confidence_distribution": {
+    "high": 18,
+    "medium": 8234,
+    "low": 1351
+  },
+  "category_distribution": {
+    "Slogans / Code words": 3215,
+    "Groups / Movements": 1945,
+    "Numbers / Symbols": 1810,
+    "Key Concepts / Definitions": 784,
+    "Incidents / Events": 744,
+    "People": 557,
+    "Publications": 188,
+    "Slogans / Code words, Key Concepts / Definitions": 141,
+    "Slogans / Code words, Conspiracy Theories": 66,
+    "Tactics": 38,
+    "Platforms / Sites": 35,
+    "Conspiracy Theories": 33,
+    "Key Concepts / Definitions, Tactics": 19,
+    "People, Incidents / Events": 12,
+    "Conspiracy Theories, Publications": 5,
+    "Slogans / Code words, Numbers / Symbols": 2,
+    "Conspiracy Theories, Slogans / Code words": 2,
+    "Publications, Platforms / Sites": 2,
+    "Slogans / Code words, Conspiracy Theories, Key Concepts / Definitions": 1,
+    "Publications, Groups / Movements": 1,
+    "General Hate": 1,
+    "Conspiracy Theories, Groups / Movements": 1,
+    "Conspiracy Theories, Key Concepts / Definitions": 1
+  },
+  "avg_confidence": 0.5755908404567512,
+  "method_distribution": {
+    "graph_enhanced": 9603
+  }
+}

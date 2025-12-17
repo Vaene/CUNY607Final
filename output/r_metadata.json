@@ -1,0 +1,115 @@
+{
+  "project_name": "Knowledge Graph Hate Incident Classification",
+  "generated_at": "2025-12-16T18:07:12.859945",
+  "python_version": "3.8+",
+  "model_name": "all-mpnet-base-v2",
+  "files": {
+    "structured_incidents": "structured_incidents.csv",
+    "incident_embeddings": "incident_embeddings_for_r.csv",
+    "glossary_embeddings": "glossary_embeddings_for_r.csv",
+    "confusion_matrix": "confusion_matrix_long.csv",
+    "category_performance": "category_performance.csv",
+    "confidence_analysis": "confidence_analysis.csv",
+    "temporal_analysis": "temporal_analysis.csv",
+    "geographic_analysis": "geographic_analysis.csv",
+    "graph_nodes": "graph_nodes.csv",
+    "graph_edges": "graph_edges.csv",
+    "evaluation_report": "../results/evaluation_report.txt",
+    "evaluation_metrics": "../results/evaluation_metrics.json"
+  },
+  "statistics": {
+    "total_incidents": 9311,
+    "total_glossary_terms": 1142,
+    "n_categories": 1,
+    "accuracy": 0.0,
+    "f1_macro": 0.0,
+    "embedding_dimensions": 768
+  },
+  "thresholds": {
+    "high_confidence": 0.85,
+    "low_confidence": 0.5,
+    "similarity": 0.7
+  },
+  "graph_stats": {
+    "node_counts": {
+      "Incident": 16893,
+      "Location": 3373,
+      "Term": 1141,
+      "Group": 145,
+      "Category": 42
+    },
+    "relationship_counts": {
+      "OCCURRED_IN": 16893,
+      "ATTRIBUTED_TO": 2895,
+      "BELONGS_TO": 1141,
+      "SIMILAR_TO": 276,
+      "RELATED_TO": 2
+    },
+    "top_terms": [
+      {
+        "term": "Goyim Defense League",
+        "category": "Groups / Movements",
+        "incidents": 118
+      },
+      {
+        "term": "Folkish Resistance Movement (FRM)",
+        "category": "Groups / Movements",
+        "incidents": 88
+      },
+      {
+        "term": "Patriot Front",
+        "category": "Groups / Movements",
+        "incidents": 15
+      },
+      {
+        "term": "Hundred Handers",
+        "category": "Groups / Movements",
+        "incidents": 11
+      },
+      {
+        "term": "Zoombombing",
+        "category": "Key Concepts / Definitions, Tactics",
+        "incidents": 6
+      },
+      {
+        "term": "White Lives Matter",
+        "category": "Slogans / Code words",
+        "incidents": 4
+      },
+      {
+        "term": "14",
+        "category": "Numbers / Symbols",
+        "incidents": 4
+      },
+      {
+        "term": "The Popular Front for the Liberation of Palestine",
+        "category": "Groups / Movements",
+        "incidents": 3
+      },
+      {
+        "term": "Nationalist Social Club (NSC)",
+        "category": "Groups / Movements",
+        "incidents": 2
+      },
+      {
+        "term": "Da Goyim Know",
+        "category": "Slogans / Code words",
+        "incidents": 2
+      }
+    ],
+    "category_distribution": {
+      "Groups / Movements": 241,
+      "Slogans / Code words": 9,
+      "Numbers / Symbols": 8,
+      "Key Concepts / Definitions, Tactics": 6,
+      "Publications": 3,
+      "People": 2,
+      "Slogans / Code words, Key Concepts / Definitions": 2,
+      "Publications, Groups / Movements": 1,
+      "Conspiracy Theories": 1,
+      "Incidents / Events": 1,
+      "Slogans / Code words, Conspiracy Theories": 1,
+      "Key Concepts / Definitions": 1
+    }
+  }
+}

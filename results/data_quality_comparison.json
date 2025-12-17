@@ -1,0 +1,59 @@
+{
+  "completeness": {
+    "machine": {
+      "state": 100.0,
+      "city": 100.0,
+      "date": 100.0,
+      "location": 100.0,
+      "group": 12.558575445173384,
+      "predicted_category": 100.0
+    },
+    "human": {
+      "state": 100.0,
+      "city": 100.0,
+      "date": 100.0,
+      "location": 100.0,
+      "group": 11.395124046826334,
+      "predicted_category": 100.0
+    }
+  },
+  "granularity": {
+    "machine": {
+      "n_categories": 23,
+      "distribution": {
+        "Slogans / Code words": 3215,
+        "Groups / Movements": 1945,
+        "Numbers / Symbols": 1810,
+        "Key Concepts / Definitions": 784,
+        "Incidents / Events": 744,
+        "People": 557,
+        "Publications": 188,
+        "Slogans / Code words, Key Concepts / Definitions": 141,
+        "Slogans / Code words, Conspiracy Theories": 66,
+        "Tactics": 38,
+        "Platforms / Sites": 35,
+        "Conspiracy Theories": 33,
+        "Key Concepts / Definitions, Tactics": 19,
+        "People, Incidents / Events": 12,
+        "Conspiracy Theories, Publications": 5,
+        "Slogans / Code words, Numbers / Symbols": 2,
+        "Conspiracy Theories, Slogans / Code words": 2,
+        "Publications, Platforms / Sites": 2,
+        "Slogans / Code words, Conspiracy Theories, Key Concepts / Definitions": 1,
+        "Publications, Groups / Movements": 1,
+        "General Hate": 1,
+        "Conspiracy Theories, Groups / Movements": 1,
+        "Conspiracy Theories, Key Concepts / Definitions": 1
+      },
+      "entropy": 2.6572935923599714
+    },
+    "human": {
+      "n_categories": 1,
+      "distribution": {
+        "Antisemitism": 9311
+      },
+      "entropy": -0.0
+    }
+  },
+  "verdict": "Machine provides significantly more granular and actionable insights"
+}
